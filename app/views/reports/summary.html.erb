@@ -1,0 +1,119 @@
+<% provide(:title, 'Events | Summary') %>
+
+<h2 class="center-txt-align page-header-top"> Summary for <%= @month_name +" "+ @year.to_s %> </h2>
+ 
+<% if @chart == "1" %>
+
+  <div class="row graph-div">
+    <%= pie_chart @item_types_chart_data,
+                  library: {
+                          #title: {text: "Distribution Chart", style: {color: "#000"}},
+                          tooltip: { pointFormat: '{series.name}: <b>{point.y}</b>'},
+                          chart: {backgroundColor: "#d3d3d3"},
+                          plotOptions: { pie: { center: ["50%", "50%"], dataLabels: { enabled: true, color: '#000', connectorColor: '#000', format: '{point.name}: {point.percentage:.1f} %' }  }  }
+                  }
+    %>
+  </div>
+  
+  <div class="row graph-div">  
+    <%= bar_chart @item_types_chart_data,
+                  library: {
+                          #title: {text: "Bar Chart", style: {color: "#000"}},
+                          tooltip: { pointFormat: '{series.name}: <b>{point.y}</b>'},
+                          chart: {backgroundColor: "#d3d3d3"},
+                          xAxis: { title: { text: "Item Categories"} },
+                          yAxis: { title: { text: "Amounts in Dalasis (GMD)"} }
+                  }
+    %>
+  </div>
+
+<% else %>
+
+  <% @items_per_type.each do |item_type| %>
+   
+    <table class="table table-bordered table-hover table-condensed">
+      <thead>
+        <tr class="top-th-tr">
+          <th colspan="3" class="center-txt-align"><%= item_type.first.item_type_name %> </th>
+        </tr>
+        <tr>
+          <th>Item Name</th>
+          <th>Spots</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% item_type.each do |item| %>
+          <tr>
+            <td><%= item.item_name %></td>
+            <td class="right-txt-align"><%= format_number(item.spots) %></td>
+            <td class="right-txt-align"><%= format_number(item.item_total) %></td>
+          </tr>
+        <% end %>
+
+        <tr>
+          <th colspan="2">Total</th>
+          <td class="right-txt-align"> <%= format_number(item_type.first.item_type_total) %> </td>
+        </tr>
+      </tbody>
+    </table>
+
+  <% end %>
+
+  <table class="table table-bordered table-hover table-condensed">
+    <thead>
+      <tr class="top-th-tr">
+        <th colspan="2" class="center-txt-align"> Summary </th>
+      </tr>
+      <tr>
+        <th>Item Category</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @item_types.each do |item_type| %>
+          <tr>
+            <td> <%= item_type.item_type_name %> </td>
+            <td class="right-txt-align">  <%= format_number(item_type.total) %> </td>
+          </tr>
+      <% end %>
+
+      <tr>
+        <th> Total </th>
+        <td class="right-txt-align"> <%= format_number(@total_cost) %> </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row center-txt-align download">
+    <%= link_to 'Download as .xlsx', summary_info_path(format: :xlsx, date: @date), method: :post, target: 'blank' %>
+  </div>
+    
+<% end %>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

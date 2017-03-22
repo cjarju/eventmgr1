@@ -1,0 +1,54 @@
+<% provide(:title, 'Event | New') %>
+
+<h3 class="center-txt-align page-header-top">New Event</h3> 
+
+<%= form_for(@event, html: {class: "form-inline left-txt-align", role: "form"}) do |e| %>
+ 
+    <%= render 'errors' %>
+
+    <%= render 'eventinfo', e: e %>
+
+    <h4 class="bold-text">Event dates:</h4>
+
+    <div class="row event-dates-div">
+      <div class="form-group primary-date">
+        <div class="input-group date" title="Select date">
+          <%= text_field_tag "event_dates[]", nil, class:"form-control", placeholder:"event date", required: true %>
+          <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+      </div>
+    </div>
+
+     
+    <div class="btn-div center-txt-align"> 
+      <button type="button" name="add_date_btn", id="add_date_btn", class="btn btn-large btn-primary">Add Date</button>
+    </div>
+
+    <h4 class="bold-text center-txt-align"> Select item types to add: </h4>
+    <div class="row bold-text item-types-div">
+      <% @item_types.each do |item_type| %>
+        <div class="col-sm-3">
+          <input type="checkbox" class="checkbox" name="<%= "item_type#{item_type.id}" %>" value="<%= "item_type#{item_type.id}" %>" >  <%= item_type.item_type_name %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= hidden_field_tag "event[item_ids][]" %>
+
+    <% @items_per_type.each do |items_per_type| %>
+      <% item_type_id = items_per_type.first.item_type_id %>
+      <div class="row items-div" id="<%= "item_type#{item_type_id}" %>" style="display:none" >
+        <% items_per_type.each do |item| %>
+          <div class="col-sm-3">
+              <%= check_box_tag "event[item_ids][]", item.id %> <%= item.item_name %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+   
+    <div class="btn-div center-txt-align"> <%= e.submit "Create", {class: "btn btn-large btn-primary"} %> </div>
+
+<% end %>
+
+
+

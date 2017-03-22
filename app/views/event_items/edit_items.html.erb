@@ -1,0 +1,45 @@
+<% provide(:title, 'Event | Edit Items') %>
+
+<h3 class="center-txt-align"><%= @event.event_name %> </h3> 
+<h4 class="center-txt-align page-header-top"> Edit Items </h4> 
+
+<div class="row bold-text event-items-headers-div">
+   <div class="col-sm-4 item-name">Item Name</div><div class="col-sm-2">Quantity</div><div class="col-sm-2">No. of Times</div>
+</div>
+
+<%= form_tag(update_event_items_path(@event), html: {class: "form-inline event-items-bulk-form", role: "form"}) do %>
+
+    <% @event_items.each do |event_item| %>
+
+        <div class="row"> 
+
+            <div class="col-sm-4 form-group item-name"> 
+                <%= event_item.item.item_name %> 
+            </div>
+
+            <div class="col-sm-2 form-group">
+                <%= text_field_tag "event_items[][quantity]", event_item.quantity, {class:"form-control", required: true} %>
+            </div>
+
+            <div class="col-sm-2 form-group">
+                <%= text_field_tag "event_items[][days]", event_item.days, {class:"form-control", required: true} %>
+            </div>
+
+            <%= hidden_field_tag "event_items[][id]", event_item.id %>
+            <%= hidden_field_tag "event_items[][cost1_per_unit]", event_item.item.cost1_per_unit %>
+            <%= hidden_field_tag "event_items[][cost2_per_unit]", event_item.item.cost2_per_unit %>
+            <%= hidden_field_tag "event_items[][cost3_per_unit]", event_item.item.cost3_per_unit %>
+            <%= hidden_field_tag "event_items[][width]", event_item.item.width %>
+            <%= hidden_field_tag "event_items[][height]", event_item.item.height %>
+
+        </div>    
+
+    <% end %>
+
+    <div class="center-txt-align"> <%= submit_tag "Update", {class: "btn btn-large btn-primary"} %> </div>
+
+<% end %>
+
+
+
+

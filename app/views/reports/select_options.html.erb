@@ -1,0 +1,37 @@
+<% provide(:title, 'Event | Summary Type') %>
+
+<h4 class="center-txt-align page-header-top"> Select Date and Options </h4>  
+
+<%= form_tag(summary_info_path, {class: "form-inline center-txt-align", role: "form"}) do %>
+
+    <div class="row">
+        <div class="form-group">
+            <%= label_tag '', "Year" %>
+            <%= select_year(Date.today, {start_year: 2010, end_year: 2020}, {class: "form-control select-date-month", required: true}) %>
+
+            <%= label_tag '', "Month" %>
+            <input type="checkbox" checked="checked" name="use_month" id="use_month" value="1" />
+            <%= select_month(Date.today, {}, {class: "form-control select-date-month"}) %> 
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            <input type="checkbox" name="itemtypesxevents" id="itemtypesxevents" value="1" /> <span> Item Types by Events </span>
+            <input type="checkbox" name="itemsxmonths" id="itemsxmonths" value="1" /> <span> Items by Months </span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">  
+            <input type="checkbox" name="chart" id = "chart" value="1" /> Chart 
+        </div>
+    </div>
+
+    <div class="center-txt-align"> <input type="submit" value="Display" class= "btn btn-large btn-primary"/> </div>
+   
+<% end %>
+
+
+     
+ 

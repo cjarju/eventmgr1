@@ -1,0 +1,31 @@
+<%= form_for(@item_type, html: {class: "form-inline center-txt-align", role: "form"}) do |f| %>
+
+  <% if @item_type.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@item_type.errors.count, "error") %> prohibited this item_type from being saved:</h2>
+    <ul>
+      <% @item_type.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :item_type_name, "Item Type Name" %>
+    <%= f.text_field :item_type_name, {class: "form-control", required: true, placeholder:"item type name" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description, {class: "form-control", required: true, placeholder:"description" } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.check_box :has_dimensions, {class: ""} %>
+    <%= f.label :has_dimensions, "Has Dimensions" %>
+  </div>
+
+  <div class="btn-div center-txt-align"><%= f.submit "Submit", {class: "btn btn-large btn-primary"} %></div>
+
+<% end %>

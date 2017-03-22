@@ -1,0 +1,59 @@
+<% provide(:title, 'Events | Summary') %>
+
+<h2 class="center-txt-align page-header-top"> Summary for <%= @month_name +" "+ @year.to_s %> </h2>
+
+<% if @chart == "1" %>
+
+  <%= bar_chart @event_chart_data,
+                library: {
+                        #title: {text: "Bar Chart", style: {color: "#000"}},
+                        chart: {backgroundColor: "#d3d3d3"},
+                        tooltip: { pointFormat: '{series.name}: <b>{point.y}</b>'},
+                        xAxis: { title: { text: "Events"} },
+                        yAxis: { title: { text: "Amounts in Dalasis (GMD)"} }
+                }
+  %>
+
+<% else %>
+
+  <table class="table table-bordered table-hover table-condensed">
+    <thead>
+      <tr class="top-th-tr">
+        <th> &nbsp; </th>
+        <% @events.each do |event| %>
+            <th title="<%= event.event_name %>"> <%= truncate(event.event_name, length: 20) %> </th>
+        <% end %>
+        <th> Total </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @types_by_events.each do |type_by_events| %>
+          <tr>
+            <% type_by_events.each do |val| %>
+                <td <%= if val.class != String then "class=right-txt-align" end %> > <%= format_number(val)%> </td>
+            <% end %>
+          </tr>
+      <% end %>
+
+      <tr>
+        <th>Total</th>
+        <% @events.each do |event| %>
+            <td class="right-txt-align"> <%=  format_number(event.total)  %> </td>
+        <% end %>
+        <td class="right-txt-align"> <%= format_number(@total_cost) %> </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="row center-txt-align download">
+    <%= link_to 'Download as .xlsx', summary_info_path(format: :xlsx, date: @date, itemtypesxevents: "1"), method: :post, target: 'blank' %>
+  </div>
+
+<% end %>
+
+
+
+
+
+
+

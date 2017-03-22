@@ -1,0 +1,93 @@
+<% provide(:title, 'Event | Sponsorship Form') %>
+  
+<h2 class="center-txt-align"> <%= @event.event_name %> </h2>
+<h3 class="center-txt-align page-header-top">Sponsorship Request Form </h3>
+
+<table class="table table-bordered table-hover table-condensed">
+  <tbody>
+    <tr>
+      <th> Request Date </th>
+      <td colspan="3"> <%= @event.date_requested.strftime("%d %B %Y") %> </td>
+    </tr>
+
+    <tr>
+      <th> Event Name </th>
+      <td colspan="3"> <%= @event.event_name %> </td>
+    </tr>
+
+    <tr>
+      <th> Organizers </th>
+      <td colspan="3"> <%= @event.organizers %> </td>
+    </tr>
+
+    <tr>
+      <th> Event Date </th>
+      <td colspan="3"> <%= @event_date %> </td>
+    </tr>
+
+    <tr>
+      <th> Event Location </th>
+      <td colspan="3"> <%= @event.location %> </td>
+    </tr>
+
+    <tr>
+      <th> Requested By </th>
+      <td colspan="3"> <%= @event.requested_by %> </td>
+    </tr>
+
+    <tr>
+      <th class="middle-txt-align"> CEO Approval </th>
+      <td colspan="3"> &nbsp;<br/>&nbsp;<br/>&nbsp;</td>
+    </tr>
+
+    <tr>
+      <th class="middle-txt-align"> Perceived Benefits </th>
+      <td colspan="3" contenteditable="true"> <%= nl2br(@event.perceived_benefits).html_safe %> </td>
+    </tr>
+
+    <tr>
+      <th class="middle-txt-align"> Goodwill </th>
+      <td colspan="3" contenteditable="true"> <%= nl2br(@event.goodwill).html_safe %> </td>
+    </tr>
+
+    <tr>
+      <th> Event Type </th>
+      <td colspan="4"> <%= @event.event_type.event_type_name %> </td>
+    </tr>
+
+    <tr>
+
+      <td colspan="4"> &nbsp;&nbsp; </td>
+
+    </tr>
+
+    <tr>
+      <th>Item Category</th>
+      <th>Description</th>
+      <th colspan="2">Cost</th>
+
+    </tr>
+
+    <% @item_types_for_event.each do |item_type| %>
+        <tr>
+              <td> <%= item_type.item_type_name %> </td>
+              <td contenteditable="true"> <%= item_type.description %> </td>
+              <td class="right-txt-align" colspan="2">  <%= format_number(item_type.total) %> </td>
+        </tr>
+    <% end %>
+
+
+    <tr>
+      <th colspan="2"> Total </th>
+      <td class="right-txt-align" colspan="2"> <%= format_number(@event_cost) %> </td>
+    </tr>
+
+    <tr>
+      <th colspan="4"> &nbsp;<br/> Group COO Mandatory Approval &nbsp;<br/>&nbsp; </th>
+    </tr>
+  </tbody>
+</table>
+ 
+<div class="row center-txt-align download">
+ <%= link_to 'Download as .xlsx', event_info_path(@event, format: :xlsx, event_info_type_id: '2'), method: :post, target: 'blank' %>
+</div> 

@@ -1,0 +1,20 @@
+wb = xlsx_package.workbook
+@event_items_per_type.each do |item_type|
+  wb.add_worksheet(name: item_type.first.item_type_name.gsub(/[\/:*?"<>|]/,'_')) do |sheet|
+      sheet.add_row ["Item Name","Quantity","No. of Times","Total"]
+      item_type.each do |item|
+        sheet.add_row [item.quantity,item.days,item.cost1_per_unit,item.item_total]
+      end
+      sheet.add_row ["Total","","",item_type.first.item_type_total]
+  end
+end 
+
+wb.add_worksheet(name: "Summary") do |sheet|
+    sheet.add_row ["Item Category","Cost"]
+    @item_types_for_event.each do |item_type|
+      sheet.add_row [item_type.item_type_name,item_type.total]
+    end
+    sheet.add_row ["Total",@event_cost]
+end
+
+ 

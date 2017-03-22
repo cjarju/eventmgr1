@@ -1,0 +1,32 @@
+<% provide(:title, 'Event | Item Types') %>
+
+<h3 class="center-txt-align page-header-top"> <%= link_to "#{@event.event_name}", items_for_event_path(@event) %> </h3>
+
+<table class="table table table-hover table-condensed">
+  <thead>
+  <tr>
+    <th>Item Type Name</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @event_item_types.each do |event_item_type| %>
+      <tr>
+        <td><%= event_item_type.item_type.item_type_name %></td>
+        <td><%= event_item_type.description %></td>
+        <td><%= link_to edit_event_item_type_path(event_item_type), title: 'Edit Description' do %><i class="glyphicon glyphicon-edit"></i> <% end %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="boostrap_pagination"><%= will_paginate @event_item_types, inner_window: 2, outer_window: 1, renderer: BootstrapPagination::Rails %></div>
+
+ 
+
+
+
+
+
+

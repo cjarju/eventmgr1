@@ -1,0 +1,19 @@
+<% provide(:title, 'Event | Summary Type') %>
+
+<h4 class="center-txt-align page-header-top"> Select Year </h4>  
+
+<%= form_tag(summary_final_path(format: :xlsx), {class: "form-inline center-txt-align", role: "form"}) do %>
+
+    <div class="row">
+        <div class="form-group">
+            <%= label_tag '', "Year" %>
+            <%= select_year(Date.today, {start_year: 2010, end_year: 2020}, {class: "form-control select-date-month", required: true}) %>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Download" class= "btn btn-large btn-primary"/>
+    </div>
+
+<% end %>
+
+     
+ 

@@ -1,0 +1,22 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "sponsorship_form") do |sheet|
+    sheet.add_row ["Request Date",@event.date_requested.strftime("%d %B %Y")]
+    sheet.add_row ["Event Name",@event.event_name]
+    sheet.add_row ["Organizers",@event.organizers]
+    sheet.add_row ["Event Date",@event_date]
+    sheet.add_row ["Event Location",@event.location]
+    sheet.add_row ["Requested By",@event.requested_by]
+    sheet.add_row ["CEO Approval",""]
+    sheet.add_row ["Perceived Benefits",@event.perceived_benefits]
+    sheet.add_row ["Goodwill",@event.goodwill]
+    sheet.add_row [""]
+    sheet.add_row ["Item Category","Description","Cost"]
+    @item_types_for_event.each do |item_type|
+      sheet.add_row [item_type.item_type_name,item_type.description,item_type.total]
+    end
+    sheet.add_row ["Total","",@event_cost]
+    sheet.add_row [""]
+    sheet.add_row ["Group COO Mandatory Approval"]
+end
+
+ 

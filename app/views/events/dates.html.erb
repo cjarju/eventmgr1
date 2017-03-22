@@ -1,0 +1,40 @@
+<% provide(:title, 'Event | Dates') %>
+
+<h3 class="center-txt-align"> <%= link_to "#{@event.event_name}", @event %> </h3> 
+<h4 class="center-txt-align page-header-top"> Dates </h4> 
+
+
+<table class="table table table-hover table-condensed">
+
+  <thead>
+  <tr>
+    <th>Date</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% i = 1 %>
+  <% @event_dates.each do |event_date| %>
+      <tr>
+        <td><%= event_date.event_date %></td>
+        <td class="right-txt-align"><%= link_to edit_event_date_path(event_date), title: 'Edit Event Date' do %><i class="glyphicon glyphicon-edit"></i> <% end %></td>
+        <td class="right-txt-align">
+        <% if i > 1 or session[:page_no_event_dates] > 1 %>
+          <%= link_to event_date, method: :delete, title: 'Delete Event Date', data: { confirm: 'Are you sure?' } do %><i class="glyphicon glyphicon-trash"></i><% end %>
+        <% end %>
+        </td>
+      </tr>
+      <% i += 1 %>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="boostrap_pagination"><%= will_paginate @event_dates, inner_window: 2, outer_window: 1, renderer: BootstrapPagination::Rails %></div>
+ 
+
+<div class="center-txt-align">
+  <i class="glyphicon glyphicon-plus"></i> <%= link_to 'New Event Date', new_event_date_path(@event) %> &nbsp;&nbsp;
+</div>
+
+

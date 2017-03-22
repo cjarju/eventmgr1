@@ -1,0 +1,43 @@
+<% provide(:title, 'Event | Items') %>
+
+<h3 class="center-txt-align"> <%= link_to "#{@event.event_name}", @event %> </h3> 
+<h4 class="center-txt-align page-header-top"> Items </h4> 
+
+
+<table class="table table table-hover table-condensed">
+
+  <thead>
+  <tr>
+    <th>Item Name</th>
+    <th class="right-txt-align">Quantity</th>
+    <th class="right-txt-align">No. of Times</th>
+    <th class="right-txt-align">Cost Per Unit</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @event_items.each do |event_item| %>
+      <tr>
+        <td><%= event_item.item.item_name %></td>
+        <td class="right-txt-align"><%= format_number(event_item.quantity) %></td>
+        <td class="right-txt-align"><%= format_number(event_item.days) %></td>
+        <td class="right-txt-align"><%= format_number(event_item.cost1_per_unit) %></td>
+        <td class="right-txt-align"><%= link_to edit_event_item_path(event_item), title: 'Edit Event Item' do %><i class="glyphicon glyphicon-edit"></i> <% end %></td>
+        <td class="right-txt-align"><%= link_to event_item, method: :delete, title: 'Delete Event Item', data: { confirm: 'Are you sure?' } do %><i class="glyphicon glyphicon-trash"></i><% end %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<div class="boostrap_pagination"><%= will_paginate @event_items, inner_window: 2, outer_window: 1, renderer: BootstrapPagination::Rails %></div>
+ 
+
+<div class="center-txt-align">
+  <i class="glyphicon glyphicon-plus"></i> <%= link_to 'New Event Item', new_event_item_path(@event) %> &nbsp;&nbsp;
+  <i class="glyphicon glyphicon-comment"></i> <%= link_to 'Item Types Comments', item_types_for_event_path(@event) %> &nbsp;&nbsp;
+  <i class="glyphicon glyphicon-edit"></i><i class="glyphicon glyphicon-edit"></i> <%= link_to 'Edit Items',  edit_event_items_path(@event) %>
+
+</div>
+
+

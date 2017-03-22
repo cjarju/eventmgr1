@@ -1,0 +1,29 @@
+<% provide(:title, 'Event | Item Type | Edit Description') %>
+
+<h3 class="center-txt-align"> <%= link_to "#{@event.event_name}", item_types_for_event_path(@event) %> </h3> 
+<h4 class="center-txt-align page-header-top">Edit Item Type Description </h4> 
+
+<%= form_for(@event_item_type, html: {class: "form-inline center-txt-align event-item-types-form", role: "form"}) do |f| %>
+  <% if @event_item_type.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event_item_type.errors.count, "error") %> prohibited this record from being saved:</h2>
+        <ul>
+          <% @event_item_type.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label '', "#{f.object.item_type.item_type_name}" %> 
+    <%= f.text_field :description, {style: "width: 300px", class: "form-control", required: true } %>
+  </div>
+
+  <div class="form-group"> <%= f.submit "Submit", {class: "btn btn-large btn-primary"} %> </div>
+
+<% end %>
+ 
+
+
+

@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-sm-6 form-group">
+    <div class="col-sm-3"><%= e.label :event_name, "Event Name"  %></div>
+    <div class="col-sm-3"><%= e.text_field :event_name, {class:"form-control",placeholder:"event name" } %></div>
+  </div>
+  <div class=" col-sm-6 form-group">
+    <div class="col-sm-3"><%= e.label :event_type_id, "Event Type" %></div> 
+    <div class="col-sm-3"><%= e.collection_select :event_type_id, EventType.all, :id, :event_type_name, {prompt: true}, {class: "form-control", required: true } %></div> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 form-group">
+    <div class="col-sm-3"><%= e.label :date_requested, "Date Requested" %></div>  
+    <div class="col-sm-3 input-group date" title="Select date">
+      <%= e.text_field :date_requested, {class:"form-control", placeholder:"request date", required: true } %>
+      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+    </div>
+  </div>
+  <div class="col-sm-6 form-group">
+    <div class="col-sm-3"><%= e.label :requested_by, "Requested By" %></div>  
+    <div class="col-sm-3"><%= e.text_field :requested_by, {class:"form-control", placeholder:"requested by", required: true  } %></div>  
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 form-group">
+    <div class="col-sm-3"><%= e.label :organizers, "Organizers" %></div>  
+    <div class="col-sm-3"><%= e.text_field :organizers, {class:"form-control", placeholder:"organizers", required: true  } %></div>  
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 form-group">
+     <div class="col-sm-3"><%= e.label :location, "Location" %></div> 
+     <div class="col-sm-3"><%= e.text_field :location, {class:"form-control", placeholder:"location(s)", required: true  } %></div> 
+  </div>
+</div>
+
+<% p_benefits = "Africell to be mentioned in all adverts\nAfricell's logo to be placed on all printed materials\nAfricell to mentioned during the program by the MC\nAfricell to be the only GSM partner\nVenue to be branded by africell\nVIP tickets to be provided for Africell Staff" %>
+
+<div class="row">
+  <div class="col-sm-6 form-group">
+    <div class="col-sm-3"><%= e.label :perceived_benefits, "Perceived Benefits" %></div> 
+    <div class="col-sm-3"><%= e.text_area :perceived_benefits, {cols: "75", rows: "3", class:"form-control", placeholder:"perceived benefits", value: p_benefits, required: true  } %></div> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 form-group">
+    <div class="col-sm-3"><%= e.label :goodwill, "Goodwill" %></div> 
+    <div class="col-sm-3"><%= e.text_area :goodwill, {cols: "75", rows: "3", class:"form-control", placeholder:"goodwill", required: true  } %></div> 
+  </div>
+</div>

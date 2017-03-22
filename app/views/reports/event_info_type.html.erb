@@ -1,0 +1,15 @@
+<% provide(:title, 'Event | Info Type') %>
+
+<h3 class="center-txt-align page-header-top"> <%= @event.event_name %> </h3> 
+
+<%= form_tag(event_info_path(@event), {class: "form-inline center-txt-align", role: "form"}) do %>
+  <div class="form-group">
+    <%= label_tag :event_info_type_id, "Info Type"%>
+    <%= select_tag :event_info_type_id, options_from_collection_for_select(EventInfoType.all, :id, :name),{class: "form-control select-info-type", required: true } %> &nbsp;&nbsp;
+  </div>
+  <div class="form-group">
+    <%= submit_tag('Display', {class: "btn btn-large btn-primary"}) %>
+  </div>
+<% end %>
+
+

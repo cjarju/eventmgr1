@@ -1,0 +1,41 @@
+<% provide(:title, 'Home') %>
+
+<div class="graph-container">
+  <div id="home-page-carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#home-page-carousel" data-slide-to="0" class="active"></li>
+      <li data-target="#home-page-carousel" data-slide-to="1"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="item active">
+          <%= pie_chart @event_chart_data,
+                        library: {
+                                title: {text: "Events in #{@month_year}", style: {color: "#000"}},
+                                subtitle: {text: "Cost Distribution Chart", style: {color: "#000"}},
+                                tooltip: { pointFormat: '{series.name}: <b>{point.y}</b>'},
+                                chart: {backgroundColor: "#d3d3d3"},
+                                plotOptions: { pie: { center: ["50%", "50%"], dataLabels: { enabled: true, color: '#000', connectorColor: '#000', format: '{point.name}: {point.percentage:.1f} %' }  }  }
+                        }
+          %>
+      </div>
+      <div class="item">
+          <%= pie_chart @item_types_chart_data,
+                        library: {
+                                chart: {backgroundColor: "#d3d3d3"},
+                                title: {text: "Item Types in #{@month_year}", style: {color: "#000"}},
+                                subtitle: {text: "Cost Distribution Chart", style: {color: "#000"}},
+                                tooltip: { pointFormat: '{series.name}: <b>{point.y}</b>'},
+                                plotOptions: { pie: { center: ["50%", "50%"], dataLabels: { enabled: true, color: '#000', connectorColor: '#000', format: '{point.name}: {point.percentage:.1f} %' }  }  }
+                        }
+
+          %>
+      </div>
+    </div>
+    <a class="left carousel-control" href="#home-page-carousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#home-page-carousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+</div>

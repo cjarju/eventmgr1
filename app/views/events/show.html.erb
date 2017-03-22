@@ -1,0 +1,20 @@
+<% provide(:title, 'Event | Info') %>
+
+<table class="table table table-hover table-condensed">
+    <tbody>
+        <tr> <th>Event Name</th> <td><%= @event.event_name %></td> </tr>
+        <tr> <th>Event Type</th> <td><%= @event.event_type.event_type_name %></td> </tr>
+        <tr> <th>Location</th> <td><%= @event.location %></td> </tr>
+        <tr> <th>Perceived Benefits</th> <td><%= nl2br(@event.perceived_benefits).html_safe %></td> </tr>
+        <tr> <th>Goodwill</th> <td><%= nl2br(@event.goodwill).html_safe %></td> </tr>
+        <tr> <th>Date Requested</th> <td><%= format_date_name(@event.date_requested) %></td> </tr>
+        <tr> <th>Requested By</th> <td><%= @event.requested_by %></td> </tr>
+        <tr> <th>Organizers</th> <td><%= @event.organizers %></td> </tr>
+    </tbody>
+</table>
+
+<div class="center-txt-align">
+  <i class="glyphicon glyphicon-edit"></i> <%= link_to 'Edit Event', edit_event_path(@event) %>
+</div>
+
+

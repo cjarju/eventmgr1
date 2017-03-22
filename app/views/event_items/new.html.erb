@@ -1,0 +1,41 @@
+<% provide(:title, 'Event | New Item') %>
+
+<h3 class="center-txt-align"> <%= link_to "#{@event.event_name}", items_for_event_path(@event) %></h3> 
+<h4 class="center-txt-align page-header-top">New Item</h4> 
+
+<%= form_for(@event_item, html: {class: "form-horizontal h-form event-items-form", role: "form"}) do |f| %>
+
+    <% if @event_item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event_item.errors.count, "error") %> prohibited this record from being saved:</h2>
+        <ul>
+          <% @event_item.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :event_id, {value: @event.id} %>
+
+    <div class="form-group">
+      <%= f.label :item_id, "Item", {class: "col-sm-5 control-label"} %>
+      <div class="col-sm-4"><%= f.grouped_collection_select :item_id, ItemType.all, :items, :item_type_name, :id, :item_name, {prompt: true}, {class: "form-control", required: true }  %></div>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :quantity, "Quantity", {class: "col-sm-5 control-label"} %>
+      <div class="col-sm-4"><%= f.text_field :quantity, {class: "form-control", required: true } %></div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :days, "No. of Times", {class: "col-sm-5 control-label"} %>
+      <div class="col-sm-4"><%= f.text_field :days, {class: "form-control", required: true }%></div>
+    </div>
+ 
+    <div class="center-txt-align"><%= f.submit "Create", {class: "btn btn-large btn-primary"}%></div>
+
+<% end %>
+
+
+

@@ -1,0 +1,55 @@
+
+<%= form_for(@item, html: {class: "form-horizontal h-form items-form", role: "form"}) do |f| %>
+
+  <% if @item.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+    <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group"> 
+    <%= f.label :item_name, "Item Name", {class: "col-sm-5 control-label"} %>
+    <div class="col-sm-4">
+      <%= f.text_field :item_name, {class: "form-control", required: true, placeholder:"item name" } %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :item_name, "Cost Per Unit", {class: "col-sm-5 control-label"} %>
+    <div class="col-sm-4">
+      <%= f.text_field :cost1_per_unit, {style: "width: 75px", class: "form-control", required: true, placeholder:"cost" } %>
+      <%= f.hidden_field :cost2_per_unit %>
+      <%= f.hidden_field :cost2_per_unit %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :item_type_id, "Item Type", {class: "col-sm-5 control-label"} %>
+    <div class="col-sm-4">
+      <%= f.select :item_type_id, ItemType.all.map {|t| [t.item_type_name,t.id, {:'data-has-dimensions' => t.has_dimensions}]}, {prompt: true}, {class: "form-control", required: true} %>
+    </div>
+  </div>
+
+  <div class="dimension" id="divdimen">
+    <div class="form-group">
+      <%= f.label :width, "Width", {class: "col-sm-5 control-label"} %>
+      <div class="col-sm-4">
+        <%= f.text_field :width, {style: "width: 75px", class: "form-control", required: true, placeholder:"width" } %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :height, "Height", {class: "col-sm-5 control-label"} %>
+      <div class="col-sm-4">
+        <%= f.text_field :height, {style: "width: 75px", class: "form-control", required: true, placeholder:"height" } %>
+      </div>
+    </div>
+  </div>
+
+  <div class="center-txt-align"><%= f.submit "Submit", {class: "btn btn-large btn-primary"} %></div>
+
+<% end %>

@@ -1,0 +1,15 @@
+<% provide(:title, 'Event | Edit') %>
+
+<h3 class="center-txt-align"> <%= link_to "#{@event.event_name}", @event %> </h3>
+<h4 class="center-txt-align page-header-top"> Edit </h4>
+
+<%= form_for(@event,  html: {class: "form-inline", role: "form"}) do |e| %>
+
+    <%= render 'errors' %>
+
+    <%= render 'eventinfo', e: e %>
+
+    <div class="center-txt-align"> <%= e.submit "Update", {class: "btn btn-large btn-primary"} %> </div>
+    
+<% end %>
+ 

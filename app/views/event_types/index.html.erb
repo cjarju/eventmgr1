@@ -1,0 +1,29 @@
+<% provide(:title, 'Event Types') %>
+
+<h3 class="center-txt-align page-header-top">Event Types</h3> 
+
+<table class="table table table-hover table-condensed">
+
+<thead>
+  <tr>
+    <th>Event Type Name</th>
+    <th colspan="2"></th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @event_types.each do |event_type| %>
+    <tr>
+      <td><%= event_type.event_type_name %></td>
+      <td><%= link_to edit_event_type_path(event_type), title: 'Edit Event Type' do %><i class="glyphicon glyphicon-edit"></i> <% end %></td>
+      <td><%= link_to event_type, method: :delete, title: 'Delete Event Type', data: { confirm: 'Are you sure?' } do %><i class="glyphicon glyphicon-trash"></i><% end %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<div class="boostrap_pagination"><%= will_paginate @items, inner_window: 2, outer_window: 1, renderer: BootstrapPagination::Rails %></div>
+
+<div class="center-txt-align">
+  <i class="glyphicon glyphicon-plus"></i> <%= link_to 'New Event Type',  new_event_type_path %>
+</div>

@@ -1,0 +1,21 @@
+<%= form_for(@event_type, html: {class: "form-inline center-txt-align", role: "form"}) do |f| %>
+
+  <% if @event_type.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event_type.errors.count, "error") %> prohibited this record from being saved:</h2>
+    <ul>
+      <% @event_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :event_type_name, "Event Type Name" %>
+    <%= f.text_field :event_type_name, {class: "form-control", required: true, placeholder:"event type name" } %>
+  </div>
+
+  <div class="form-group"> <%= f.submit "Submit", {class: "btn btn-large btn-primary"} %> </div>
+
+<% end %>

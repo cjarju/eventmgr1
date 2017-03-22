@@ -1,0 +1,203 @@
+wb = xlsx_package.workbook
+@report_data_months.each do |report_data_month|
+
+  wb.add_worksheet(name: report_data_month[:month_short_name]) do |sheet|
+
+    item_type_counts = report_data_month[:item_type_counts]
+  	if item_type_counts > 0
+
+	  	report_data_month[:items_per_type].each do |item_type|
+	  	    sheet.add_row [item_type.first.item_type_name]
+			sheet.add_row ["Item Name","Spots","Total"]
+			item_type.each do |item|
+			  sheet.add_row [item.item_name,item.spots,item.item_total]
+			end
+			sheet.add_row ["Total","",item_type.first.item_type_total]
+			sheet.add_row [""]
+		end 
+
+		sheet.add_row [""]
+		sheet.add_row ["Item Category","Cost"]
+
+		report_data_month[:item_types].each do |item_type|
+			sheet.add_row [item_type.item_type_name,item_type.total]
+		end
+
+		sheet.add_row ["Total",report_data_month[:total_cost]]
+		sheet.add_row [""]
+
+		events = []
+		totals = []
+		report_data_month[:events].each do |event| 
+		  	events << event.event_name
+		  	totals << event.total 
+		end
+
+	    sheet.add_row [""]+events+["Total"]
+		report_data_month[:types_by_events].each do |type_by_events|
+			sheet.add_row type_by_events
+		end
+
+		sheet.add_row ["Total"]+totals+[report_data_month[:total_cost]]
+	    
+	    d_start = report_data_month[:chart_start_at]
+	    d_end = report_data_month[:chart_end_at]
+
+		sheet.add_chart(Axlsx::Pie3DChart, :start_at => "E2", :end_at => "N20", :title => "Pie Chart", :vary_colors => true) do |chart|
+	      	chart.add_series :data => sheet["B#{d_start}:B#{d_end}"], :labels => sheet["A#{d_start}:A#{d_end}"]
+		    #chart.d_lbls.show_val = true
+		    chart.d_lbls.show_percent = true
+		    chart.d_lbls.d_lbl_pos = :outEnd
+		    chart.d_lbls.show_leader_lines = true
+	    end
+
+	    sheet.add_chart(Axlsx::Bar3DChart, :start_at => "E22", :end_at => "N#{item_type_counts+22+10}", :vary_colors => true) do |chart|
+		    chart.add_series :data => sheet["B#{d_start}:B#{d_end}"], :labels => sheet["A#{d_start}:A#{d_end}"], :title => "Bar Chart"
+		    chart.valAxis.label_rotation = -45
+		    chart.valAxis.title = "Value in Cash (GMD)"
+		    chart.catAxis.label_rotation = 45
+		    chart.catAxis.title = "Item Categories"
+		    #chart.catAxis.tick_lbl_pos = :none
+		    chart.d_lbls.show_val = true
+		    chart.d_lbls.d_lbl_pos = :outEnd	    
+	    end
+
+    end
+
+  end
+
+end 
+
+wb.add_worksheet(name: "Summary") do |sheet|
+    
+    if @item_type_counts > 0
+
+		@items_per_type.each do |item_type|
+		    sheet.add_row [item_type.first.item_type_name]
+		    sheet.add_row ["Item Name","Spots","Total"]
+		    item_type.each do |item|
+		      sheet.add_row [item.item_name,item.spots,item.item_total]
+		    end
+		    sheet.add_row ["Total","",item_type.first.item_type_total]
+		    sheet.add_row [""]
+		end
+		sheet.add_row [""]
+		sheet.add_row [""]
+		sheet.add_row ["Summary"]
+		sheet.add_row ["Item Category","Cost"]
+		@item_types.each do |item_type|
+			sheet.add_row [item_type.item_type_name,item_type.total]
+		end
+
+		sheet.add_row ["Total",@total_cost]
+
+	    d_start = @chart_start_at
+	    d_end = @chart_end_at
+
+		sheet.add_chart(Axlsx::Pie3DChart, :start_at => "E2", :end_at => "N20", :title => "Pie Chart", :vary_colors => true) do |chart|
+	      	chart.add_series :data => sheet["B#{d_start}:B#{d_end}"], :labels => sheet["A#{d_start}:A#{d_end}"]
+		    #chart.d_lbls.show_val = true
+		    chart.d_lbls.show_percent = true
+		    chart.d_lbls.d_lbl_pos = :outEnd
+		    chart.d_lbls.show_leader_lines = true
+	    end
+
+	    sheet.add_chart(Axlsx::Bar3DChart, :start_at => "E22", :end_at => "N#{@item_type_counts+22+10}", :vary_colors => true) do |chart|
+		    chart.add_series :data => sheet["B#{d_start}:B#{d_end}"], :labels => sheet["A#{d_start}:A#{d_end}"], :title => "Bar Chart"
+		    chart.valAxis.label_rotation = -45
+		    chart.valAxis.title = "Value in Cash (GMD)"
+		    chart.catAxis.label_rotation = 45
+		    chart.catAxis.title = "Item Categories"
+		    #chart.catAxis.tick_lbl_pos = :none
+		    chart.d_lbls.show_val = true
+		    chart.d_lbls.d_lbl_pos = :outEnd	    
+	    end
+
+    end 
+end
+
+type_index = 0
+wb.add_worksheet(name: "Final") do |sheet|
+
+	if @item_type_counts > 0
+
+		@types_by_items_by_months.each do |type_by_items_by_months|
+		    sheet.add_row [@item_types_names[type_index]]
+		    sheet.add_row ["Item Name"]+@month_short_names+["Total"]
+		    type_by_items_by_months.each do |items_by_months|
+		      sheet.add_row items_by_months
+		    end
+		    type_index += 1
+		    sheet.add_row [""]
+		end 
+
+	    sheet.add_row [""]
+		sheet.add_row [""]
+		sheet.add_row ["Summary"]
+		sheet.add_row ["Item Category","Cost"]
+		@item_types.each do |item_type|
+			sheet.add_row [item_type.item_type_name,item_type.total]
+		end
+		sheet.add_row ["Total",@total_cost]
+
+	    d_start = @chart_start_at
+	    d_end = @chart_end_at
+
+		sheet.add_chart(Axlsx::Pie3DChart, :start_at => "P2", :end_at => "Y20", :title => "Pie Chart", :vary_colors => true) do |chart|
+	      	chart.add_series :data => sheet["B#{d_start}:B#{d_end}"], :labels => sheet["A#{d_start}:A#{d_end}"]
+		    #chart.d_lbls.show_val = true
+		    chart.d_lbls.show_percent = true
+		    chart.d_lbls.d_lbl_pos = :outEnd
+		    chart.d_lbls.show_leader_lines = true
+	    end
+
+	    sheet.add_chart(Axlsx::Bar3DChart, :start_at => "P22", :end_at => "Y#{@item_type_counts+22+10}", :vary_colors => true) do |chart|
+		    chart.add_series :data => sheet["B#{d_start}:B#{d_end}"], :labels => sheet["A#{d_start}:A#{d_end}"], :title => "Bar Chart"
+		    chart.valAxis.label_rotation = -45
+		    chart.valAxis.title = "Value in Cash (GMD)"
+		    chart.catAxis.label_rotation = 45
+		    chart.catAxis.title = "Item Categories"
+		    #chart.catAxis.tick_lbl_pos = :none
+		    chart.d_lbls.show_val = true
+		    chart.d_lbls.d_lbl_pos = :outEnd	    
+	    end
+    end 
+
+end
+
+# Pie Chart
+#wb.add_worksheet(:name => "Pie Chart") do |sheet|
+#  sheet.add_row ["First", "Second", "Third", "Fourth"]
+#  sheet.add_row [1, 2, 3, 4]
+#  sheet.add_chart(Axlsx::Pie3DChart, :start_at => [0,2], :end_at => [5, 15], :title=> 'dark corner here') do |chart|
+#    chart.add_series :data => sheet["A2:D2"], :labels => sheet["A1:D1"]
+#    chart.d_lbls.show_val = true
+#    chart.d_lbls.show_percent = true
+#    chart.d_lbls.d_lbl_pos = :outEnd
+#    chart.d_lbls.show_leader_lines = true
+#  end
+#end
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

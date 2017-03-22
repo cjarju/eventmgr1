@@ -1,0 +1,321 @@
+/* BEGIN Bootstrap */
+
+@import "bootstrap.min";
+@import "datepicker";
+@import "login_page";
+@import "pagination";
+
+/* Override Bootstrap 3 font location */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: image-url('../assets/glyphicons-halflings-regular.eot');
+  src: image-url('../assets/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+  image-url('../assets/glyphicons-halflings-regular.woff') format('woff'),
+  image-url('../assets/glyphicons-halflings-regular.ttf') format('truetype'),
+  image-url('../assets/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+/* END Bootstrap */
+
+/* BEGIN Scaffold  */
+
+body {
+  background-color: #d3d3d3;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  /* Move down content because we have a fixed navbar that is 50px tall */
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #428bca;
+  font-weight: bold;
+  &:visited {
+  }
+  &:hover {
+    color: #000;
+    text-decoration: none;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+.notice, .success {
+  color: #008000;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+
+.error {
+  color: #f00;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+
+.field_with_errors  {
+  display: inline;
+  label {
+    color: #cc0000;
+  }
+  input {
+    border: 1px solid #f00;
+  }
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0 7px;
+  margin: 20px auto;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px -7px 0 -7px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+    text-align: left;
+  }
+}
+
+/* END Scaffold  */
+
+/* BEGIN Mine */
+
+/* alignment */
+
+/* horizontal alignment  */
+
+.right-txt-align {
+  text-align: right;
+}
+
+.left-txt-align {
+  text-align: left;
+}
+
+.center-txt-align, .boostrap_pagination {
+  text-align: center;
+}
+
+/* vertical alignment */
+
+.middle-txt-align, .table > tbody > tr > th.middle-txt-align {
+  vertical-align: middle;
+}
+
+/* text formatting */
+
+/* bold */
+
+.bold-text {
+  font-weight: bold;
+}
+
+/* navigation and footer */
+
+/* items in the drop-down menu */
+
+.dropdown-menu {
+  background-color: #d3d3d3;
+  text-align: left;
+  font-size: 12px;
+}
+
+/* footer */
+
+.footer {
+  margin: 20px 0;
+}
+
+/* content */
+
+/* header top */
+
+.page-header-top {
+	margin: 20px 0; 
+}
+
+/* carousel on home page */
+
+#home-page-carousel {
+  height: 400px;
+  .carousel-control {
+    background-image: linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 100%);
+  }
+  .carousel-control:hover, .carousel-control:focus {
+    background-color: #d3d3d3;
+    background-image: linear-gradient(rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 100%);
+  }
+  .highcharts-container {
+    margin: 0 auto; 
+  }
+}
+
+/* forms */
+
+/* form-group div in in form */
+.form-inline .form-group {
+  margin-bottom: 10px;  
+}
+
+/* default for items with dimensions in form */
+.dimension {
+  display: none;
+}
+
+/* radio, checkbox */ 
+.radio, .checkbox {
+  display: inline-block;
+}
+
+/* text field border color*/
+.form-control, .input-group-addon {
+  border-color: #808080;
+}
+
+/* event date file */
+div.input-group.date {
+  width: 200px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* div for primary date of event */
+.primary-date {
+  margin-left: 20px;
+}
+
+/* div for date input with remove icon */
+div.input-group.date.date-with-rmv {
+  width: 220px;
+}
+
+/* item types list for selection: new event */
+.item-types-div, .event-dates-div {
+  padding: 5px 0 5px 0;
+  border: 1px dotted #808080;
+  border-radius: 4px;
+}
+
+/* items list for selection: new event */
+.items-div {
+  border-bottom: 1px dotted #808080; 
+  padding: 10px 0 10px 0;
+  display: none;
+}
+
+/* div contain submit button */
+.btn-div {
+  margin: 10px 0 20px 0;  
+}
+
+/* column headers for event-items bulk edit */
+.event-items-headers-div {
+  margin-bottom: 10px;
+  display: none;
+}
+
+/* h-form = .user-form, .event-items-form, .items-form: */
+/* edit */
+.form-inline.event-items-form input {
+  width: 75px;
+}
+
+/* recaps: summary type */
+.select-date-month {
+  display: inline-block;
+  width: 125px;
+}
+
+/* event report: info type */
+.select-info-type {
+  display: inline-block;
+  width: 200px;
+}
+
+/* report results */
+
+/* graph div */
+.graph-div {
+  margin-bottom: 15px;  
+}
+
+/* tables, tr, td, th */
+
+/* bootstrap table border color */
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+  border-color: #000;
+}
+
+/* table auto fit to content */
+.table {
+ width: auto !important;
+ margin: 10px auto;
+}
+
+.top-th-tr {
+  border-top: 1px solid #000;
+}
+
+/* media queries */
+
+@media (min-width: 768px) {
+  .h-form input, .h-form select {
+    max-width: 250px;
+  }
+  .h-form.event-items-form input  {
+    width: 75px;
+  }
+   
+  .event-items-headers-div {
+    display: block;
+  }
+  .item-name {
+    text-align: right;
+  }
+  #event_location {
+    width: 570px;
+  }
+}
+
+@media print {
+  .table, .table tr td, .table tr th {
+    page-break-inside: avoid;
+  }
+  div.footer, div.download {
+    display: none;
+  }
+  .highcharts-container {
+    margin: 0 auto; 
+  }
+}
+
+/* END Mine */

@@ -1,0 +1,35 @@
+<% provide(:title, 'Users') %>
+
+<h2 class="center-txt-align page-header-top">Users</h2>
+
+<%= form_tag(search_user_path, {method: :get, class: "form-inline center-txt-align", role: "form"}) do %>
+	<%= text_field_tag :user_name, '', {class:"form-control", placeholder:"search by name" }  %>
+	<%= submit_tag('Search', {class: "btn btn-large btn-primary"} ) %>
+<% end %>
+ 
+<table class="table table table-hover table-condensed">
+<thead>
+<tr>
+  <%= render "theaders" %>
+</tr>
+</thead>
+
+<tbody>
+<% @users.each do |user| %>
+	<tr>
+	  <td><%= user.name %></td>
+	  <td><%= user.email %></td>
+	  <td><%= user.user_role.name %></td>
+	  <td><%= link_to edit_user_path(user), title: 'Edit' do %><i class="glyphicon glyphicon-edit"></i> <% end %></td>
+	  <td><%= link_to user, method: :delete, title: 'Delete', data: { confirm: 'Are you sure?' } do %><i class="glyphicon glyphicon-trash"></i><% end %></td>
+	  <td><%= link_to reset_path(user), title: 'Reset Password' do %><i class="glyphicon glyphicon-lock"></i> <% end %></td>
+	</tr>
+<% end %>
+</tbody>
+</table>
+
+<div class="boostrap_pagination"><%= will_paginate @items, inner_window: 2, outer_window: 1, renderer: BootstrapPagination::Rails %></div>
+ 
+<div class="center-txt-align">
+	<i class="glyphicon glyphicon-plus"></i> <%= link_to 'New User', signup_path %> 
+</div>

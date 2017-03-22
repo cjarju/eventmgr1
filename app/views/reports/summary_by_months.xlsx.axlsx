@@ -1,0 +1,19 @@
+type_index = 0
+wb = xlsx_package.workbook
+@types_by_items_by_months.each do |type_by_items_by_months|
+  wb.add_worksheet(name: @item_types_names[type_index].gsub(/[\/:*?"<>|]/,'_')) do |sheet|
+    sheet.add_row ["Item Name"]+@month_short_names+["Total"]
+    type_by_items_by_months.each do |items_by_months|
+      sheet.add_row items_by_months
+    end
+    type_index += 1
+  end
+end 
+
+wb.add_worksheet(name: "Summary") do |sheet|
+  sheet.add_row ["Item Category","Cost"]
+  @item_types.each do |item_type|
+    sheet.add_row [item_type.item_type_name,item_type.total]
+  end
+  sheet.add_row ["Total",@total_cost]
+end

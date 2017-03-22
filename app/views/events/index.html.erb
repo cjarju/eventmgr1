@@ -1,0 +1,45 @@
+<% provide(:title, 'Events') %>
+
+<h2 class="center-txt-align page-header-top">Events</h2>
+
+<%= form_tag(search_event_path, {method: :get, class: "form-inline center-txt-align", role: "form"}) do %> 
+  <%= text_field_tag :event_name, '', {class:"form-control", placeholder:"search by name" }  %>
+  <%= submit_tag('Search', {class: "btn btn-large btn-primary"}) %>
+<% end %>
+
+<table class="table table-hover table-condensed">
+<thead>
+  <tr>
+    <th>Name</th>
+    <th>Event Date</th>
+    <th>Event Type</th>
+    <th>Location</th>
+    <th colspan="4"></th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= link_to truncate(event.event_name, length: 25), event_path(event), title: "Show Event Info" %></td>
+      <td><%= truncate(event.formatted_event_date, length: 25) %></td>
+      <td><%= truncate(event.event_type.event_type_name, length: 25) %></td>
+      <td><%= truncate(event.location, length: 50) %></td>
+
+      <td><%= link_to dates_for_event_path(event), title: 'Event Dates' do %><i class="glyphicon glyphicon-calendar"></i> <% end %></td>
+      <td><%= link_to items_for_event_path(event), title: 'Event Items' do %><i class="glyphicon glyphicon-list"></i> <% end %></td>
+      <td><%= link_to info_type_for_event_path(event), title: 'Event Reports' do %><i class="glyphicon glyphicon-stats"></i> <% end %></td>
+      <td><%= link_to edit_event_path(event), title: 'Edit Event' do %><i class="glyphicon glyphicon-edit"></i> <% end %></td>
+      <% if current_user.user_role.name == 'admin' %>
+          <td><%= link_to event, method: :delete, title: 'Delete Event', data: { confirm: 'Are you sure?' } do %><i class="glyphicon glyphicon-trash"></i><% end %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<div class="boostrap_pagination"><%= will_paginate @items, inner_window: 2, outer_window: 1, renderer: BootstrapPagination::Rails %></div>
+
+<div class="center-txt-align"> 
+  <i class="glyphicon glyphicon-plus"></i> <%= link_to 'New Event', new_event_path %> 
+</div>

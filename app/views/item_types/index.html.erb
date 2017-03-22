@@ -1,0 +1,30 @@
+<% provide(:title, 'Item Types') %>
+
+<h3 class="center-txt-align page-header-top">Item Types</h3> 
+
+<table class="table table table-hover table-condensed">
+<thead>
+  <tr>
+    <th>Item Type Name</th>
+    <th>Description</th>
+    <th colspan="2"></th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @item_types.each do |item_type| %>
+    <tr>
+      <td><%= item_type.item_type_name %></td>
+      <td><%= item_type.description %></td>
+      <td><%= link_to edit_item_type_path(item_type), title: 'Edit Item Type' do %><i class="glyphicon glyphicon-edit"></i> <% end %></td>
+      <td><%= link_to item_type, method: :delete, title: 'Delete Item Type', data: { confirm: 'Are you sure?' } do %><i class="glyphicon glyphicon-trash"></i><% end %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<div class="boostrap_pagination"><%= will_paginate @items, inner_window: 2, outer_window: 1, renderer: BootstrapPagination::Rails %></div>
+<div class="center-txt-align">
+  <i class="glyphicon glyphicon-plus"></i> <%= link_to 'New Item Type',  new_item_type_path %>
+</div>
+

@@ -1,0 +1,15 @@
+events = []
+totals = []
+@events.each do |event| 
+  events << event.event_name
+  totals << event.total 
+end
+
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Summary_by_events") do |sheet|
+  sheet.add_row [""]+events+["Total"]
+  @types_by_events.each do |type_by_events|
+    sheet.add_row type_by_events
+  end
+  sheet.add_row ["Total"]+totals+[@total_cost]
+end
