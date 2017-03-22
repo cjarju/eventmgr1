@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
+#ruby '2.4.0p0'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
@@ -51,3 +51,24 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# my additions 
+
+# use chartkick for charting
+gem 'chartkick', '~> 1.2.4'
+
+# use will_paginate for page pagination
+gem 'will_paginate', '~> 3.0.5'
+
+# use bootstrap pagination component with will_paginate gem
+gem 'will_paginate-bootstrap', '~> 1.0.1'
+
+# xlsx file builder
+gem 'axlsx', '~> 2.0.1'
+gem "axlsx_rails", '~> 0.4.0'
+
+group :production do
+  # To enable features such as static asset serving and logging 
+  # on Heroku please add rails_12factor gem to your Gemfile.
+  gem 'rails_12factor'
+end
