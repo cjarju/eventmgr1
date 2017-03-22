@@ -16,15 +16,17 @@
 #
 default: &default
   adapter: postgresql
+  database: eventmgr1
   encoding: unicode
+  username: postgres
+  password: root
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: eventmgr1_development
-
+  
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -80,6 +82,4 @@ test:
 #
 production:
   <<: *default
-  database: eventmgr1_production
-  username: eventmgr1
   password: <%= ENV['EVENTMGR1_DATABASE_PASSWORD'] %>
