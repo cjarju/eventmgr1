@@ -329,7 +329,7 @@ class ReportsController < ApplicationController
       month_name = @@month_short_names[i]
 
       # total cost 
-      @total_cost = Event.total_cost(@date_val+"%")
+      @total_cost = Event.total_cost(@date_val+"%").reorder('').first.total
 
       # cost per event for given date 
         # as: id, event_name, total
@@ -417,7 +417,7 @@ class ReportsController < ApplicationController
     @date_val = @year
 
     # total cost 
-    @total_cost = Event.total_cost(@date_val+"%")
+    @total_cost = Event.total_cost(@date_val+"%").reorder('').first.total
    
     # cost per item_type for a given date 
       # as: id, item_type_name, total

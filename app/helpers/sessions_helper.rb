@@ -23,7 +23,7 @@ module SessionsHelper
 
   # redirect to root_url unless user is current user 
   def correct_user
-    @user = User.find(current_user)
+    @user = User.find(current_user.id)
     redirect_to(root_url) unless current_user?(@user)
   end
   

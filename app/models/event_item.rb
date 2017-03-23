@@ -17,7 +17,7 @@ class EventItem < ActiveRecord::Base
 
   # scopes: commonly-used queries (DRY)
   scope :get_item_count, ->(date_val) { joins(:item)
-      			                            .joins("INNER JOIN (SELECT events.id, event_name, event_date FROM events LEFT OUTER JOIN (SELECT event_id, min(event_date) event_date FROM event_dates GROUP BY event_id) AS event_dates ON events.id = event_dates.event_id") 
+      			                            .joins("INNER JOIN (SELECT events.id, event_name, event_date FROM events LEFT OUTER JOIN (SELECT event_id, min(event_date) event_date FROM event_dates GROUP BY event_id) AS event_dates ON events.id = event_dates.event_id) AS events ON events.id = event_id") 
       			                            .where("event_date::text like ?", date_val)
       			                            .select(:item_id)
       			                            .distinct

@@ -86,12 +86,10 @@
   </table>
 
   <div class="row center-txt-align download">
-    <%= link_to 'Download as .xlsx', summary_info_path(format: :xlsx, date: @date), method: :post, target: 'blank' %>
+    <%= link_to 'Download as .xlsx', summary_info_path(format: :xlsx, date: @date.permit!.to_h), method: :post, target: 'blank' %>
   </div>
     
 <% end %>
-
- 
 
 
 
