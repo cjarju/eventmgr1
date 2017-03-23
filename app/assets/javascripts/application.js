@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap.min
+//= require bootstrap-datepicker
+//= require highcharts
+//= require chartkick
+//= require no-data-to-display
 //= require turbolinks
 //= require_tree .
