@@ -16,14 +16,16 @@
 #
 default: &default
   adapter: postgresql
-  database: eventmgr1
   encoding: unicode
-  username: postgres
-  password: root
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
+  username: postgres
+  password: root
+  host: 127.0.0.1
+  port: 5432
+  database: eventmgr1
+  
 development:
   <<: *default
   
