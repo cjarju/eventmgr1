@@ -18,3 +18,7 @@
 
 # ignore JetBrains IDE files 
 /.idea
+
+# ignore Procfile.dev file and .env 
+Procfile.dev
+.env 
