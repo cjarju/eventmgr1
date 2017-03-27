@@ -96,9 +96,13 @@ gem 'axlsx', '~> 2.0.1'
 # axlsx_rails '0.5.0'
 gem "axlsx_rails", '~> 0.5.0'
 
-group :production do
+# Previous versions of Rails required you to add a gem to your 
+# project rails_12factor to enable static asset serving and 
+# logging on Heroku. This gem is not needed in Rails 5.
+
+#group :production do
   # To enable features such as static asset serving and logging 
   # on Heroku please add rails_12factor gem to your Gemfile.
   # rails_12factor '0.0.3'
-  gem 'rails_12factor'
-end
+#  gem 'rails_12factor'
+#end
