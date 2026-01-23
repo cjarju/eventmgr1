@@ -4,20 +4,24 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
-/.bundle
+# Bundler config
+.bundle
 
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
+# Logfiles and tempfiles
+log/*
+tmp/*
+# Placeholders to keep the dirs in Git
+!/log/.gitkeep
+!/tmp/.gitkeep
 
-# Ignore Byebug command history file.
+# Byebug command history file
 .byebug_history
 
-# ignore JetBrains IDE files 
-/.idea
+# IDE files 
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
 
- # ignore Procfile .env file
+# .env file
 .env
