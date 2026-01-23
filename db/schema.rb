@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -21,9 +20,8 @@ ActiveRecord::Schema.define(version: 1) do
     t.date     "event_date"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["event_id"], name: "index_event_dates_on_event_id", using: :btree
   end
-
-  add_index "event_dates", ["event_id"], name: "index_event_dates_on_event_id", using: :btree
 
   create_table "event_info_types", force: :cascade do |t|
     t.string   "name",       limit: 100, null: false
@@ -106,10 +104,9 @@ ActiveRecord::Schema.define(version: 1) do
     t.string   "remember_token",  limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
+    t.index ["user_role_id"], name: "index_users_on_user_role_id", using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
-  add_index "users", ["user_role_id"], name: "index_users_on_user_role_id", using: :btree
 
 end

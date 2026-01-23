@@ -1,6 +1,6 @@
 module ApplicationHelper
   def nl2br(str)
-    str.gsub(/\r\n/, '<br/>')
+    str.gsub(/\r\n?|\n/, '<br>').html_safe
   end
 
   def format_date_name (pdate)
