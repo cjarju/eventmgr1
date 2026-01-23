@@ -36,6 +36,9 @@ Rails.application.routes.draw do
 
   get '/items/download', to: 'items#download', as: :download_items 
 
+  # Ignore Chrome DevTools / .well-known requests (for Docker env)
+  get '/.well-known/*path', to: ->(env) { [204, {}, []] }
+
   resources :events
   resources :event_items, except: [:index, :show, :new]
   resources :event_dates, except: [:index, :show, :new]

@@ -42,7 +42,7 @@ SET default_with_oids = false;
 -- Name: event_dates; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE event_dates (
+CREATE TABLE IF NOT EXISTS event_dates (
     id integer NOT NULL,
     event_id integer,
     event_date date,
@@ -56,7 +56,7 @@ CREATE TABLE event_dates (
 -- Name: event_dates_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE event_dates_id_seq
+CREATE SEQUENCE IF NOT EXISTS event_dates_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -78,7 +78,7 @@ ALTER SEQUENCE event_dates_id_seq OWNED BY event_dates.id;
 -- Name: event_info_types; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE event_info_types (
+CREATE TABLE IF NOT EXISTS event_info_types (
     id integer NOT NULL,
     name character varying(100) NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE event_info_types (
 -- Name: event_info_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE event_info_types_id_seq
+CREATE SEQUENCE IF NOT EXISTS event_info_types_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -113,7 +113,7 @@ ALTER SEQUENCE event_info_types_id_seq OWNED BY event_info_types.id;
 -- Name: event_item_types; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE event_item_types (
+CREATE TABLE IF NOT EXISTS event_item_types (
     id integer NOT NULL,
     event_id integer NOT NULL,
     item_type_id integer NOT NULL,
@@ -128,7 +128,7 @@ CREATE TABLE event_item_types (
 -- Name: event_item_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE event_item_types_id_seq
+CREATE SEQUENCE IF NOT EXISTS event_item_types_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -150,7 +150,7 @@ ALTER SEQUENCE event_item_types_id_seq OWNED BY event_item_types.id;
 -- Name: event_items; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE event_items (
+CREATE TABLE IF NOT EXISTS event_items (
     id integer NOT NULL,
     event_id integer NOT NULL,
     item_id integer NOT NULL,
@@ -171,7 +171,7 @@ CREATE TABLE event_items (
 -- Name: event_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE event_items_id_seq
+CREATE SEQUENCE IF NOT EXISTS event_items_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -193,7 +193,7 @@ ALTER SEQUENCE event_items_id_seq OWNED BY event_items.id;
 -- Name: event_types; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE event_types (
+CREATE TABLE IF NOT EXISTS event_types (
     id integer NOT NULL,
     event_type_name character varying(50) NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -206,7 +206,7 @@ CREATE TABLE event_types (
 -- Name: event_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE event_types_id_seq
+CREATE SEQUENCE IF NOT EXISTS event_types_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -228,7 +228,7 @@ ALTER SEQUENCE event_types_id_seq OWNED BY event_types.id;
 -- Name: events; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE events (
+CREATE TABLE IF NOT EXISTS events (
     id integer NOT NULL,
     date_requested date NOT NULL,
     event_name character varying(100) NOT NULL,
@@ -248,7 +248,7 @@ CREATE TABLE events (
 -- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE events_id_seq
+CREATE SEQUENCE IF NOT EXISTS events_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -270,7 +270,7 @@ ALTER SEQUENCE events_id_seq OWNED BY events.id;
 -- Name: item_types; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE item_types (
+CREATE TABLE IF NOT EXISTS item_types (
     id integer NOT NULL,
     item_type_name character varying(100) NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -285,7 +285,7 @@ CREATE TABLE item_types (
 -- Name: item_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE item_types_id_seq
+CREATE SEQUENCE IF NOT EXISTS item_types_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -307,7 +307,7 @@ ALTER SEQUENCE item_types_id_seq OWNED BY item_types.id;
 -- Name: items; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE items (
+CREATE TABLE IF NOT EXISTS items (
     id integer NOT NULL,
     item_name character varying(100) NOT NULL,
     cost1_per_unit numeric(11,2),
@@ -326,7 +326,7 @@ CREATE TABLE items (
 -- Name: items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE items_id_seq
+CREATE SEQUENCE IF NOT EXISTS items_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -348,7 +348,7 @@ ALTER SEQUENCE items_id_seq OWNED BY items.id;
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE schema_migrations (
+CREATE TABLE IF NOT EXISTS schema_migrations (
     version character varying NOT NULL
 );
 
@@ -358,7 +358,7 @@ CREATE TABLE schema_migrations (
 -- Name: user_roles; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE user_roles (
+CREATE TABLE IF NOT EXISTS user_roles (
     id integer NOT NULL,
     name character varying(100),
     created_at timestamp without time zone,
@@ -371,7 +371,7 @@ CREATE TABLE user_roles (
 -- Name: user_roles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE user_roles_id_seq
+CREATE SEQUENCE IF NOT EXISTS user_roles_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -393,7 +393,7 @@ ALTER SEQUENCE user_roles_id_seq OWNED BY user_roles.id;
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
     id integer NOT NULL,
     user_role_id integer,
     name character varying(100),
@@ -410,7 +410,7 @@ CREATE TABLE users (
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE users_id_seq
+CREATE SEQUENCE IF NOT EXISTS users_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -4037,348 +4037,2001 @@ SELECT pg_catalog.setval('event_types_id_seq', 1, false);
 -- Data for Name: events; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO events VALUES (8, '2014-03-04', 'Mother''s day & Child''s day party', 'Gambia Lebanese International School', 'Pipeline', 'Husein Shamseddin', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Africell has in the past sponsored events organised by the Gambia Lebanese International School and they have always been successful<br/>  I believe this is going to be a successful event', 5, '2014-03-18 15:24:19', '2014-03-25 10:47:51');
-INSERT INTO events VALUES (9, '2014-02-26', 'Sheikh DVD Wrestling Competition', 'Sheikh DVD', 'Serrekunda west Mini Stadium', 'Tijan Barrow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The first Wrestling Competition was very successful and the turn out was great. the event was sponsored by africell. Based on the turn out of the first competition I believe we should support this second one.', 5, '2014-03-19 16:04:01', '2014-03-19 16:04:01');
-INSERT INTO events VALUES (10, '2014-02-17', 'Sunu Musico 4th year anniversary', 'Sunu Musico', 'Pencha Mi Hall & Brikama', 'T-Smallz', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is Sunu Musico''s 4th year Anniversary.  It has always been successful and Africell has always supported T-Smallz. This is an event worth Supporting.', 1, '2014-03-19 16:14:29', '2014-03-19 16:14:29');
-INSERT INTO events VALUES (11, '2014-02-10', '2 Sides of Beauty 2014', 'GMB Promotions', 'Brikama Jokor', 'Chris Black', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'This will be the first time we will be working with GMB promotions.  They approached us last year for the first edition of this event due to time we couldn''t sponsor. I think its a program worth sponsoring in Brikama', 2, '2014-03-25 11:00:15', '2014-03-25 11:00:15');
-INSERT INTO events VALUES (13, '2014-02-17', 'Balabo Album Launch', 'MLC', 'Alliance Francaise', 'Modou Lamin Ceesay', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'MLC as an artist has always worked with Africell, he is a hard musician from Bakau. He went with Africell up country during the Xtreme tour. The event is expected to be successful.', 1, '2014-03-25 11:42:23', '2014-03-25 11:42:23');
-INSERT INTO events VALUES (14, '2014-02-26', 'Soninkara Music Award ', 'M.S Promotion & B Master Production', 'Alliance Francaise', 'Muhammed Saho (Afri-Radio)', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'This is the first time africell will be sponsoring this event. it''s an award ceremony for all the sarahule musicians in The Gambia. This event is expected to be successful.', 1, '2014-03-25 12:18:21', '2014-03-25 12:18:21');
+INSERT INTO events VALUES (8, '2014-03-04', 'Mother''s day & Child''s day party', 'Gambia Lebanese International School', 'Pipeline', 'Husein Shamseddin', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Africell has in the past sponsored events organised by the Gambia Lebanese International School and they have always been successful  I believe this is going to be a successful event', 5, '2014-03-18 15:24:19', '2014-03-25 10:47:51');
+INSERT INTO events VALUES (9, '2014-02-26', 'Sheikh DVD Wrestling Competition', 'Sheikh DVD', 'Serrekunda west Mini Stadium', 'Tijan Barrow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The first Wrestling Competition was very successful and the turn out was great. the event was sponsored by africell. Based on the turn out of the first competition I believe we should support this second one.', 5, '2014-03-19 16:04:01', '2014-03-19 16:04:01');
+INSERT INTO events VALUES (10, '2014-02-17', 'Sunu Musico 4th year anniversary', 'Sunu Musico', 'Pencha Mi Hall & Brikama', 'T-Smallz', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is Sunu Musico''s 4th year Anniversary.  It has always been successful and Africell has always supported T-Smallz. This is an event worth Supporting.', 1, '2014-03-19 16:14:29', '2014-03-19 16:14:29');
+INSERT INTO events VALUES (11, '2014-02-10', '2 Sides of Beauty 2014', 'GMB Promotions', 'Brikama Jokor', 'Chris Black', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This will be the first time we will be working with GMB promotions.  They approached us last year for the first edition of this event due to time we couldn''t sponsor. I think its a program worth sponsoring in Brikama', 2, '2014-03-25 11:00:15', '2014-03-25 11:00:15');
+INSERT INTO events VALUES (13, '2014-02-17', 'Balabo Album Launch', 'MLC', 'Alliance Francaise', 'Modou Lamin Ceesay', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'MLC as an artist has always worked with Africell, he is a hard musician from Bakau. He went with Africell up country during the Xtreme tour. The event is expected to be successful.', 1, '2014-03-25 11:42:23', '2014-03-25 11:42:23');
+INSERT INTO events VALUES (14, '2014-02-26', 'Soninkara Music Award ', 'M.S Promotion & B Master Production', 'Alliance Francaise', 'Muhammed Saho (Afri-Radio)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is the first time africell will be sponsoring this event. it''s an award ceremony for all the sarahule musicians in The Gambia. This event is expected to be successful.', 1, '2014-03-25 12:18:21', '2014-03-25 12:18:21');
 INSERT INTO events VALUES (15, '2014-03-17', 'Contagious Bovine Pleuropnemonia', 'ActionAid The Gambia', 'Afri Radio', 'Jainaba Nyang', 'Cooperate Social Responsibility', 'Africell shall help Action Aid broadcast messages in the fight against Contagious Bovine Pleuropnemia. This is a deadly disease killing Cattle in the CRR. I believe its a cause worth supporting.', 1, '2014-03-27 17:03:25', '2014-03-27 17:03:25');
-INSERT INTO events VALUES (16, '2014-03-28', '3rd Division GFA Football League', 'Gambia Football Association', 'SK East Mini-Stadium', 'GFA', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Africell in Support of Sports.', 5, '2014-03-28 13:45:20', '2014-03-28 13:45:20');
+INSERT INTO events VALUES (16, '2014-03-28', '3rd Division GFA Football League', 'Gambia Football Association', 'SK East Mini-Stadium', 'GFA', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Africell in Support of Sports.', 5, '2014-03-28 13:45:20', '2014-03-28 13:45:20');
 INSERT INTO events VALUES (17, '2014-03-27', 'Alliance Francaise (Killa Ace)', 'Killa Ace', 'Alliance Francaise', 'Martin (Director Alliance)', 'Annual Contract', 'Annual Contract', 1, '2014-03-31 12:41:55', '2014-03-31 12:41:55');
-INSERT INTO events VALUES (18, '2014-03-19', 'Fund Raising Concert for Malla Manneh', 'Matty Jobe Manka', 'Alliance Francaise', 'Matty Jobe Manka', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a fund raising concert for Malla Manneh. Malla is a 19 year old girl suffering from Dermatofibrosarcoma on her face. I believe this is a cause worth supporting.', 1, '2014-04-01 12:37:50', '2014-04-01 12:37:50');
-INSERT INTO events VALUES (19, '2014-03-19', 'Aling Domo', 'ST the Gambian Dream', 'Brikama Mini Stadium', 'Sanna Singhateh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'ST is one the Most Popular artists in the Gambia.  He is a resident of Brikama. He is organising his annual show at the Brikama Box Bar Mini Stadium.  this show is expected to be very successful. I believe it is worth supporting', 1, '2014-04-01 15:40:18', '2014-04-08 12:58:13');
-INSERT INTO events VALUES (20, '2014-03-31', 'Wrestling in Farafenni ', 'Jallow Kossom Promotion', 'Farafenni Mini Stadium', 'Musa Bah', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>', 'This is a big time wrestling promoter in Farafenni.  this will be the first time we will be working with him. I believe its an event worth sponsoring in farafenni (Up Country)', 1, '2014-04-01 16:34:04', '2014-04-01 16:34:04');
+INSERT INTO events VALUES (18, '2014-03-19', 'Fund Raising Concert for Malla Manneh', 'Matty Jobe Manka', 'Alliance Francaise', 'Matty Jobe Manka', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a fund raising concert for Malla Manneh. Malla is a 19 year old girl suffering from Dermatofibrosarcoma on her face. I believe this is a cause worth supporting.', 1, '2014-04-01 12:37:50', '2014-04-01 12:37:50');
+INSERT INTO events VALUES (19, '2014-03-19', 'Aling Domo', 'ST the Gambian Dream', 'Brikama Mini Stadium', 'Sanna Singhateh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'ST is one the Most Popular artists in the Gambia.  He is a resident of Brikama. He is organising his annual show at the Brikama Box Bar Mini Stadium.  this show is expected to be very successful. I believe it is worth supporting', 1, '2014-04-01 15:40:18', '2014-04-08 12:58:13');
+INSERT INTO events VALUES (20, '2014-03-31', 'Wrestling in Farafenni ', 'Jallow Kossom Promotion', 'Farafenni Mini Stadium', 'Musa Bah', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell', 'This is a big time wrestling promoter in Farafenni.  this will be the first time we will be working with him. I believe its an event worth sponsoring in farafenni (Up Country)', 1, '2014-04-01 16:34:04', '2014-04-01 16:34:04');
 INSERT INTO events VALUES (12, '2014-02-25', 'Born Free Album Launch', 'Omid  Wisdom', 'Alliance Francaise', 'Omid Wisdom', 'Africell to be mentioned in all adverts
 Africell''s logo to be placed on all printed materials
 Africell to mentioned during the program by the MC
 Africell to be the only GSM partner
 Venue to be branded by africell
 VIP tickets to be provided for Africell Staff', 'Omid Wisdom is one of Gambia''s finest hip hop artist, he as well runs a charitable organisation called "Learned Nation". He is a child and youth activist. He is Launching his album on the 29th and I believe it is worth sponsoring', 1, '2014-03-25 11:25:48', '2017-03-21 21:33:15.110971');
-INSERT INTO events VALUES (21, '2014-03-10', 'Easter Fiesta', 'Dream Team Entertainment', 'Joint Officers Mess', 'DJ Nurudeen', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'DJ Nurudeen is a famous Sierra Leonean DJ in The Gambia. He works at Afri-Radio, Him and his team are organising an Easter Fiesta on the day after Easter. I believe it is important to support the Sierra Leonean Community in the Gambia.', 5, '2014-04-01 16:52:13', '2014-04-01 16:52:13');
-INSERT INTO events VALUES (54, '2014-04-30', 'GRTS Fund Raising Gala Dinner', 'GRTS', 'Pencha Mi Hall ', 'Momodou Njie', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'GRTS is the only Television station based in the Gambia and its the national broadcaster, they are bringing in Titi, a renowned Senegalese musician. I believe its an event worth supporting.', 1, '2014-05-07 12:47:24', '2014-05-07 12:47:24');
-INSERT INTO events VALUES (53, '2014-04-29', 'Single Window Business Registery', 'WAX MEDIA', 'MDI Road', 'Ebou Waggeh CEO Wax media', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials''\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have been in patrnership before,and they are well recognise good company in media.They can be supported.', 5, '2014-05-06 11:41:56', '2014-05-07 11:48:29');
-INSERT INTO events VALUES (55, '2014-05-01', 'Jah Vinci', 'DJ Bobo Fayah & Fire House Crew', 'Independence Stadium', 'DJ Bobo Fayah', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'DJ Fire Man, Artical Slice and DJ Bobo Fayah are house-whole names in Gambia when it comes to reggea music and dancehall. they have organised a lot of successful shows in the Gambia. Jah Vinci is a very popular Jamaican artist and he has a huge fan base in The Gambia. I believe its a show worth Supporting.', 1, '2014-05-07 15:01:59', '2014-05-07 15:01:59');
-INSERT INTO events VALUES (24, '2014-02-21', 'Poetic X - Mix tape Album Launch', 'Poetic X', 'Alliance Francaise', 'Sanna Kanteh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have always supported Poetic X, they are one of Gambia''s best hip hop group. they will be launching their album on the 26th of April. the program is expected to be well attended.', 1, '2014-04-04 12:16:14', '2014-04-04 12:16:14');
-INSERT INTO events VALUES (25, '2014-03-25', 'Code White', 'Big Boyz Ent', 'Jokor Brikama & Sinatras Bakau', 'Singateh & G Faal', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Singateh and G Faal have always worked with Africell and they have been really been successful at what they do. they have two shows coming up in brikama and bakau and they are worth supporting.', 1, '2014-04-04 15:02:15', '2014-04-04 15:02:15');
-INSERT INTO events VALUES (26, '2014-03-06', 'Kapsin Wrestling Competition', 'Kapsin Promotions', 'Serrekunda west Mini Stadium', 'Muhammed Kabirr Mboob', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Muhammed Kabirr has been organising wrestling competitions for a long time now. his events have always been successful. I think its an event worth supporting.', 5, '2014-04-07 13:56:56', '2014-04-07 13:56:56');
-INSERT INTO events VALUES (27, '2014-04-01', 'Simplest Easter Tour', 'DJ Simplest', 'Balalarr, Albreda, Kunkujang & Tanji', 'Mighty Simplest', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting.', 1, '2014-04-07 14:34:45', '2014-04-07 14:34:45');
-INSERT INTO events VALUES (38, '2014-03-23', 'Wilson Wrestling Competition', 'Wilson Promotion', 'Brikama Mini Stadium', 'Wuyeh Ceesay', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a big event at a highly populated region,Brikama Mini Stadium.We can support it, although this is the first partnership.', 5, '2014-04-08 13:51:06', '2014-05-28 17:17:24');
-INSERT INTO events VALUES (40, '2014-04-07', 'Golden Jubilee 50th Anniversary Oussou Njie-SENOR', 'Super Eagles Band', 'Nationwide Banjul-Basse', 'Ismaila Oussou Njie-SENOR', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Super eagles are a well known Band both national and international. They are worth supporting and they have very big fan base in the gambia. Oussou Njie-Senor is a legend in the music industry.', 1, '2014-04-09 15:27:29', '2014-04-09 15:33:01');
-INSERT INTO events VALUES (41, '2014-04-03', '5th Anniversary Fiila Tv Show  ', 'Black Lynx', 'Jakarlo&Brikama Mini Stadium', 'Abdou KW Faye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Fiila Tv Show has been a successful event for past years.We have been in partnership before.I believe it is worth supporting.', 1, '2014-04-09 15:41:57', '2014-04-09 15:55:36');
-INSERT INTO events VALUES (42, '2014-04-01', 'International Roots Festival', 'Ministry of Tourism', 'Kanilai, Independence Stadium, etc', 'Hon. Fatou Mass Jobe', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is the eleventh edition of the international roots festival. the roots festival brings together africans in the diaspora who share the same common objective, origin and heritage. the festival always have a lot of media coverage and I believe its worth supporting', 1, '2014-04-14 12:50:40', '2014-04-14 12:50:40');
-INSERT INTO events VALUES (99, '2014-09-08', 'International Tourism Investment Forum 2014', 'Ministry of Tourism', 'Kairaba Beach Hotel', 'Ministry of Tourism', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell', 'This is expected to be a very successful forum.  partnering with the ministry of Tourism has always been successful.', 5, '2014-09-08 18:30:05', '2014-09-08 18:30:05');
-INSERT INTO events VALUES (43, '2014-04-07', 'Centenary Celebration', 'Cathderal of Banjul', 'Banjul', 'James FP Gomez', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Roman Catholic Mission (RCM)has contributed a lot in the edecation,service and health services sector in the Gambia,and are well known by community.They really need support.', 5, '2014-04-15 18:33:22', '2014-04-15 18:33:22');
-INSERT INTO events VALUES (75, '2014-05-26', 'Islamic Programme', 'Wa Keur Bethio Thioune-Touba Gambie', 'Seeda Club Opposite Africell', 'Jawring Ebrima Ndong', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This an Islamic program,organized by Sering salieu Mbacke Touba Gambie.It is a religious event and worth supporting.', 5, '2014-05-30 13:33:48', '2014-05-30 13:33:48');
-INSERT INTO events VALUES (62, '2014-05-08', 'World Blood Donor Day 2014', 'Ministry of Health and Social Welfare', 'Basse (Upper River Region)', 'Mariama Jammeh(Program Manager)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is an event celebrated world wide,to donate blood,and is been organized by Ministry of health.Its worth supporting.', 5, '2014-05-09 11:47:17', '2014-06-02 15:38:04');
-INSERT INTO events VALUES (46, '2014-03-27', 'Sarata Movie Premier & Screening', 'Manding Morry Entertainment (MANFOPA)', 'Pencha Mi Hall ,Paradise Suites Hotel', 'Ibrahim Ceesay Executive Director(MANFOPA)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a well known organization in the areas of music,movie production and participation in the performing arts.This will be the first partnership I belive they can be supported.', 4, '2014-04-16 14:16:50', '2014-04-17 12:02:26');
-INSERT INTO events VALUES (47, '2014-04-09', 'FAWEGAM Annual Gala Dinner&Dance', 'FAWEGAM', 'Paradise Suites Hotel', 'FAWEGAM', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have been in patrnership before,and they are well recognise good institutions, well know in spporting girls and young women in the education sector.They can be supported.', 1, '2014-04-17 16:08:12', '2014-04-17 16:08:12');
-INSERT INTO events VALUES (76, '2014-05-26', 'Rhythmic Vibrations', 'Blaque Magique Poets', 'Kairaba Beach Hotel', 'Ronald Senghore', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Africell has always partnered with the Blaque Magique Poets on their events. Their events have always been successful. I believe its an event worth Supporting.', 1, '2014-06-03 13:35:24', '2014-06-03 13:35:24');
-INSERT INTO events VALUES (49, '2014-04-15', 'Silky Criss', 'Silky Criss Managemnet', 'Willies at Lamin ', 'Mam Malen Njie(Manager)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Silky Criss is a well known and popular artist in The Gambia,and has a big fans base in the music industry. He can be supported and we have been in partnership before.', 1, '2014-04-22 14:16:06', '2014-05-06 16:00:52');
-INSERT INTO events VALUES (50, '2014-04-02', 'Jekke Promotion 1st Anniversary', 'DJ Oulaye Jaw,DJ Prince,Abou Bah,DJ Zecka &Amadou Sall', 'Alliance Francaise', 'DJ Prince (The President)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a cultural event to be showcase by different DJ''s that are well known in the music industry,especially on radio stations in Gambia.We can support them.', 1, '2014-04-22 14:31:48', '2014-04-22 14:31:48');
-INSERT INTO events VALUES (51, '2014-04-22', 'GCCI Award Dinner', 'GCCI', 'Kairaba Beach Hotel', 'GCCI', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\n5 Minute video of Africell to be aired during the event\r\nHigh Table seat for one of Africell''s representative\r\nVenue to be branded by africell\r\nFull page advert to be given to Africell\r\nVIP tickets to be provided for Africell Staff', 'The GCCI Award night is a night dedicated to awarding and rewarding deserving companies.  The Award is usually attended by the President and top Government officials.', 5, '2014-04-25 15:53:57', '2014-04-30 13:13:30');
-INSERT INTO events VALUES (61, '2014-05-08', 'Modou Kara Gaye', 'Modou Kara Gaye Artist', 'Pencha mi Hall ', 'Modou Kara Gaye Artist', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Modou Kara Gaye Artist works for afri-radio and he is a very popular in ''''mbalax'''' music industry, its a show worth supporting.', 1, '2014-05-09 11:26:44', '2014-05-27 12:17:00');
-INSERT INTO events VALUES (60, '2014-03-27', 'Join Hands Together Mix tape Launching SANTA AK NGUM', 'Join Hands Together', 'Alliance Francaise', 'Join Hands Together', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Join Hands Together are upcoming artists in the Gambia.They are ready to launch thier mix tape at the alliance francaise. This show is expected to be very successful. I believe it is worth supporting', 1, '2014-05-08 17:05:31', '2014-05-08 17:52:56');
-INSERT INTO events VALUES (64, '2014-05-05', 'St.Lazarus Musical Concert', 'St.Lazarus Of Bethany Choral Group', 'Jama Hall Kairaba Beach Hotel', 'Neneh Gomez Jones(Vice President)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a youth workforce,including students.They want to organize this event to raise funds to buy materials/Instruments for their church.Its worth supporting.', 1, '2014-05-15 12:29:13', '2014-05-15 12:32:46');
-INSERT INTO events VALUES (67, '2014-04-21', 'Annual Miss,Master and Miming Competition', 'The Gambia Red Cross Society', 'Alliance Francasie', 'Modou Touray(Branch Officer KM)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The red cross society is well known in the gambia in the area of first aid and disaster management.This is the first time we partnering with them on this kind of event.', 2, '2014-05-15 13:22:06', '2014-05-15 13:22:06');
-INSERT INTO events VALUES (66, '2014-05-08', 'President''s 49th Birthday Anniversary', 'Kanifing Municipal Council (KMC)', 'West Mini Stadium', 'Lord Mayor Yankuba Colley-Kmc/Aprc National Mobilizer', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The President''s 49th Birthday is celebrated on May 25th every year.Its worth supporting.', 5, '2014-05-15 12:44:29', '2014-05-15 12:44:29');
-INSERT INTO events VALUES (69, '2014-05-12', 'Jarama Production President 49th Birthday Anniversary ', 'JARAMA PRODUCTION', 'Senegambia Beach Hotel', 'Ramatoulai Jallow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The President''s 49th Birthday is celebrated on May 25th every year.Its worth supporting.', 5, '2014-05-16 12:00:06', '2014-05-16 12:00:06');
-INSERT INTO events VALUES (88, '2014-08-04', 'Peace Corps-2014 Malaria Prevention Campaign', 'Peace Corps The Gambia', 'Bansang Youth Center-CRR', 'Daniella Choi/Jarri Jallow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Peace Corps The Gambia are well known in the gambia and this event will help communities in CRR and surrounding villages in upcountry to know how to prevent malaria and importance of using bed nets.Malaria is the most debilitating diseases affecting Gambians.', 5, '2014-08-05 17:29:59', '2014-08-05 17:29:59');
-INSERT INTO events VALUES (71, '2014-04-20', 'St Charles Lwanga Forthcoming Concert', 'Saint Charles Lwanga Senior Chior Fajikunda  Parish', 'Kairaba Beach Hotel', 'Jean Paul Ndure/ChiorMaster/President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Saint Charles Lwanga Senior Chior Fajikunda Parish are well known in the Gambia,especially in  chrtistinity religion.We have been in patrnership before,It''s worth supporting.', 5, '2014-05-27 13:45:37', '2014-05-27 13:45:37');
-INSERT INTO events VALUES (72, '2014-05-12', 'Launching of Beyond Events&Marketing ', 'Beyond Events&Marketing ', 'Relax Sahel', 'Jainaba Jallow MD', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Launching of Beyond Events&Marketing is a good iniatives and will benefit those service providers in the areas of sales and marketing,corporate,Etc.This is the first partnership.We can support this event.', 1, '2014-05-27 13:55:50', '2014-05-27 13:55:50');
-INSERT INTO events VALUES (73, '2014-05-14', 'Youth for Promise Glory Baptist TheCultural Show', 'Youth for Promise Glory Baptist ', 'Glory Baptist International School(Opposite GRTS,MDI Road)', 'Alice Senghore/Secretary', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Youth for Promise Glory Baptist event will showcase different talents in the area of arts and culture.This will be the first partnership.Its worth supporting.', 1, '2014-05-27 14:07:09', '2014-05-27 14:07:09');
-INSERT INTO events VALUES (74, '2014-05-12', 'Pape Diouf Fans CLub-Face Of Brikama', 'Pape Diouf Fans Club', 'Jokor Brikama', 'Mbasey Manneh/Secretary', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a beauty pagent,Face of Brikama organized by Papa Diouf fans club in Brikama,They have very big fan base.We have been in patrnership before.They worth supporting.', 2, '2014-05-28 12:26:42', '2014-05-28 12:33:21');
-INSERT INTO events VALUES (77, '2014-06-11', 'T-smallz Suso Major Event Celebrations', 'T-smallz Suso', 'Lamin Village', 'Ebrima Suso(T-smalls Suso)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2014-06-12 14:15:47', '2014-06-12 14:20:47');
-INSERT INTO events VALUES (78, '2014-06-04', 'NDEA World Drug Day', 'National Drug Enforcement Agency(NDEA)', 'West Coast Region', 'Demba Ceesay', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is an event commorated by National Drug Enforcement Agency NDEA in gambia.It is an International Day against Drug Abuse and illicit Drug trafficking,commonly known as WORLD DRUGS DAY.Its worth supporting.', 5, '2014-06-18 16:25:07', '2014-06-18 16:25:07');
-INSERT INTO events VALUES (79, '2014-06-10', 'Absolute Entertainment P''tit Bal and P''tit Galle 2014', 'Absolute Entertainment', 'Duplex', 'Ms Haddy Faye(CEO)Absolute Entertainment', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is an event that was held last year 2013 in senegal,and auditioning of Gambian contestants took place in the Gambia.Africell sponsored the auditioned and voting system for Awa Gambie last year contestant P''tit Galle 2013.Its worth supporting.', 1, '2014-06-19 16:07:14', '2014-06-19 16:17:13');
-INSERT INTO events VALUES (84, '2014-07-09', 'Daddy Boston-LAUNCHING OF 001 TV SHOW', 'Daddy Boston &Group', 'Joint Officers Mess-Kotu', 'Daddy Boston-Artist', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Daddy Boston is a Gambian artist well known in music industry.We have been in partnership before.Its Worth Supporting.', 1, '2014-07-21 15:28:27', '2014-07-21 15:36:59');
-INSERT INTO events VALUES (113, '2014-09-05', 'Og Log Music Concert', 'Manna Oz aka Og Log', 'Alliance Francaise', 'Secretary General, Manna Oz Fans Club', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'These young family group formed by young talented Gambian musicians.We have been in parthnership before, its worth supporting', 1, '2014-10-21 12:14:05', '2014-10-21 12:14:05');
-INSERT INTO events VALUES (114, '2014-10-14', '2nd Annual Cypher Street Rap Battle Competition ', 'Killa ACE Str8 from Jupiter Entertainment', 'Westfield Monument.', 'Killa ACE Afri radio ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Killa Ace is one of Gambia''s best Hip Hop artist\r\nHe successfully launched his in 2013 and he have successfully organized Rap Battle last year sponsored by Africell.This year 2014 2nd Annual Cypher Street Rap Battle Competition its an event worth supporting.', 1, '2014-10-22 13:07:13', '2014-10-22 13:07:13');
-INSERT INTO events VALUES (83, '2014-07-12', 'Dr. Olugander-Welcome Back Home Show 2014', 'Ganders Production', 'Serekunda East Mini-Stadium', 'D.r Olugander & Ganders Production Management', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dr Olugander is a well known Reggae artist in the Gambia and beyond.We have been in partnership before.Its worth supporting.', 1, '2014-07-15 16:47:22', '2014-07-21 16:02:07');
-INSERT INTO events VALUES (85, '2014-07-21', 'Simplest Koriteh Tour', 'Yagana world sound', 'Soma&Bansang', 'Mighty simplest', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting', 1, '2014-07-23 11:35:39', '2014-07-23 11:35:39');
-INSERT INTO events VALUES (86, '2014-05-26', '1st Edition CCLK INTERNATIONAL CONFERENCE&CULRURAL ', 'CCLK COMMUNITY', 'Joint Officers Mess', 'Rev.Fr.Ndecky-Parist Priest&Peter Sait Mendy-Community Coordinator', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Christian community of latrikunda(CCLK)is a community based organization operating at latrikunda.They embarked on assisting poor students in funding their education,community works irrespective of ethnic or religion.They worth supporting.', 1, '2014-07-31 16:30:37', '2014-08-13 14:00:16');
-INSERT INTO events VALUES (87, '2014-07-31', 'Accord Prayer-Mega Musical Concert', 'Accord Prayer Tower Ministry', 'Ebujan Theatre', 'Joseph Laryea', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Accord Prayer Tower Ministry are encouraging youths in development and they seeking for support to make their mega concert a success.This is the first partnership.Its worth supporting.', 1, '2014-07-31 16:43:03', '2014-07-31 16:45:38');
-INSERT INTO events VALUES (89, '2014-08-05', 'Ajax Nawettan Season 2014', 'Ajax Football Club', 'Banjul', 'Momodou John-President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ajax football club is well known football team in Banjul.They were crown champions for FA Cup last year 2013.We have been in partnership before last year 2013 Nawettan Season.', 5, '2014-08-06 14:52:31', '2014-08-06 14:59:55');
-INSERT INTO events VALUES (90, '2014-07-25', 'Junction Bi-Show', 'Junction Bi Street', 'Junction B22 Garden', 'Ebrima Jahumpha', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Junction Bi,lemon tree entertainment want to organise a music show,and seeking assistance from Africell to make this event a success.This will be the first partnership.Its worth supporting.', 1, '2014-08-08 11:59:54', '2014-08-08 11:59:54');
-INSERT INTO events VALUES (91, '2014-08-04', 'MISS AIUWA 2014 BEAUTY PAGEANT 1st Edition', 'American International University Students Union', 'Paradise Suites Hotel', 'AIUWA Students Union', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a non-political and non religious organization aim at bringing all the students of the American International University Students Union under one umbrella.This will be 1st Edition beauty pageant 2014.This will be the first partnership.Its worth supporting.', 2, '2014-08-11 18:13:09', '2014-10-20 12:37:21');
-INSERT INTO events VALUES (92, '2014-08-08', 'GFF FA CUP FINAL FOOTBALL MATCH 2014', 'GFF', 'Independence Stadium Bakau', 'Bakary B.Baldeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Gambia Football federation FA Cup football final is held every year.Africell have been in supports of sports,and supporting this final football match will be a worthy cause.We have been in parthnership before.', 5, '2014-08-12 13:31:18', '2014-08-12 13:50:32');
-INSERT INTO events VALUES (93, '2014-08-03', 'Women''s Health Conference 2014', 'Mamasa Camara-Women health', 'Paradise Suites Hotel', 'Mamasa Camara-', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'This is a women''s health conference with the intent to bridge diasporain gambains in collaboration with government with ministry of health.Its worth supporting.This will be the partnershinp.', 5, '2014-08-12 17:24:56', '2014-08-12 17:24:56');
-INSERT INTO events VALUES (98, '2014-08-22', 'Ebola Campaign', 'Ministry of Health & Social Welfare', 'Nation wide Campaign', 'Modou Njai', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nVenues to be branded by africell', 'This is a national campaign in the fight against ebola. Ebola is a deadly virus that kills and spreads fast.  I believe its a cause worth supporting. #EbolafreeGambia', 5, '2014-09-01 11:49:43', '2014-09-01 11:49:43');
-INSERT INTO events VALUES (97, '2014-08-18', 'Brikama Super Cup Final Football Match 2014', 'Brikama Youths&Sports Committee', 'Brikama Mini Stadium ', 'Alahgie S. Darboe', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is an FA Cup football final to be held in Brikama.Africell have been in supports of sports,and supporting this final football match will be a worthy cause.This will be the first parthnership.', 5, '2014-08-19 16:36:12', '2014-08-19 16:39:00');
-INSERT INTO events VALUES (96, '2014-08-13', 'Expo Egy international Exibition', 'Expo Egy-Mohamed El-Mohamedy', 'Paradise Suites Hotel', 'Mohamed El-Mohamedy-General Manager', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This event will be an international exibition to encourage trade relations between arab and african countries.This will be the first partnership.Its a worthy cause.', 5, '2014-08-13 14:14:37', '2014-08-19 12:56:23');
-INSERT INTO events VALUES (100, '2014-09-04', 'Ker Gi Family Mix tape launching', 'Ker gi Family', 'alliance francaise', 'Manager-Ker gi Family', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\n\r\nVIP tickets to be provided for Africell Staff', 'These young family group formed by young talented Gambian musicians.We have been in parthnership before, its worth supporting.', 1, '2014-09-23 17:47:41', '2014-09-24 14:40:04');
-INSERT INTO events VALUES (101, '2014-09-22', 'ST VS G Faal', 'ST and G Faal Gambian Artist', 'Willy''s Night Club', 'Manager Sticky Bee Promotions', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'These are young talented Gambian musicians.We have been in parthnership before, its worth supporting.', 1, '2014-09-23 18:07:55', '2014-09-23 18:07:55');
-INSERT INTO events VALUES (104, '2014-09-17', 'Magnificent Joe Music Show after Tobaski', 'Magnificent Joe-Holy Family Band', 'Joint Offiers Mess', 'Magnificent Joe', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'He is a Gambian artist well known in music industry.Its worth supporting and this will be the first partnership.', 1, '2014-09-24 14:45:22', '2014-09-24 14:45:22');
-INSERT INTO events VALUES (103, '2014-09-04', 'Nigerian 54th Independence Day Celebration', 'Nigerians In The Gambia', 'Joint Offiers Mess', 'Kingsley Eze', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Nigerian communities are well known in The Gambia,and its their 54th independence day celebration,Its worth supporting.', 1, '2014-09-24 14:33:11', '2014-09-24 14:35:50');
-INSERT INTO events VALUES (105, '2014-09-10', 'Silky Crissâ€™s Tobaski Tour', 'Silky Crissâ€™s& VolKanu Movement and Black Lynx ', 'Up Country', 'Realm Silky ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'These are Gambian artists well known in the music industry.We have been in parthnership before.Its worth supporting.', 1, '2014-09-30 17:26:33', '2014-09-30 17:32:10');
-INSERT INTO events VALUES (106, '2014-09-29', 'Mighty Simplest Tobaski Show', 'Yagana Movement', 'Tanji- Pirang', 'Mighty Simplest', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supportin', 1, '2014-09-30 18:18:21', '2014-10-07 12:19:11');
-INSERT INTO events VALUES (107, '2014-10-07', 'St. Kizito''s Parish Choral & Cultural Evening', 'St. Kizito''s Catholic Church', 'Pencha Mi Hall ', 'Peter Gomez', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'This is event that was sponsored before and it was very successful. the parish of st. kizito has a lot of parishioners and they always turn out in their numbers to support the church.  I believe it is an event worth supporting.', 1, '2014-10-13 12:49:18', '2014-10-13 12:49:18');
-INSERT INTO events VALUES (108, '2014-10-05', 'Dro Kylah-Music Concert', 'Dro Kylah Group', 'alliance francaise', 'Mr Girbril Baldeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a well known group in muscic industry in The Gambia.We have been in parthnership before,and we used their song ''''RABA RABA on Africell Fun ring.They worth supporting.', 1, '2014-10-15 16:57:41', '2014-10-15 16:57:41');
-INSERT INTO events VALUES (109, '2014-09-21', 'M.S promotion-Sora Man Sissoho Mali Bamako', 'm.s promotion', 'alliance francaise', 'Muhammed Saho-Afri Radio Staff', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Muhammed Saho works for afri-radio and he is a very popular in ''''sarahule'''' music industry, its a show worth supporting.', 1, '2014-10-15 17:04:26', '2014-10-15 17:06:25');
-INSERT INTO events VALUES (110, '2014-10-01', 'Miss Nawettaan Bakau 2014', 'STANFEST PROMOTION', 'Friendship Hostel', 'CEO Laming Marong', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This will be the first time we will be working with STANFEST promotions. They approached us last year for the first edition of this event due to time we couldn''t sponsor. I think its a program worth sponsoring in Bakau.', 2, '2014-10-15 17:11:29', '2014-10-15 17:11:29');
-INSERT INTO events VALUES (145, '2014-11-18', 'Dj Blazerâ€™s birthday bash Party warm up 2014', 'VERSATILE ENTERTAINMENT DJ BLAZER ', 'Duplex', 'DJ BLAZER of Afri Radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Blazer works for afri-radio and he is a very popular Dj.its a show worth supporting', 1, '2014-11-20 16:30:09', '2014-11-20 16:30:09');
-INSERT INTO events VALUES (111, '2014-10-16', 'Peace Corps-2014 HIV/AIDS Bike Trek Up Country', 'Peace Corps The Gambia', 'West Coast Region(WCR)', 'Christine Muraguri PCV Health-Bantunding', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Peace Corps The Gambia HIV/AIDS Bike Trek event have been a success in previous years.This year''s event will help students and schools in WCR,on skills and knowldege that they need in order for them to protect themselves and their love ones from HIV/AIDS. We have been in parthnership before it''s worth supporting.', 5, '2014-10-17 13:08:02', '2014-10-17 13:13:32');
-INSERT INTO events VALUES (112, '2014-10-10', 'Miss Nawettaan Serekunda 2014', 'Emids Promotions', 'alliance francaise', 'Lamin Emid Nyang', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have been in parthnership before with Emid''s promotions and sponsored his previous show which was successful.I think its a program worth sponsoring.', 2, '2014-10-17 14:32:04', '2014-10-17 14:32:04');
-INSERT INTO events VALUES (115, '2014-10-21', 'UN Day', 'UNDP', 'Afri Radio', 'Lamin Camara', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The UN day is celebrated world wide, UNDP have chosen to partner with africell to celebrate this day by having a quiz on afri-radio. I believe it''s worth supporting', 1, '2014-10-22 15:56:52', '2014-10-22 15:56:52');
-INSERT INTO events VALUES (116, '2014-10-17', 'Fashion Weekend Gambia', 'Lena Grey Johnson', 'Kairaba Beach Hotel', 'Lena Grey Johnson', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'This will be the third time we will be partnering with the fashion weekend Gambia team.  it has always been a successful event and I believe its worth Supporting', 1, '2014-10-27 11:02:26', '2014-10-27 11:02:26');
-INSERT INTO events VALUES (117, '2014-10-17', '2nd Annual Cypher Street Rap Battle', 'Jupiter Entertainment', 'West Field', 'Killa Ace', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The first edition of this show was sponsored by Africell. it is a free show held in the streets and it always attracts a lot of people, I think its a show worth supporting.', 1, '2014-10-28 12:46:12', '2014-10-28 12:46:12');
-INSERT INTO events VALUES (118, '2014-10-28', 'Fiila Crew-2nd Edition Miss Fans Club Beauty Pageant 2014', 'Fiila Crew Brikama', 'Brikama Jokor Graden Club', 'Big Sam-Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have been in parthnership before with Fiila Crew Brikama and sponsored previous show fiila show which was successful.I think its a program worth sponsoring.', 2, '2014-10-29 12:53:12', '2014-10-29 12:55:31');
-INSERT INTO events VALUES (119, '2014-10-28', 'Brikama Keep Fit Gym-Weight Lifting Competition', 'Keep Fit Gym Center', 'Brikama Jokor Graden Club', 'Big Sam-Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a big event,wight lifting at a highly populated region,Brikama.We can support it, although this is the first partnership.', 5, '2014-10-29 13:01:59', '2014-10-29 13:01:59');
-INSERT INTO events VALUES (120, '2014-10-30', 'T-Smallz Welcome Back Party', 'T small suso-Katatoo', 'Club 22', 'T small suso', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2014-10-30 16:17:59', '2014-10-30 16:17:59');
-INSERT INTO events VALUES (123, '2014-06-02', 'ARTENOLAâ€™S ALBUM LAUNCHING', 'Suwaibou Bondi-Artist', 'Alliance Francaise', 'Bakary Jatta&Suwaibou Bondi Artenola', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Suwaibou Bondi Artenola is one of Gambia''s best Hip Hop artist in The Gambia.He successfully gained popularity on song â€˜â€™ Mbe nyo Konoâ€™â€™.This will be first parthnership.Its an event worth supporting.', 1, '2014-10-31 13:24:06', '2014-10-31 13:24:06');
-INSERT INTO events VALUES (144, '2014-11-06', 'Emerson''s Concert', 'Keneke''s Promotion', 'Jaama Hall', 'Keneke', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Emerson is an international artist from Sierra Leone. He has been to the Gambia on a number of occasions and Africell has always sponsored his shows. he has a large following in The Gambia and I believe its a show worth supporting', 1, '2014-11-19 13:19:49', '2014-11-19 13:19:49');
-INSERT INTO events VALUES (124, '2014-11-04', 'PUBUKA Fund Raising Program', 'PUKUKA BUGANATAK IN THE GAMBIA', 'Brikama Jokor Graden Club', 'Mr Sang Mendy-President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a fund raising concert for PUKUKA BUGANATAK IN THE GAMBIA.Its worth supporting.', 1, '2014-11-04 13:20:27', '2014-11-04 13:20:27');
-INSERT INTO events VALUES (125, '2014-11-05', '2nd Annual Cypher Street Rap Battle Competition', 'Killa ACE Str8 from Jupiter Entertainment', 'Westfield Monument.', 'Killa ACE Afri radio ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Killa Ace is one of Gambia''s best Hip Hop artist He successfully launched his in 2013 and he have successfully organized Rap Battle last year sponsored by Africell.This year 2014 2nd Annual Cypher Street Rap Battle Competition its an event worth supporting.', 1, '2014-11-05 13:34:11', '2014-11-05 13:34:11');
-INSERT INTO events VALUES (146, '2014-10-29', '7th Annual Open Mic Festival-The Gambia', 'Black Lynx Entertainment', 'Independence Stadium Bakau', 'Abdou Karim Waagan Fye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have partnered with Black Lynx on numberous occasions and they have successful event.Its Worth supporting.', 1, '2014-11-21 11:09:53', '2014-11-21 11:09:53');
-INSERT INTO events VALUES (148, '2014-12-01', 'Ebujan Theatre 3rd Anniversary Celebration 2014', 'Ebujan Performing Arts Association ', 'Ebujan Theatre Opposite GFF House-Kanifing', 'Janet Badjan -Young', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ebujan Theatre 3rd Anniverssary is a fundraising gala dinner,mainly to help peoples especially with performing arts skills.Its worth supporing.', 5, '2014-12-02 11:42:27', '2014-12-02 16:39:46');
-INSERT INTO events VALUES (149, '2014-11-27', 'Gamo Medina Baye Nyass', 'United Association Of Muhammed Nasir Ebrahim Nyass', 'Medina Baye Nyass-Kaolack Senegal', 'Al Hassan Cham -President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gamo Medina Baye Nyass is an annual Islamic event to celebrate the birthday of the prophet Muhammed(S.A.W)worldwide,particularly in Medina Baye Nyass-Kaolack Senegal.Its worth supporting.', 5, '2014-12-02 12:04:29', '2014-12-02 12:04:29');
-INSERT INTO events VALUES (150, '2014-11-20', 'Santa Maria Vous Christmas Eve Grand Dance', 'Santa Maria Vous ', 'Reform Club', 'Andre Manga', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Santa Maria Vous Christmas Eve Grand Dance has been a successful evnt.We have been in partnership before,Its worth supporting.', 1, '2014-12-02 12:42:02', '2014-12-02 12:42:02');
-INSERT INTO events VALUES (151, '2014-11-27', 'The Gambia Catholic Annual Pilgrimage Kunkujang Mariama 2014', 'The Gambia Catholic Shrine Committee', 'Kunkujang Mariama', 'Pierre L.M Sarr Chairman Gambia Catholic Shirne Committee', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is christian/Catholic religious Annual Pilgrimage to be held in Kunkujang Mariama.Its worth supporting.', 5, '2014-12-02 12:52:52', '2014-12-02 12:54:34');
-INSERT INTO events VALUES (152, '2014-11-28', 'Music Show With Born Africans Artist', 'Yagana Movement', 'Willy''s Night Club', 'Mighty Simplest', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supportin', 1, '2014-12-02 13:18:16', '2014-12-02 13:18:16');
-INSERT INTO events VALUES (169, '2014-12-16', 'Ebilleh Hunting Society 4th Year Anniverssary', 'Ebilleh Hunting Society', 'Old Jeshwang', 'Chidi Atuegwu', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ebilleh Hunting Society is a group of youngsters that celebrate christmas every year.Its worth supporting.', 5, '2014-12-16 09:49:34', '2014-12-16 09:49:34');
-INSERT INTO events VALUES (164, '2014-12-02', 'Dj Blazerâ€™s birthday bash Party 2014', 'VERSATILE ENTERTAINMENT DJ BLAZER ', 'Crystal Club', 'DJ BLAZER of Afri Radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Blazer works for afri-radio and he is a very popular Dj.its a show worth supporting', 1, '2014-12-02 16:54:28', '2014-12-02 16:54:28');
-INSERT INTO events VALUES (165, '2014-11-05', 'M&B Promotions-Wrestling', 'M&B Wrestling Promotions', 'Independence Stadium Bakau', 'Mr Matarr Sosseh Promoter', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a big time wrestling promoter in Greater Banul. This will be the first time we will be working with him. I believe its an event worth sponsoring.', 5, '2014-12-04 10:53:44', '2014-12-08 10:09:00');
-INSERT INTO events VALUES (166, '2014-11-28', 'Michelle Jarra Post-Book Launch Party ', 'Michelle Jarra', 'Relax Sahel, Kololi', 'Michelle Jarra Secretary Organizing Committee', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a week-long celebration of the life and times of a renowned Gambian politician, priest, educationist, sportsman, father and grand-father, the Very Reverend J. C. Faye, who passed on almost three decades ago.Its Worth Supporting.', 5, '2014-12-04 11:11:37', '2014-12-04 11:13:58');
-INSERT INTO events VALUES (167, '2014-10-06', 'EFSTH-Pape Dioup Gala&Dance', 'EFSTH Management&Staff-Government', 'Paradise Suites Hotel', 'Mr Momodou Lamin Jammeh Public Relations Officer', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'THE (EFSTH)Edward Francis Small Teaching Hospital grand fundraising gala and dance aim is to support the activities of hospital in improving patient care and hospital management.Its worth supporting.', 1, '2014-12-09 15:04:46', '2015-01-05 16:00:01');
-INSERT INTO events VALUES (168, '2014-12-03', 'Manding Morry Album Launching''''DOKUWOLOM''''', 'Manding Empire&Joluv Arts Entertainment ', 'Jama Hall Kairaba Beach Hotel', 'Soulayman Sowe-Joluv Arts', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Manding Morry,as an artist has big fan base, he is a good musician from Bakau. The event is expected to be successful.Its worth supporting.', 1, '2014-12-10 16:36:35', '2014-12-10 16:36:35');
-INSERT INTO events VALUES (159, '2014-11-26', 'Sen P''tit Galle', 'Absolute Entertainment', 'Independence Stadium ', 'Haddy Faye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is the second edition of Sen Petit Galle in the Gambia, the first was very successful and the turn out was splendid. This event will be covered by international media. I believe its a show worth supporting.', 1, '2014-12-02 13:23:01', '2014-12-02 13:23:01');
-INSERT INTO events VALUES (160, '2014-11-20', 'Wally Balago Seck', 'Mame-Diarra Production', 'Pencha mi Hall & Brikama Box Bar', 'Pa Sallah Bah', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is the Second edition of this show, Wally Seck was in Gambia last year and all his concerts were packed. Africell was a proud sponsor last year and I believe we should support this year again.', 1, '2014-12-02 14:49:32', '2014-12-02 14:49:32');
-INSERT INTO events VALUES (161, '2014-11-26', 'Blaque Magique', 'Smart Sync', 'Kairaba Beach Hotel', 'Ronald Senghore', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is the 4th Edition of Blaque Maqique, Its an event that always have/had a sold out crowd. We have supported this event over the years and I believe its worth supporting once more', 1, '2014-12-02 15:28:47', '2014-12-02 15:28:47');
-INSERT INTO events VALUES (171, '2014-12-08', 'Brikama Area Council-Tax Sensitization Song', 'Brikama Area Council ', 'Brikama Box Bar Mini Stadium ', 'Mr Yusupha FM Manneh(Chief Executive Officer)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is an official launching of new song by Jaliba Kyateh&Kumareh Band,organize by Brikama Area Council to sensitize general public on timely and regular payment of tax.Its an event worth supporting.', 1, '2014-12-16 16:55:38', '2014-12-16 16:55:38');
-INSERT INTO events VALUES (172, '2014-12-11', 'Ghetto Production (GP)Carnival-Dj Busy Yanx', 'Ghetto Production (GP)', 'Mosque Road And Perseverance St  Junction Banjul ', 'Dj Busy Yanx', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Its christmas december carnival period and Dj Busy Yanx Has a big fan base the Gambia.Its worth supporting.', 1, '2014-12-19 12:07:43', '2014-12-19 12:07:43');
-INSERT INTO events VALUES (173, '2014-12-16', 'Dj Kanu-Xmas Bruck Out Party', 'Dj Kanu Volkanu Movement', 'Club 22-Senegambia', 'Lamin DJ Kanu Camara-Afri Radio 107.6', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Kanu works for afri-radio and he is a very popular Dj.its a show worth supporting.', 1, '2014-12-22 11:55:33', '2014-12-22 11:55:33');
-INSERT INTO events VALUES (174, '2014-12-04', 'Nasir Promotions Wrestling Competition', 'Nasir Promotions ', 'Serekunda West Mini Stadium', 'Momodou Jah-Vice President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Nasir Promotion has been organising wrestling competitions for a long time now. His events have always been successful. I think its an event worth supporting.', 5, '2015-01-05 12:06:11', '2015-01-05 12:10:11');
-INSERT INTO events VALUES (293, '2015-09-07', 'International Week Of The Deaf 2015', 'Gambia Association Of The Deaf and Hard Of Hearing', 'School For The Deaf Hall Kanifing', 'Dodou Loum Executive Director GADHOH', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Gambia Association Of The Deaf and Hard Of Hearing will be organizing an Ineternational Week Of The Deaf 2015.The 3 days event celerations is held annually by Deaf communities to advocate effectively for human rights of the deaf people.Its worth supporting.', 5, '2015-09-17 16:30:12', '2015-09-29 12:56:50');
-INSERT INTO events VALUES (176, '2014-12-22', 'Carnival Road Festival-Daddy Bostin', 'Daddy Bostin', 'Pipeline-Elton Junction', 'M.Touray', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Daddy Bostin is a Gambian Artist well known in music industry.We have been in partnership before on Africell promotions GRTS Tv.Its worth Supporting.', 1, '2015-01-08 10:41:56', '2015-01-08 10:41:56');
-INSERT INTO events VALUES (371, '2016-01-20', 'Fatou Movie Premier', 'Hopeful Youths Advocacy Foundation', 'Ebujan Theatre Opposite GFF House-Kanifing', 'Manager-Hopeful Youths Advocacy Foundation', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Hopeful Youths Advocacy Foundation will be oraganizing a movie premier''''Fatou''''.This will be our first partnership.I think its worth supporting.', 1, '2016-01-27 12:56:47', '2016-01-27 12:56:47');
-INSERT INTO events VALUES (332, '2015-11-02', 'Fashion Weekend Gambia 2015', 'Lena Grey-Johnson', 'Ocean Bay Hotel', 'Lena Grey-Johnson', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This will be the fourth time we will be partnering with the fashion weekend Gambia team.  it has always been a successful event and I believe its worth Supporting', 1, '2015-11-24 11:50:56', '2015-11-24 11:50:56');
-INSERT INTO events VALUES (298, '2015-10-06', 'Kerr Gi Family Debut EP Launching', 'Kerr Gi Family Group', 'Alliance Francaise', 'Manager-Ker gi Family', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'These are young family group formed by young talented Gambian musicians.They recorded and published many promotional track singles namely â€˜â€™Bai-malamine Daraâ€™â€™, â€˜Music ,teranga ,and many more which gives them popularity and recognition. We have been in parthnership before, its worth supporting.', 1, '2015-10-06 15:52:53', '2015-10-06 15:52:53');
-INSERT INTO events VALUES (290, '2015-08-15', 'Royal Messenjah''''SARGAL YAYE TOUR''''2015', 'Royal Messenjah Sargal Yaye Foundation', 'Up Country', 'Royal Messenjah Artist', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Royal Messenger Sargal Yaye Foundation is a well known Gambian artist,he wants to embark on a tour to up country to promote his album ''''Mama.Its worth supporting.', 1, '2015-09-10 15:19:24', '2015-09-10 15:19:24');
-INSERT INTO events VALUES (179, '2014-09-04', 'GTB-Food&Beverage Festival 2015', 'Gambia Tourist Board(GTB)', 'Green Mamba Gardens/Jakarlo Bar &Restaurant', 'Benjamin A.Roberts-Director General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gambia Tourist Board(GTB) food&Beverage Festival is a very big event and have been successful past years.We have been in partneship before.It worth supporting.', 1, '2015-01-13 13:31:50', '2015-01-13 13:34:45');
-INSERT INTO events VALUES (180, '2015-01-03', 'T-Smallz Al Bullo Tour Show-Busumballa', 'T small suso-Katatoo Entertainment', 'Busumballa', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-01-13 13:45:31', '2015-01-22 10:05:28');
-INSERT INTO events VALUES (185, '2015-01-12', 'Manding Empire 2nd Year Anniversary 2015', 'Manding Empire&Joluv Arts Entertainment ', 'Alliance Francaise', 'Muhammed L.Baldeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Manding Morry,as an artist has big fan base, he is a good musician from Bakau. The event is expected to be successful.Its worth supporting', 1, '2015-01-14 14:32:25', '2015-01-14 14:32:25');
-INSERT INTO events VALUES (184, '2015-01-03', 'T-Smallz Al Bullo Tour Show', 'T small suso-Katatoo Entertainment', 'Willy''s Night Club', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known Gambain artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-01-14 12:36:22', '2015-01-23 11:50:36');
-INSERT INTO events VALUES (281, '2015-08-10', 'Interior Female Football Team ', 'Interior Female Football', 'Banjul ', 'B.Ceesay(ASP)Officer Commanding(Sports)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Interior Female Football Team are organizing a camping with female team of Bissau before international game.Its worth supporting.', 5, '2015-08-21 13:19:56', '2015-08-21 13:19:56');
-INSERT INTO events VALUES (186, '2015-01-06', 'Final&Semi Finals The Annual Cypher Street Rap Battle 2015', 'Killa ACE Str8 from Jupiter Entertainment', 'Independence Stadium Hand Ball Cort Bakau', 'Killa ACE Afri radio ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The first edition of this show was sponsored by Africell.Now is the Semi&Finals Edition,it is a free show held in the streets and it always attracts a lot of people, I think its a show worth supporting.', 1, '2015-01-26 15:28:30', '2015-01-26 15:28:30');
-INSERT INTO events VALUES (187, '2015-01-26', 'Blaque Magique''s Special Independence''Word Of Mouth''', 'Blaque Magique', 'University Of The Gambia(MDI)', 'Louise Amina Drammeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Blaque Maqique is an event that always have/had a sold out crowd. We have supported this event over the years and I believe its worth supporting once more.', 5, '2015-01-26 16:46:54', '2015-01-26 16:46:54');
-INSERT INTO events VALUES (188, '2015-01-26', 'T-Smallz Album Launch ft I-Octane', 'T -Smallaz Ebrima Suso-Katatoo Entertainment', 'Independence Stadium Bakau', 'T -Smallaz Ebrima Suso', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known Gambain artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-01-27 13:34:35', '2015-01-27 15:47:56');
-INSERT INTO events VALUES (189, '2015-01-26', 'Joluv Arts Anniversary&50th Independence Celebration', 'Joluv Arts Entertainment', 'Pencha Mi Hall-Paradise Suites Hotel', 'Soulayman Sowe-Joluv Arts', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Joluv Arts Entertainment is a music production,promotion and a well known label in the Gambia.We have been in partnership before.Its Worth supporting.', 1, '2015-01-27 13:45:52', '2015-01-27 13:45:52');
-INSERT INTO events VALUES (305, '2015-10-12', '8th Annual Open Mic Festival-The Gambia', 'Black Lynx Entertainment', 'Independence Stadium Bakau', 'Abdou Karim Fye(Waagan)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have partnered with Black Lynx on numberous occasions and they have successful event.Its Worth supporting.', 1, '2015-10-15 12:56:09', '2015-10-15 12:56:09');
-INSERT INTO events VALUES (253, '2015-04-20', 'Civil Aviation Authority Fund raising Gala', 'Civil Aviation Authority', 'Relax Sahel, Kololi', 'Ebrima Bojang Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Civil Aviation Authority staff association(CAASA)are organizing fund raising gala dinner with the theme''''Our Food,Our Health''''.Funds raise will be donated to Bansang Hospital.Its worth supporting.', 1, '2015-05-11 10:08:24', '2015-05-11 10:08:24');
-INSERT INTO events VALUES (192, '2015-01-21', 'Coconut residence Valentine Love Nest', 'Coconut residence Hotel', 'Coconut residence-Senegambia', 'Brenda Ubani-Uzoechi-Director of Operations', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Coconut residence hotel is wel known hotel in the Gambia.This event is organized on valentive day.Its worth supporting.', 5, '2015-02-03 16:33:06', '2015-02-03 16:33:06');
-INSERT INTO events VALUES (193, '2015-02-02', 'Wizkid Live Concert', 'Absolute Entertainment', 'Independence Stadium Bakau', 'Haddy Faye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This will be the first time Wizkid will be performing in the Gambia, He is one best artist from Nigeria and is known world wide. Wizkid has a lot of following in the Gambia and I believe its an event worth supporting', 1, '2015-02-03 17:36:27', '2015-02-03 17:36:27');
-INSERT INTO events VALUES (195, '2015-01-24', 'The Block -Annual Independence Music Festival The Gambia', 'The Block Entertainment', 'Serekunda West Mini Stadium', 'The Block Entertainment Music Group', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Block Entertainment Music Group are well known in music industry in The Gambia.They are organizing this event to celebrate Gambia''s 50th Independence Anniversary.Its worth supporting.', 1, '2015-02-04 10:57:18', '2015-02-04 15:42:23');
-INSERT INTO events VALUES (196, '2015-01-03', 'T-Smallz Al Bullo Tour Show-Brufut', 'T small suso-Katatoo Entertainment', 'Brufut', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known Gambain artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-02-04 11:32:35', '2015-02-04 11:33:44');
-INSERT INTO events VALUES (197, '2015-01-29', 'TBS&Wally Seck Fans Club Fund Raising Show', 'Thione Ballago Seck&Wally Seck Fans Club', 'Alliance Francaise', 'Oumie Mbye-President Fans Club', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This organization have been supporting youths and development and its has been in existing for (7)seven years and they have oragnized successful show before.Its worth supporting.', 1, '2015-02-09 17:07:45', '2015-02-09 17:14:05');
-INSERT INTO events VALUES (286, '2015-08-24', 'Simplest Yagana Movement Tour', 'Yagana Movement', 'Pirang,Farafenni', 'Dj Simplest Afri Radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting', 1, '2015-09-09 16:16:20', '2015-09-09 16:16:20');
-INSERT INTO events VALUES (199, '2015-02-05', 'Yusupha Ngum-Joloffman Album LAUNCHING GOLDEN JUBILEE ', 'Yusupha Ngum-Joloffman ', 'Galaxy Entertainment', 'Yusupha Ngum-Joloffman ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Yusupha Ngum a.k.a Joloffman, son of Senegambiaâ€™s most renounced musical icon Bala Musa Affia Ngum â€œthe only renounce Senegambia musical icon.We have not been in partnership before,Its worth supporting.', 1, '2015-02-10 16:35:43', '2015-02-10 16:35:43');
-INSERT INTO events VALUES (200, '2015-02-10', 'Masta Lion Promotion Concert(Peetah&Gramps Morgan)', 'Masta Lion Promotion ', 'Brikama Mini Stadium &Sk West Mini Stadium', 'Lamin Touray CEO Masta Lion Promotion ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Masta Lion Promotion is a charity organization in Gambia and finland.They are partnering with The morgan gheritage family to make this event a success in independence celebration.Its worth supporting.', 1, '2015-02-10 17:06:06', '2015-02-10 17:06:06');
-INSERT INTO events VALUES (285, '2015-08-06', 'Gambia Methodist Academy 20 Years Anniversary', 'Gambia Methodist Academy School', 'Campus Bakau', 'Hannah Harding-Principal', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gambia Methodist Academy will be celebrating their 20 Years of excellent quality education in The Gambia,at both the Upper Basic and Senior Secondary School levels.I think its worth supporting.', 5, '2015-09-01 11:30:05', '2015-09-29 08:14:50');
-INSERT INTO events VALUES (203, '2015-02-10', 'Flames Squad 1 Years Anniversary', 'Flames Squad-Artist', 'Atlanctic Hotel Banjul', 'Haji Tunkara-Manager', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Flames Squad Artist are well known and popular artist in The Gambia.Especially in Mbalax music industry.We have been in partnership before with one of artist name,Dave Ndow during Sing With Africell promotion.Its worth supporting.', 1, '2015-02-16 12:33:30', '2015-03-03 11:24:49');
-INSERT INTO events VALUES (209, '2014-12-29', 'Join Hands Together celebrating 10 year anniversary ', 'Join Hands Together ', 'Serekunda West Mini Stadium', 'Assan Faal Manager', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Join Hands Together are upcoming artists in the Gambia.They already launched thier mix tape at the alliance francaise last year may 2014 sponsored by africell. Thier show was successful. I believe it is worth supporting.', 1, '2015-03-03 13:24:29', '2015-03-03 13:24:29');
-INSERT INTO events VALUES (215, '2015-03-11', 'Silky Criss Live Show', 'Silky Criss Management', 'Alliance Francaise&Willy Night Club', 'Mam Malen Njie Manager', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Silky Criss is a well known and popular artist in The Gambia,and has a big fans base in the music industry. He can be supported and we have been in partnership before.', 1, '2015-03-12 10:54:55', '2015-03-12 10:54:55');
-INSERT INTO events VALUES (204, '2015-02-20', 'Association of the Gambia Albinos (AGA)Gala Dinner', 'Association of the Gambia Albinos (AGA)', 'Parasie Suites Hotel', 'Abdou Karim-President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Association of the Gambia Albinos (AGA) aimed at raising funds to empower persons with Albinism and disability through advocacy and providing them with skills training to meet the employment criteria. This will be the first partnership.Its worth supporting.', 1, '2015-03-02 12:21:11', '2015-03-02 12:21:11');
-INSERT INTO events VALUES (205, '2015-02-14', 'Mystic MC 20 Years Anniversary', 'Mustapha Coker-Mystic Mc ''BLACK NATURE', 'Galaxy Entertainment Park-Senegambia', 'Mustapha Coker-Mystic Mc ''BLACK NATURE', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Mystic MC is a Gambian Danish living in Denmark from the musical group '''' BLACK NATURE '''' The first Rap musical group in The Gambia to release an album in 1996. International reggae and dancehall artist playing shows in countries like: UK,USA,Jamaica,Belgium and many more.Its worth supporting.', 1, '2015-03-02 16:06:20', '2015-03-02 16:06:20');
-INSERT INTO events VALUES (288, '2015-08-26', 'Dj Indiana Production Concert', 'Indiana Production', 'Jakarlo Center Stage', 'Abdou Joof Coordinator', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Indiana Production is well known in promoting Indian Music and Gambian music also.He will be organizing a big concert with Gambian Artists.Its worth supporting.', 1, '2015-09-10 14:57:34', '2015-09-10 14:57:34');
-INSERT INTO events VALUES (207, '2015-01-22', 'Hero Stars Movie Premier', 'Hero Stars Movie Production', 'Badala Park Hotel', 'Adam Singhateh Secretary&Mustapha S.Kamara CEO', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a well known organization in the areas of music,movie production and participation in the performing arts.They have relaesed to movie within a year''''DEVIL ON THRONE&ADAMU THE VIRUS IN THE VILLAGE.The new movie to be premier is name as Broken Trust.This will be the first partnership I belive they can be supported.', 4, '2015-03-02 16:45:42', '2015-03-02 16:45:42');
-INSERT INTO events VALUES (208, '2015-02-20', 'Zaidi English Movie Premier', 'Zaidi Entertainment Production', 'B.O.Samega Janneh Hall', 'Cherno Bubacarr Zaidi Jallow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a well known organization in the areas movie production and participation in the performing arts.The new English movie to be premier is name LOVE CONFUSION.This will be the first partnership I belive they can be supported.', 4, '2015-03-03 11:18:56', '2015-03-03 11:18:56');
-INSERT INTO events VALUES (210, '2015-03-04', 'Keneke Promotion-Starboyz Album Launching', 'Keneke Promotion&Chief Hamid Entertainment', 'Alliance Francaise', 'Keneke Promotion', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Starboyz are Sierra Leonian artists based in The Gambia.They have a large fans base and followers in The Gambia, and I believe its a show worth supporting thier fist album launching.', 1, '2015-03-04 12:34:14', '2015-03-04 12:34:14');
-INSERT INTO events VALUES (211, '2015-02-25', 'Squad Vypa 2nd Year Anniversary', 'Squad Vypa', 'Alliance Francaise', 'Amadou Secka-VYPA', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Amadou Secka A.K.A VYPA is one the Most Popular artists in the Gambia. He is a resident of Bakau. He is organising his annual 2nd Year Anniversary show at the Alliance Francaise.This show is expected to be very successful. I believe it is worth supporting.', 1, '2015-03-04 12:44:06', '2015-03-04 12:44:06');
-INSERT INTO events VALUES (212, '2015-01-07', 'Mam Amata Foundation Easter Monday Picnic', 'Mam Amata Foundation', 'Banjul at former radio Syd', 'Joe Senghore Executive Director', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The purpose of this event is to celebrate the resurrection of Jesus Christ and to promote health,joyous season,happy environment and unity among Gambians.We have been in partnership last year 2014.Its worth supporting.', 5, '2015-03-10 15:38:20', '2015-03-10 15:38:20');
-INSERT INTO events VALUES (226, '2015-03-23', 'GFF Gambia VS Mauritania Friendly International Football Game', 'GFF', 'Independence Stadium Bakau', 'Abdou Salam Jammeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Africell is always in Support of Sports GFF are organizing an international football match Gambia VS Mauritania Friendly Game.Its worth supporting.', 5, '2015-03-25 10:13:52', '2015-03-25 10:13:52');
-INSERT INTO events VALUES (227, '2015-03-10', 'Don Dancing Competition', 'Don Entertainment&Jokor Monument', 'Jokor monument westfield', 'Don Manager', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Don Entertainment&Jokor Monument are organizing final dancing competition.Its worth supporting.', 1, '2015-03-25 10:32:28', '2015-03-25 11:24:05');
-INSERT INTO events VALUES (214, '2015-03-09', 'CMS 11th edition of kite flying', 'Cathedral Men''s Solidarity CMS', 'Banjul at former radio Syd', 'Rev.Father Antione Sambou Spiritual Director', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The 11th edition of kite flying is an annual event in The Gambia.It is a tradition and aims to promote kite flying,bringing christians,youths,and elders as one family.We have been in partnership before.Its worth supporting.', 1, '2015-03-12 10:48:32', '2015-03-12 10:48:32');
-INSERT INTO events VALUES (216, '2015-03-09', 'Biddy''s Promotion Awards Night', 'Biddy''s Promotion', 'Paradise Suites Hotel-Pencha mi Hall', 'Ida Bidwell Coordinator', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Biddy''s Promotion will be organising an GAM awards night to show case the talent of Gambian artists in different categories.Its worth supporting.', 1, '2015-03-12 13:08:09', '2015-03-12 13:08:09');
-INSERT INTO events VALUES (228, '2015-03-23', 'Galaxy Entertainment Park Easter Family Outing Kids Party', 'Galaxy Entertainment', 'Galaxy Entertainment Park-Senegambia', 'Farmang Max Mane', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Galaxy Entertainment Park Easter Family Outing Kids Party to celebrate easter.Its worth supporting.', 1, '2015-03-27 14:58:56', '2015-03-27 14:58:56');
-INSERT INTO events VALUES (218, '2015-02-02', 'The Scorz Hip Hop Festival 2015', 'The Scorz Hip Hop Artist', 'Alliance Francaise', 'Sheikh Tijan Jallow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Sheikh Tijan Jallow AKA Tuju Brain of peppa house are pioneers of Hip Hop in The Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-03-12 13:26:13', '2015-03-12 13:26:13');
-INSERT INTO events VALUES (219, '2015-03-08', 'SJAG 6th National Sports Awards 2015', 'Sports Journalist Association Of The Gambia', 'Ocean Bay 5 Star Hotel Cape Point', 'Musa Sise-Chairman Award Committee', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'SJAG 6th National Sports Awards 2015 is held every year geared towards honoring individuals,althletes,sports personalities for their achievements and contribution towards Gambian sports.We have been in partnership.Its worth supporting.', 5, '2015-03-16 11:57:24', '2015-03-16 11:57:24');
-INSERT INTO events VALUES (220, '2015-02-11', 'Queen Of Companies 2015', 'Glamorous Models Africa modelling agency ', 'Paradise Suites Hotel', 'GMA Administration-Williams Brown', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Queen Of Companies(QOC) is held every year,The beauty pageant competition includes different companies in The Gambia / Africa to help expose their business life, it intends to attract stunning young scholar ladies between the ages of 18 - 24 with normal average glance. It is the 5th of Edition and we have been in partnership before.Its worth Supporting.', 2, '2015-03-16 13:31:55', '2015-03-16 13:31:55');
-INSERT INTO events VALUES (221, '2015-03-05', 'BENJAHMINâ€™S ALBUM LAUNCHING', 'Mandingmorry Foundation for Performing Arts (MANFOPA)', 'Brikama Mini Stadium ', 'Ibrahim Ceesay Executive Director Mandingmorry Entertainment', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'BENJAHMIN who is one of the finest Gambian Reggae Artists in The Gambia.He is dedicated,committed and he have several followers and fans,son of Brikama and a pioneer of the Front line Crew.Its worth supporting.', 1, '2015-03-17 12:20:01', '2015-03-17 12:20:01');
-INSERT INTO events VALUES (222, '2015-03-14', 'EASTER SUNDAY GOSPEL MUSIC FIESTA', 'Mercy and Grace Gospel Music The Gambia', 'Paradise Suits Hotel ', 'B-Master staff of Afri radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Mercy and Grace Gospel Music Show on Afri-radio 107.6fm have a big fan base and lot of listners hosted by B-Master staff of Afri radio.Its worth supporting.', 1, '2015-03-19 11:18:51', '2015-03-19 11:18:51');
-INSERT INTO events VALUES (223, '2015-02-10', 'Sunu Musico''s 5th year Anniversary', 'T -Smallaz Ebrima Suso-Katatoo Entertainment', 'Serekunda West Mini Stadium', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is Sunu Musico''s 5th year Anniversary. It has always been successful and Africell has always supported T-Smallz. This is an event worth Supporting.', 1, '2015-03-19 12:13:37', '2015-03-19 12:13:37');
-INSERT INTO events VALUES (224, '2015-02-12', 'Daddy Bostin Mix Tape Launching ''''Ruff Days', 'Daddy Boston Under The Management of Minka Entertainment', 'Alliance Francaise', 'Sulayman Jammeh A.K.A.Daddy Boston', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Daddy Boston is a Gambian artist well known in music industry.We have been in partnership before.Its Worth Supporting.', 1, '2015-03-23 16:35:21', '2015-03-23 16:35:21');
-INSERT INTO events VALUES (225, '2015-03-18', 'Akuntu Jalex 2 Singles Launching', 'Akuntu Acoustic Band', 'Sinatara''s Hall Bakau', 'Jalex AKUNTU', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Jalex AKUNTU is a Gambian artist well known in music industry.We have been in partnership before.Its Worth Supporting.', 1, '2015-03-24 11:39:59', '2015-03-24 11:39:59');
-INSERT INTO events VALUES (229, '2015-03-17', 'Annual Gamo&Siyareh of Nema Nasir', 'Nema Nasir Islamic Development Association', 'Nema Nasir Near Mosque', 'Mbye Drammeh President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Annual Gamo and Siyareh of Nema Nasir is an Islamic event,it has biggest turnout in The Gambia.Its worth supporting.', 5, '2015-04-08 10:31:09', '2015-04-08 10:31:09');
-INSERT INTO events VALUES (230, '2015-03-30', 'Egliterain Alliance Francaise', 'Alliance Francasie', 'Alliance Francaise', 'Salim Soumare', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Egalitarian is a Gambian he is well known in the music industry,both national and international.He is Launching his album.Its worth supporting.', 1, '2015-04-08 10:41:18', '2015-04-13 16:09:39');
-INSERT INTO events VALUES (231, '2015-02-25', '2015 National Divine Mercy Celebrations', 'Diocesan Committee Of The Divine Mercy', 'Catheral Church Banjul', 'Rev.Fr,John Mendy', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'This is event that was sponsored before and it was very successful.The National Divine Mercy Celebrations has a lot of parishioners and they always turn out in their numbers to support the church. I believe it is an event worth supporting.', 5, '2015-04-08 11:14:46', '2015-04-08 11:14:46');
-INSERT INTO events VALUES (232, '2015-03-20', 'Keneke Promotion Celebrating Sierra leone Independence Day', 'Keneke Promotion&Chief Hamid Entertainment', 'Jama Hall', 'Keneke Promotion', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Keneke Promotion celebrating Sierra leone Independence Day in The Gambia with international artist,comedian <br/><br/>SARA D GREAT'''' from Sierraleone.He is well know in The Gambia, and I believe its a show worth supporting.', 1, '2015-04-08 13:13:03', '2015-04-08 13:13:03');
-INSERT INTO events VALUES (233, '2015-03-30', 'Aliance Francaise Dream Bolly Wood Show', 'Alliance Francasie', 'Alliance Francaise', 'Salim Soumare pro-Graphis Designer', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Egalitarian is a Gambian he is well known in the music industry,both national and international.He is Launching his album.Its worth supporting', 1, '2015-04-08 17:45:06', '2015-04-08 17:47:26');
-INSERT INTO events VALUES (234, '2015-03-27', 'Lend A Hand Society 20 years Anniversary', 'Lend A Hand Society', 'Opposite Zenith Preparatory School', 'Naffie Sissoho The National Coordinator', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Lend A Hand Society has raised awareness for young people and helping them realise their potentials,attitude building and cultural appreciation. The society has lot of members.Its worth supporting.', 5, '2015-04-09 12:50:30', '2015-04-09 12:53:12');
-INSERT INTO events VALUES (236, '2015-04-02', 'May Day Sports 2015', 'National Sports Council', 'Maccarthy Square Banjul', 'Ebrima Secka-For Executive Director', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partne<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is an annual event,organized by national sports council under the ministry of youths and sports.We have been in parnership before.Its worth supporting.', 1, '2015-04-17 13:06:11', '2015-04-21 11:08:02');
-INSERT INTO events VALUES (250, '2015-05-07', 'Brain Krackers 2nd year Anniversary', 'Bai Babou', 'Jakarlo', 'Bai Babou', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Bai Babou AKA Brain Kracker is one of the most popular Young artist in The Gambia. He has a lot of following and is well loved. I believe it will be a successful event.', 1, '2015-05-07 15:48:29', '2015-05-07 15:51:27');
-INSERT INTO events VALUES (238, '2015-04-01', 'DJ PACO Music show farafenni', 'DJ PACO', 'Farafenni', 'DJ PACO', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'DJ paco is well know as dico joker at unique fm.He will be oraganizing a big music wiht Dj''s in The Gambia in farafenni.Its worth supporting.', 1, '2015-04-21 11:22:15', '2015-04-21 11:22:15');
-INSERT INTO events VALUES (241, '2015-02-16', 'Gunjur Cultural Festival', 'Gunjur Village&Committee', 'Gunjur(8th&9th May)', 'Buba Bojang(Mbaye)Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gunjur Cultural Festival is an annual event and attracts lot peoples in Gunjur and surrounding villages.Its is cultural,traditional,festival.Its worth supporting.', 1, '2015-04-21 11:39:39', '2015-04-21 11:44:42');
-INSERT INTO events VALUES (242, '2015-04-20', 'Lama Production', 'Lama Production', 'Jokor monument westfield', 'Modou Faal A.K.A Lama ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Modou Faal A.K.A lama is well known as DJ and comdeian in the Gambia.We have been in partnership before during Africell''s major promotions.Its worth supporting.', 1, '2015-04-27 11:44:35', '2015-05-11 09:41:39');
-INSERT INTO events VALUES (251, '2015-04-15', 'Fiila 6th Year Anniversary', 'Black Lynx', 'SK East mini stadium & Brikama Box bar', 'Black lynx', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Black lynx are the force behind Gambian music.  Fiila is the most popular show on GRTS promoting Gambian music. this is their 6th anniversary and we''ve always supported them. I believe its going to be a successful show', 1, '2015-05-08 14:52:47', '2015-05-08 14:52:47');
-INSERT INTO events VALUES (284, '2015-08-20', 'IYF World Camp Gambia 2015', 'International Youth Fellowship(IYF)', 'Gambia Tourism &Hospitality Institute(G.T.H.I)', 'Wook Jim(IYF)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'International Youth Fellowship(IYF) is a global youth organization they are currrently giving free language classes in french and korean as well as bible studies in Gambia.The world camp will be the first of it kind in the Gambia.Its worth supporting.', 1, '2015-08-31 15:24:42', '2015-08-31 15:24:42');
-INSERT INTO events VALUES (245, '2015-04-15', 'Flames Squad Video Launching', 'Flames Squad-Artist&Joluv Arts', 'Atlanctic Hotel Banjul', 'Soulayman Sowe-Joluv Arts', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Flames Squad Artist are well known and popular artist in The Gambia.Especially in Mbalax music industry.We have been in partnership before with one of artist name,Dave Ndow during Sing With Africell promotion.Its worth supporting.', 1, '2015-04-28 16:18:32', '2015-04-28 16:18:32');
-INSERT INTO events VALUES (282, '2015-08-10', 'International Football Gambia VS Cameroon', 'GFF', 'Independence Stadium Bakau', 'GFF', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'International Football game between Gambia VS Cameroon,qualifiers i think will have a big turn out.Its worth supporting.', 5, '2015-08-24 15:33:16', '2015-09-02 15:57:19');
-INSERT INTO events VALUES (283, '2015-08-11', 'The Humanity Starz 11th Years Anniversary', 'The Humanity Starz Group', 'Jaama Hall-Kairaba Beach Hotel', 'Mbye Bittaye-Manager The Humanity Starz', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Humanity Starz will be organizing their 11th Years Anniversary in music industry on Tobaski Day.They are the youngest live Band Group in The Gambia,making a big name in the music industry.We have been in partnership before.Its worth supporting.', 1, '2015-08-24 16:14:42', '2015-08-24 16:14:42');
-INSERT INTO events VALUES (247, '2015-05-04', 'Rhythmic Vibrations', 'Blaque Magique', 'Kairaba Beach Hotel', 'Ronald Senghore', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Africell has always partnered with the Blaque Magique Poets on their events. Their events have always been successful. I believe its an event worth Supporting.', 1, '2015-05-05 12:09:19', '2015-05-05 12:09:19');
-INSERT INTO events VALUES (249, '2015-05-21', 'Winners Gospel Concert', 'Winners Chapel', 'WInners Chapel', 'Elijah Tawiah-Brown', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Winners Chapel is one of the biggest churches in the Gambia. The concert they are staging will include gosple singers from other churches. The event is expected to be successful', 1, '2015-05-06 16:35:27', '2015-05-14 09:11:02');
-INSERT INTO events VALUES (252, '2015-04-29', 'Pain Perception MixTape Launching', 'Izzy T', 'Alliance Francaise', 'Izzy T', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Izzy T is a well known musician residing in Ebo-Town. He is one of the best Hip hop artist in the Gambia. He is well loved by his peers and I believe he is worth supporting.', 1, '2015-05-08 15:13:30', '2015-05-08 15:13:30');
-INSERT INTO events VALUES (254, '2015-04-27', 'Diha''s Awards Celebration With Fans', 'Diha and Fans', 'Alliance Francaise', 'Diha Artist', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Diha''s is Celebrating Awards With Fans, as best female artist in the Gambia.She is well know in the music indusrty''''mandinka''''songs.Its worth supporting.', 1, '2015-05-11 11:44:54', '2015-05-11 11:44:54');
-INSERT INTO events VALUES (306, '2015-10-15', 'Silky Crissâ€™s Debut Album Launching', 'Silky Criss Management', 'Jaama Hall(Kairaba Beach Hotel)', 'Mam Malen Njie-Manager Silky Criss ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Silky Criss is a well known and popular artist in The Gambia,and has a big fans base in the music industry. He can be supported and we have been in partnership before.', 1, '2015-10-15 13:08:06', '2015-11-19 11:47:53');
-INSERT INTO events VALUES (256, '2015-03-24', 'World Blood Donor Day 2015', 'Ministry Of Health&Social Welfare', 'Brikama Governor Residence', 'Dr Makie Taal Permanent Secretary', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is an event celebrated world wide,to donate blood,and is been organized by Ministry of health.Its worth supporting.', 5, '2015-05-18 11:25:23', '2015-10-22 13:13:41');
-INSERT INTO events VALUES (257, '2015-04-30', 'Wrestling Revival Gourp ', 'Wrestling Revival Gourp ', 'Farafenni', 'Wrestling Revival Gourp ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Wrestling Revival Gourp are organizing this event to bring unity between radio presenters& journalist in the Gambia,Its worth supporting.', 5, '2015-05-18 14:39:00', '2015-05-18 14:39:00');
-INSERT INTO events VALUES (258, '2015-05-04', 'Afrinity Production London Manga Movie Premier', 'Afrinity Production', 'Paradise Suites Hotel', 'Wlfred Adams Afrinity Production', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Afrinity Production are organizing a movie premier title ''''London Manga Movie''''.Together lets say no to back way.Its worth supporting.', 4, '2015-05-19 12:39:23', '2015-05-19 12:39:23');
-INSERT INTO events VALUES (259, '2015-04-27', 'Ms Promotions Soninkara Music Award Night 2015', 'Ms Promotions in collaboration with B-Master Production', 'Alliance Francaise', 'Muhammed Saho-Afri Radio Staff', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Muhammed Saho works for afri-radio and he is a very popular in ''''sarahule'''' music industry.The Soninkara Music Award Night 2015 is one the biggest event organized by sarahule community. It''s a show worth supporting.', 1, '2015-05-19 12:52:19', '2015-05-28 16:42:57');
-INSERT INTO events VALUES (260, '2015-05-05', 'Catholic Diocesan Youth Night Glory', 'Catholic Diocesan Youth ', 'Reform Club MDI Road', 'Rev.Fr John Mendy(Youth Chaplain)', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Catholic Diocesan Youth group.This is a youth workforce,including old peoples.The event is  geared to showcase youths in singing,dancing,(Choreography)and skill work.Its worth supporting', 5, '2015-05-20 14:33:30', '2015-05-20 14:33:30');
-INSERT INTO events VALUES (261, '2015-05-20', '5th Annual Murid Gamo''''Chanta''''Serigne Saliou Mbacke', 'Murid''s Gambia Serigne Saliou Mbacke', 'Opposite Garage At Africell', 'Ebrima Ndong Jawrin', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The 5th Annual Murid Gamo''''Chanta''''Serigne Saliou Mbacke is an Islamic event.organized by Murids living in the Gambia.Its is big event held annually.Its worth supporting.', 5, '2015-05-20 16:29:42', '2015-05-20 16:29:42');
-INSERT INTO events VALUES (262, '2015-05-14', 'FAWEGAM Week', 'Fawegam', 'FAWEGAM', 'Mrs. Yadicon Njie Eribo', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Africell has always supported the empowerment of women and girls. FAWEGAM and africell have partnered on a number of occasions and they have been successful. Based on a fruitful history, I believe its an event worth supporting', 1, '2015-05-20 17:24:41', '2015-05-20 17:24:41');
-INSERT INTO events VALUES (263, '2015-04-30', 'Hand of Fate DVD Launching &Screening of Sarata Movie', 'Mandingmorry Foundation for Performing Arts (MANFOPA)', 'Pencha Mi Hall', 'Ibrahim Ceesay Executive Director Mandingmorry Entertainment', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a well known organization in the areas of music,movie production and participation in the performing arts.Hand of Fate DVD Launching &Screening of Sarata Movie.We have been in partnership before. I belive they can be supported.', 4, '2015-05-21 11:59:01', '2015-06-01 10:42:06');
-INSERT INTO events VALUES (264, '2015-05-21', 'Free Eye Treatment Africa Muslim Agency', 'Africa Muslim Agency Gambia', 'Farafenni', 'Ouazzani Abdellah-Country Director', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Africa Muslim Agency will be oraganizing a Free Eye Treatment in farafenni to help peoples with eye problems in Farafenni and surrounding villages.Its worth supporting.', 5, '2015-05-27 10:26:10', '2015-05-27 10:26:10');
-INSERT INTO events VALUES (265, '2015-05-28', 'The Gambia Red Cross 12th Annual Miss,Master 2015', 'The Gambia Red Cross Society', 'Alliance Francaise', 'Momodou Fofana-Branch Officer KMC', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Gambia Red Cross society 12th Annual Miss,Master Miming competition 2015 is a big event organized by red cross links and societies.Its can be supported.', 2, '2015-05-28 16:22:27', '2015-05-28 16:25:36');
-INSERT INTO events VALUES (266, '2015-06-29', 'GFF Football Match 2nd Leg CHAN 2015-Gambia VS Senegal ', 'GFF', 'Independence Stadium Bakau', 'Abdou Salam Jammeh ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Gambia Football federation are organizing an international football match 2nd leg CHAN 2015,Gambia VS Senegal at Independence Stadium Bakau.Africell have been in supports of sports.We have been in parthnership before.Its worth supporting.', 5, '2015-07-01 13:20:40', '2015-07-01 13:34:34');
-INSERT INTO events VALUES (268, '2015-06-29', 'GFE In Collaboration with LXG Sierra leone', 'Good Friends Entertainment The Gambia', 'Paradise Suites Hotel', 'Simeon Adu-Kay', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Good Friends Entertainment(GFE)will be organizing music show with hottest group LXG crew of sierraleone live in the gambia in collaboration with Sierraleone high commission.Its worth supporting.', 1, '2015-07-01 14:50:48', '2015-07-01 14:50:48');
-INSERT INTO events VALUES (269, '2015-06-03', 'CCLK Fund raising &Cultural Night', 'Christina Community of Latrikunda', 'Father farell Hall,Kanifing', 'James Macauley General Secretary', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Christian community of latrikunda(CCLK)is a community based organization operating at latrikunda.They embarked on assisting poor students in funding their education,community works irrespective of ethnic or religion.They worth supporting.', 5, '2015-07-07 14:01:31', '2015-07-07 14:01:31');
-INSERT INTO events VALUES (270, '2015-07-20', 'Muslim Senior Secondary Inetr Schools Quiz&Debate Competition', 'Muslim Senior Secondary Computer Club', 'Muslim School Hall', 'Lala Sambou-Secretary Computer Club MSSS', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Muslim Senior Secondary Inetr Schools Quiz&Debate Competition involving IT clubs from six Senior Secondary Schools.The quiz competitions will create awareness in the Information Technology for students in Gambia.Its worth supporting.', 5, '2015-07-20 14:38:29', '2015-07-20 14:38:29');
-INSERT INTO events VALUES (287, '2015-09-01', 'Simplest Yagana Movement Tobaski Tour', 'Yagana Movement', 'Sibanor,Pirang and Faraba', 'Dj Simplest Staff Of Afri Radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. Its a show worth supporting', 1, '2015-09-09 16:20:29', '2015-09-09 16:20:29');
-INSERT INTO events VALUES (280, '2015-07-20', 'Awake Youth Fellowship Fund Raising Show', 'Awake Youth Fellowship Committee', 'Ndows Hall Kanifing Estate', 'Bintou Dibbasey', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Awake Youth Fellowship Committee are young christians and non christians in the Gambia to motivates youths as members of''''Ark of Change''''.Its worth supporting.', 1, '2015-08-19 16:09:36', '2015-08-19 16:09:36');
-INSERT INTO events VALUES (321, '2015-10-22', 'Sophia''s Mixtape Launching', 'Movement Sophia', 'Alliance Francaise', 'Mustapha Jallow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Sophia is one of Gambia''s most popular female dancehall artist.She will be Launching her Mixtape.Its worth supporting.', 1, '2015-11-06 11:49:17', '2015-11-06 11:49:17');
-INSERT INTO events VALUES (272, '2015-06-29', 'NA TANGA MUSIC ARMY(NTMA)', 'NA TANGA MUSIC ARMY(NTMA)', 'Churchillstown', 'Pope Manager', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'NA TANGA MUSIC ARMY(NTMA)will be organizing a free music show to help up coming artists in Gambia.We have not been in partnership before.Its worth supporting.', 1, '2015-07-20 16:34:02', '2015-07-20 16:34:02');
-INSERT INTO events VALUES (273, '2015-07-28', 'World Hepatitis Day ', 'World Health Organization', 'MRC', 'Modou Njie', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'World Hepatitis Day is commemorated every year,in order to raise awareness about hepatitis and its dangers,one of the world''s killer diseases.Its worth supporting.', 5, '2015-07-29 10:38:15', '2015-07-29 10:38:15');
-INSERT INTO events VALUES (274, '2015-08-23', 'Brikama Sports Committee Super Cup Final', 'Brikama Sports Committee ', 'Brikama Mini Stadium ', 'Karamo Jarju Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Brikama Sports Committee are organizing a Super Cup Final,which  is held every year at Brikama Mini Stadium.We have been in partnership before.Its worth supporting.', 5, '2015-08-03 12:16:45', '2015-08-03 12:16:45');
-INSERT INTO events VALUES (278, '2015-08-10', 'The On Gambia Fashion Movement', 'Tara Designs', 'Kairaba Beach Hotel', 'Fatou Drammeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The On Gambia Fashion Movement show is organized by Fatou Camara of Tara Designs,we have been in partnership before.Its worth supporting.', 2, '2015-08-19 15:51:39', '2015-10-26 13:47:24');
-INSERT INTO events VALUES (276, '2015-08-02', 'Catholic Community Banjul ''Sang Marie'' 2015', 'Catholic Community Banjul ', 'Banjul ', 'Mrs Mary Roberts Parish Council Chairperson', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Catholic Community Banjul will be celebrating annual feast commonly known as ''Sang Marie'' this year 2015.We have been in partnership before.Its worth Supporting.', 5, '2015-08-04 14:38:13', '2015-08-04 14:38:13');
-INSERT INTO events VALUES (277, '2015-08-01', 'Sang Marie 2015 Fajut Mbour', 'Club 7 Palmarin', 'Fajut Mbour Senegal', 'Ronald Senghore', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner', 'Club 7 Palmarin is a group of young christian youths that join other youths from Senegal for the Celebration of the Assumption of Mary, a feast Celebrated worldwide. This event is always well attended. I believe its worth supporting', 1, '2015-08-10 17:42:28', '2015-08-18 16:21:09');
-INSERT INTO events VALUES (307, '2015-10-19', 'Mighty Simplest Tour 2015', 'Yagana Movement', 'Sibanor,Bwiam and Faraba', 'Mighty Simplest Afri radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting', 1, '2015-10-20 10:19:30', '2015-10-20 10:21:28');
-INSERT INTO events VALUES (295, '2015-09-29', 'Miss Nawettaan Bakau 2015', 'STANFEST PROMOTION', 'Friendship Hostel Bakau', 'Stanfest Promotion CEO Laming Marong', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is 3rd Edition Of Miss Nawettan Bakau, and we have been in partnership before with STANFEST Promotions.The turn out is always good.I think its a program worth sponsoring in Bakau.', 1, '2015-09-29 16:29:22', '2015-10-13 13:00:30');
-INSERT INTO events VALUES (296, '2015-09-14', 'Launching Of Ms Promotions Soninkara Namansanou', 'M.s Promotions in collaboration with(G.S.N)Gambia Soninkara Namansanou', 'Alliance Francaise', 'Muhammed Saho-Afri Radio Staff', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'M.S Promotion have been in partnership with Africell before.They have organized very success event before''''Soninkara Music Awards'' for all the sarahule musicians in The Gambia. This event is expected to be successful.Its worth supporting', 1, '2015-09-29 16:42:14', '2015-09-29 16:42:14');
-INSERT INTO events VALUES (297, '2015-09-08', 'MR&MISS AIUWA 2015 BEAUTY PAGEANT 2nd Edition', 'American International University Students Union', 'Kairaba Beach Hotel', 'Promise Okereke AIUWASU President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a non-political and non religious organization aim at bringing all the students of the American International University Students Union under one umbrella.This will be 2nd Edition beauty pageant 2015.This will be the second partnership.Its worth supporting.', 2, '2015-09-29 16:55:54', '2015-10-20 10:20:31');
-INSERT INTO events VALUES (308, '2015-10-05', 'Brikama Knockout Final Football Match ', 'Brikama Youths&Sports Committee', 'Brikama Mini Stadium ', 'Karamo Jarju Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Brikama Sports Committee are organizing a Nawettaan Final,which is held every year at Brikama Mini Stadium.We have been in partnership before.Its worth supporting', 5, '2015-10-22 10:31:28', '2015-10-22 10:32:35');
-INSERT INTO events VALUES (309, '2015-10-21', 'Top Link Launching Of the Book ''Who is Who In The Gambia', 'Top Link ', 'Joint Offiers Mess', 'Richardson O''Brian -Coker', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Top Link will be Launching Book ''Who is Who In The Gambia.Its worth supporting.', 5, '2015-10-23 11:59:54', '2015-10-23 11:59:54');
-INSERT INTO events VALUES (310, '2015-10-09', 'Farafenni Artist Association Musical Jamboree', 'Farafenni Artist Association', 'Farafenni', 'Pa Boy Sanneh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Farafenni Artist Association will be organizing a Musical Jamboree to encourage upcoing artist in their ragion.Its worth supporting.', 1, '2015-10-23 12:04:35', '2015-10-23 12:04:35');
-INSERT INTO events VALUES (311, '2015-10-20', 'Fiila Crew 3rd Edition Miss Beauty Pageant 2015', 'Fiila Crew Brikama', 'Brikama Jokor Graden Club', 'Big Sam-Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have been in parthnership before with Fiila Crew Brikama and sponsored previous show fiila which was successful.I think its a program worth sponsoring', 2, '2015-10-27 10:34:00', '2015-10-27 10:34:00');
-INSERT INTO events VALUES (328, '2015-11-05', 'Sparkln Black Launching Song Of The Year', 'Trustars Production', 'Paradise Suites Hotel', 'Manager Trustars Production', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Trustars Production &Sparkln Black artist are well konwn in the Gambian music industry.They want to launch hit song of the year.Its worth supporting.', 1, '2015-11-18 16:29:38', '2015-11-18 16:29:38');
-INSERT INTO events VALUES (329, '2015-09-11', 'Launching Of Street Hustlers to Nobles', 'Street Hustlers/Nobles Group', 'Sk East Mini Stadium', 'Manager-Street Hustlers-Nobles', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Street Hustlers/Nobles will be launching their new name to bring together young people of the society under one umbrella.Funds generated will be for the development of their community.Its Worth supporting.', 1, '2015-11-18 16:37:56', '2015-11-18 16:39:32');
-INSERT INTO events VALUES (313, '2015-10-27', 'St. Kizito''s Annual Concert', 'St. Kizito''s Parish', 'Pencha mi Hall', 'Peter Gomez', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\n5 Minute video of Africell to be aired during the event\r\nHigh Table seat for one of Africell''s representative\r\nVenue to be branded by africell\r\nFull page advert to be given to Africell\r\nVIP tickets to be provided for Africell Staff', 'This is an event that was sponsored before and it was very successful. the parish of st. kizito has a lot of parishioners and they always turn out in their numbers to support the church.  I believe it is an event worth supporting.', 1, '2015-11-02 13:14:45', '2015-11-02 13:14:45');
-INSERT INTO events VALUES (367, '2016-01-13', 'ST Duniya Beh Kibaro Show', 'ST Brikama Boyo', 'Jakarlo Center Stage', 'Dembo Jorbateh Manager/Promoter ST', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'ST is a very big name in Brikama and Kombo areas.He previous show were all successful.We have been in partnership before. I believe its worth supporting', 1, '2016-01-26 13:06:54', '2016-01-26 13:06:54');
-INSERT INTO events VALUES (315, '2015-10-30', 'Launching of Song - The Gambia ', 'Sona Jobarteh', 'Pencha mi Hall', 'Saihou Kanuteh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Sona is a very talented female kora player. she is well known it europe and has been on a lot of tours.  She recently released a new song titled "The Gambia". She is launching this song.', 1, '2015-11-03 15:52:14', '2015-11-03 15:52:14');
-INSERT INTO events VALUES (316, '2015-10-27', 'Bena Kotu Carnival 1st Edition', 'Kotu Youth Development Association', 'Kotu', 'Cherno Badjie Secretary General(KYDA)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Kotu Youth Development Association will be organizing carnival,funds generated will be given back to communities.Its worth supporting.', 1, '2015-11-04 10:41:10', '2015-11-04 10:41:10');
-INSERT INTO events VALUES (317, '2015-10-21', 'YETES-World Diabetes Day 2015', 'Youth Employment Through Education&Sport(YETES)', 'Independence Stadium Bakau', 'Mohamodou Musa Njie Executive Director YESTES', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Youth Employment Through Education&Sport(YETES)will be organizing a campaign to sensitize community on Diabetes and to commorate World Diabetes Day.Its worth supporting.', 1, '2015-11-04 11:53:09', '2015-11-04 11:53:09');
-INSERT INTO events VALUES (318, '2015-11-10', 'Simplest Yagana Show', 'Yagana Movement', 'Busumballa', 'Dj Simplest Staff Of Afri Radio', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting', 1, '2015-11-04 12:23:20', '2015-11-04 12:23:20');
-INSERT INTO events VALUES (319, '2015-11-01', 'Ngongon Youth Association Fundraising Show', 'Ngongon Youth Association', 'Ngongon Village', 'Mr Ndong Sulayman', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ngongon Youth Association will be oragnizing a Fundraising Show for their quarter final football match.Its worth supporting.', 1, '2015-11-04 12:48:36', '2015-11-04 12:48:36');
-INSERT INTO events VALUES (320, '2015-10-30', 'Elite Movement Rydim Launching', 'Elite Movement Music Group', 'Atlanctic Hotel Banjul', 'Elite Movement-Manager', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Elite Movement Music Group will be launching Rydim show to supporty the Gambian Artists in Banjul and surrounding.Its worth supporting.', 1, '2015-11-04 13:09:06', '2015-11-04 13:09:06');
-INSERT INTO events VALUES (372, '2016-01-14', 'KARTONG FESTIVAL 2016', 'KARTONG', 'KARTONG', ' Lamin M. Manneh  (Modou)  (Admin Secretary)', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'The 11th Edition of Kartong International Festival will be held in the West coast Region.This is an annual event which attracts lot people.This is will our first partnership.I think itts worth supporting.', 1, '2016-01-27 13:39:43', '2016-01-27 13:39:43');
-INSERT INTO events VALUES (323, '2015-11-03', 'Red Cross Annual Youth Gathering', 'Red Cross Banjul Branch', 'Gambia High School Hall', 'Omar Ndow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Red cross Volunteers have been known for their humanitarian services in the world. this is an event that brings youth from all over the country together. I believe its worth supporting', 1, '2015-11-07 14:46:28', '2015-11-07 17:32:03');
-INSERT INTO events VALUES (324, '2015-11-04', 'Klint The Drunk in The Gambia', 'All Stars Production', 'Paradise Suites Hotel', 'Elizabeth Sambou Efenaro', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Klint the drunk is a very talented and well known Nigerian Comedian and Actor. He will be performing in the Gambia and I believe its an event worth supporting', 1, '2015-11-07 15:05:42', '2015-11-07 15:05:42');
-INSERT INTO events VALUES (325, '2015-11-03', 'Farato Peace Festival', 'Karmic Angels', 'Farato Football Field', 'Bakary Touray', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Karmic Angels is an international Charity in the UK and The Gambia. The proposed concert organised by Karmic Angels in Farato is meant to raise funds to support community projects.', 1, '2015-11-07 16:37:19', '2015-11-07 16:37:19');
-INSERT INTO events VALUES (326, '2015-11-11', 'Brikama Nawettan League Final', 'Brikama Youths&Sports Committee', 'Brikama Mini Stadium ', 'Karamo Jarju Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Brikama Sports Committee are organizing a Nawettan League Final,which is held every year at Brikama Mini Stadium.We have been in partnership before.Its worth supporting.', 1, '2015-11-16 11:10:36', '2015-11-17 11:47:26');
-INSERT INTO events VALUES (327, '2015-11-12', 'Gamo Medina Baye Nyass-Senegal', 'United Association Of Muhammed Nasir Ebrahim Nyass', 'Medina Baye Nyass-Kaolack Senegal', 'Ousainou&Assan Nasir Ibrahim Nyass', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gamo Medina Baye Nyass is an annual Islamic event to celebrate the birthday of the prophet Muhammed(S.A.W)worldwide,particularly in Medina Baye Nyass-Kaolack Senegal.Its worth supporting.', 5, '2015-11-16 11:35:36', '2015-11-16 11:35:36');
-INSERT INTO events VALUES (330, '2015-11-11', 'Catholic Church Feast', 'Catholic Community Banjul ', 'Banjul ', 'Bruno Toupan', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Catholic Community of Banjul Catholic Church want to organized a Feast and harvest Festival.Its worth supporting.', 5, '2015-11-19 08:46:46', '2015-11-19 08:46:46');
-INSERT INTO events VALUES (333, '2015-11-11', 'Magal Touba', 'Federation of Diara Murite in The Gambia', 'Touba Senegal', 'Modou Kara Gaye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>', 'This is the second time we''ll be supporting this trip to senegal, its the largest gathering of muslims in Gambia and Senegal. I believe its worth supporting', 1, '2015-11-26 15:02:52', '2015-11-26 15:02:52');
-INSERT INTO events VALUES (334, '2015-11-11', 'Burr Westling Competition', 'Burr Wrestling Promotion', 'Wellingara Football Field', 'Omar Burr Touray', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a grand wrestling Competition comprising of 48 wrestlers from across the country. its worth supporting.', 1, '2015-11-26 15:36:02', '2015-11-26 15:36:02');
-INSERT INTO events VALUES (369, '2016-01-18', 'Manding Empire 3rd Year Anniversary 2016', 'Manding Morry&Fans', 'Alliance Francaise', 'Manding Morry', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Manding Morry,as an artist has big fan base, he is a good musician from Bakau. The event is expected to be successful.Its worth supporting', 1, '2016-01-26 13:28:18', '2016-01-26 13:28:18');
-INSERT INTO events VALUES (370, '2016-01-13', '3rd Edition Miss Fulbeh 2016', 'Teddoungal Promotion', 'Alliance Francaise', 'Abdoulie Korka Jallow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This will be the first time we will be working with Teddoungal Promotion. They approached us last year for the second edition of this event due to time we couldn''t sponsor. I think its a program worth sponsoring.', 2, '2016-01-26 13:41:05', '2016-01-26 13:41:05');
-INSERT INTO events VALUES (337, '2015-12-01', 'Santa Maria Christmas Dance', 'Santa Maria', 'Reform Club', 'Andre Manga', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is the second edition that will be sponsored by Africell. the previous edition was successful and I believe this year''s is worth supporting', 1, '2015-12-03 13:01:46', '2015-12-03 13:01:46');
-INSERT INTO events VALUES (338, '2015-12-01', 'Bro K''s Album Launching', 'Bro K', 'Brikama Jokor & Alliance Francaise', 'Sulayman Singhateh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Bro K is one of the best Afro Manding artist in the Gambia. He has released a lot of songs that are really popular and liked. He is releasing his album and I believe its worth supporting.', 1, '2015-12-03 13:10:24', '2015-12-03 13:10:24');
-INSERT INTO events VALUES (368, '2016-01-18', 'Sunu Musico 6th Year Anniversary 2016', 'T small suso-Katatoo Entertainment', 'Jakarlo Center Stage', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is Sunu Musico''s 6th year Anniversary. It has always been successful and Africell has always supported T-Smallz. This is an event worth Supporting.', 1, '2016-01-26 13:13:39', '2016-01-26 13:16:14');
-INSERT INTO events VALUES (340, '2015-12-01', 'University of The Gambia Student Week', 'University of The Gambia', 'Farafenni Campus', 'Fatou Njie', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The UTG has always been a partner with Africell, we always support their programs.This year they will be having their student week in Farafenni, they have written for support and I believe they should be supported', 1, '2015-12-03 14:12:35', '2015-12-03 14:12:35');
-INSERT INTO events VALUES (341, '2015-12-01', 'Blaque Magique 5.0', 'Blaque Magique', 'Kairaba Beach Hotel', 'Ronald Senghore', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This partnership has been successful over the past years. Africell has always supported Blaque Magique during their events and they have all been successful. this are having their annual dinner show dis year and I believe it is worth supporting', 1, '2015-12-03 14:18:18', '2015-12-03 14:18:18');
-INSERT INTO events VALUES (342, '2015-12-03', 'Nda-Mariam Jagne Charity Football Game', 'Nda-Mariam Jagne Family Foundation', 'SK East mini stadium ', 'Ndey Mariam Jagne', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Pa Modou Jagne is a Gambian professional footballer playing in Switzerland. His charity organisation was established by him and his wife with the aim of improving maternal health services for women in The Gambia. He has a charity match involving Gambian professionals and I believe it is worth supporting.', 1, '2015-12-03 15:34:13', '2015-12-03 15:34:13');
-INSERT INTO events VALUES (343, '2015-12-03', 'Don Entertainment Dancing Competition', 'Don Entertainment', 'Jokor Westfield', 'Kingsley Eze', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Don Entertainment organizes a dancing competition every year and the turnout is usually great. a lot of people follow it and I believe its worth supporting.', 1, '2015-12-03 15:47:03', '2015-12-03 15:47:03');
-INSERT INTO events VALUES (344, '2015-12-09', 'Launching of Sukuta Nema Nyodema Kafo', 'Sukuta Nema Kafo', 'Sukuta Birmida Bilingual School', 'Saffiatou Darboe', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This Sukuta Kafoo that consists of women from Sukuta and they are setting a credit union for all the women in sukuta and neighbouring villages. They have applied for our CUG and its been processed. I believe its worth supporting', 1, '2015-12-14 13:57:23', '2015-12-14 13:57:23');
-INSERT INTO events VALUES (345, '2015-12-09', 'ST Brikama Boyo New Years Show', 'ST', 'Brikama Jokor ', 'Dembo Jobarteh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'ST is a very big name in Brikama and he is hosting his Show on New Years eve and its expected to be packed because its the biggest show in brikama on that day. I believe its worth supporting', 1, '2015-12-14 15:43:50', '2015-12-14 15:43:50');
-INSERT INTO events VALUES (346, '2015-10-19', 'Epm Kids Christmas Party', 'Events Planning&Management(EPM)', 'Relax Sahel, Kololi', 'Sira Baldeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'EPM)Events Planning&Management want to organize kids christmas party.The aim is to bring kids together under one umbrella on christmas feast.Its worth supporting.', 1, '2015-12-21 14:14:28', '2015-12-21 14:14:28');
-INSERT INTO events VALUES (347, '2015-12-10', 'Simplest Yagana Movement Christmas Tour', 'Yagana Movement', 'Pirang,Sifoe,Gunjur,Faraba', 'DJ Simplest Of Afri radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. Its a show worth supporting', 1, '2015-12-21 15:46:15', '2015-12-21 15:46:15');
-INSERT INTO events VALUES (348, '2015-12-06', 'Davido Live In The Gambia', 'Absolute Entertainment', 'Independence Stadium Bakau', 'Ms Haddy Faye CEO Absolute Entertainment', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This will be the first time Davido will be performing in the Gambia, He is one best artist from Nigeria and is known world wide.Davido has a lot of following in the Gambia and I believe its an event worth supporting', 1, '2015-12-29 10:20:48', '2015-12-29 10:20:48');
-INSERT INTO events VALUES (349, '2015-12-07', 'TITI Gala Dinner&Dance', 'Champion Sounds', 'Paradise Suites Hotel', 'Dj Lamin Cham-Champion Sounds', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Lamin Cham of Champion Sounds will be organizing music show with famous senegalese star TITI, Gala Dinner&Dance.Titi has lots of fans in Gambia,its worth supporting.', 1, '2015-12-29 10:32:42', '2015-12-29 10:32:42');
-INSERT INTO events VALUES (350, '2015-12-17', 'St Anthony''s Choir Concert 2016', 'St Anthony''s Parish Kololi', 'Kairaba Beach Hotel', 'Mr Charles Gome/Mr Thibaut Sambou', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a youth workforce,young choir,parish.They want to organize this event to raise funds to buy materials/Instruments for their church.Its worth supporting.', 5, '2016-01-04 12:21:01', '2016-01-04 12:21:01');
-INSERT INTO events VALUES (351, '2015-12-04', '3rd Edition Reggae Kunda Music Festival', 'Mandingmorry Foundation for Performing Arts (MANFOPA)', 'Sk West Mini Stadium', 'Ibrahim Ceesay Executive Director Mandingmorry Foundation For Performing Arts', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Mandingmorry Foundation for Performing Arts (MANFOPA) will be oragnizing their 3rd Edition Reggae Kunda Music Festival.We have been in partnership with Ibrahim Ceesay Executive Director MANFOPA.Its worth supporting.', 1, '2016-01-04 13:18:34', '2016-01-04 13:18:34');
-INSERT INTO events VALUES (352, '2015-12-23', 'Gamo Serekunda', 'Santa Yalla Mosque Committee', 'Opposite Plaza Cinema Serekunda', 'Alhagie Malick Gaye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gamo is an annual Islamic event to celebrate the birthday of the prophet Muhammed(S.A.W)worldwide.Its worth supporting.', 5, '2016-01-05 12:06:05', '2016-01-05 12:06:05');
-INSERT INTO events VALUES (353, '2015-12-23', 'Pap Joof Fans&Humanity Starz', 'Pap Joof Fans Club', 'Brikama Jokor', 'Mbassey Manneh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a beauty pagent,Face of Brikama organized by Papa Diouf fans club in Brikama,They have very big fan base.We have been in patrnership before.They worth supporting.', 1, '2016-01-05 15:35:38', '2016-02-02 10:13:26');
-INSERT INTO events VALUES (354, '2015-10-15', 'Mc Mbye Album Launching''''Gambia Sikanam''''', 'Mc Mbye Artist', 'Alliance Francaise', 'Mc Mbye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Mc Mbye is launching is Brand New Album Launching name''''Vision Gambia Sikanam''.He has a big fans base in music industry and he is well known Gambian ''''Mbalax''''artist.Its Worth supporting.', 1, '2016-01-07 11:00:11', '2016-01-07 11:00:11');
-INSERT INTO events VALUES (355, '2015-11-26', 'MLC 10 Years Anniversary In Music', 'Mlc Emeloo&Fans', 'Bakau School Ground', 'Modou Lamin Ceesay', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'MLC as an artist has always worked with Africell, he is a hard musician from Bakau and he will be celebrating his 10 years in Music. He went with Africell up country during the Xtreme tour 2011. The event is expected to be successful.', 1, '2016-01-12 11:13:19', '2016-01-12 11:13:19');
-INSERT INTO events VALUES (356, '2015-12-23', 'Brixton Open Mic Jam-Fiila Crew Brikama', 'Fiila Crew Brikama', 'Brikama Mini Stadium ', 'Big Sam-Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have been in parthnership before with Fiila Crew Brikama and sponsored previous show fiila show which was successful.This is the 1st Edition Brixton Open Mic Jam I think its a program worth sponsoring.', 1, '2016-01-14 11:04:10', '2016-01-15 10:28:25');
-INSERT INTO events VALUES (357, '2015-11-23', 'Kanifing East Youths Blood Donation&Carnival', 'Kanifing East Youths&Sports Development Committee', 'KMC HALL', 'Mutarr Trinn Customer Care', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Kanifing East Youths&Sports Development Committee will be organizing a free Blood Donor day,and carnival support with estate communites.I think its worth supporting.', 1, '2016-01-14 11:11:15', '2016-01-27 17:34:31');
-INSERT INTO events VALUES (358, '2016-01-13', 'Tam 50 Album Launching', 'Ndonngol Entertainment Music Label as the General Manager', 'Jakarlo Center Stage', 'Ousainou Mboob.', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Tamsir Samba alias Tam 50 Silky is a well known and popular artist in The Gambia,and has a big fans base in the music industry. He can be supported for his Debut Album launching.', 1, '2016-01-15 08:25:25', '2016-01-15 08:25:25');
-INSERT INTO events VALUES (359, '2016-01-11', 'Dj Njags Junior Valentines EVE special musical jamboree', 'Njaggs junior in collaboration with solid vibes sound ', 'Fass Njagga Choi Hall', 'Njagga Sowe Staff Afri Media', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Dj Njaggs junior works for afri-radio and he is a very popular Djlove by community. its a show worth supporting.', 1, '2016-01-18 11:53:14', '2016-01-28 11:05:00');
-INSERT INTO events VALUES (361, '2016-01-15', 'Annual Conference Nema Nasir', 'United Association Of Sheikh Muhammed Nasir Ibrahim Nyass Association', 'Nema Nasir Near Mosque', 'Sheika Hassan&Ousainou Jobe Nyass', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'United Association Of Sheikh Muhammed Nasir Ibrahim Nyass Association will be organizing their 1st Annual Conference to be held at Nema Nasir.Its worth supporting.', 1, '2016-01-18 15:53:53', '2016-01-18 15:53:53');
-INSERT INTO events VALUES (362, '2016-01-19', 'Black Lynxs Monthly Open Mic Tabokoto', 'Black Lynx Entertainment', 'Opposite Elton', 'Waagan Fye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have partnered with Black Lynx on numberous occasions and they have successful event.Its Worth supporting.', 1, '2016-01-19 10:47:39', '2016-01-28 13:17:59');
-INSERT INTO events VALUES (363, '2015-12-31', 'Ablo Promotion Launching&Women Kafo', 'Ablo Promotion ', 'Kandiba School Ground', 'Alhagie Abdoulie Bojang', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Alhagie Abdoulie Bojang commonly know as will be Launching Ablo Promotion with New Jeshwang Women Kafo at jeshwang.I think it worth supporting.', 1, '2016-01-19 16:41:35', '2016-01-20 12:17:16');
-INSERT INTO events VALUES (364, '2016-01-13', 'Parish Diocese Commercial Dance', 'St Therese', 'Fr Farell Memorial Hall', 'Mrs Therese Nancy Carrous-President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'St Therese''s Parish Diocese Of Banjul are well known in the Gambia,especially in chrtistinity religion.This is the fisrt patrnership.It''s worth supporting.', 1, '2016-01-20 09:15:55', '2016-02-05 11:42:50');
-INSERT INTO events VALUES (365, '2016-01-07', 'E-Nyassi Free Show', 'E-Nyassi Artist&Fans', 'Palma Rima Beach', 'Abubacarr Tarawally-Manager', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'E-Nyassi is a well known and popular artist R N B NDAGA in The Gambia,and has a big fans base in the music industry. He can be supported and this is our first partnership.', 1, '2016-01-20 10:32:32', '2016-01-20 13:25:14');
-INSERT INTO events VALUES (366, '2016-01-13', 'Sanyang Festival 2016', 'Sanyang&Community', 'Sanyang', 'Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Sanyang&Community will be organizing Festival is a very big event and have been successful past years.This will be the first partneship.It worth supporting.', 1, '2016-01-21 15:33:48', '2016-01-21 15:33:48');
-INSERT INTO events VALUES (373, '2016-01-11', '4th Edition Food&Beverage Festival 2016', 'Gambia Tourist Board(GTB)', 'Green Mamba Gardens/Jakarlo Bar &Restaurant', 'Adama Njie/Director', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gambia Tourist Board(GTB) food&Beverage Festival is a very big event and have been successful past years.We have been in partneship before.It worth supporting.', 1, '2016-01-28 13:30:05', '2016-01-28 13:30:05');
-INSERT INTO events VALUES (374, '2016-01-21', 'YOMEF Valentines Day Celebration', 'Youth Moral Education Foundation International(YOMEF) ', 'Schools-GB&Upcountry', 'Augustine Onyinye Ugbana', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Youth Moral Education Foundation International(YOMEF) will be celebrating valentive day to true love and to correct its negative social misconception mostly propagated by media.Its worth supporting.', 1, '2016-01-28 15:29:53', '2016-02-01 12:08:54');
-INSERT INTO events VALUES (375, '2016-01-13', 'Royal Messenjah Debut Album 2016', 'Royal Messenjah Sargal Yaye Foundation', 'Alliance Francaise', 'Royal Messenjah Artist', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Royal Messenger Sargal Yaye Foundation is a well known Gambian artist,he wants to launch his Debut album.Its worth supporting.', 1, '2016-02-01 16:52:26', '2016-02-01 16:52:26');
-INSERT INTO events VALUES (378, '2016-01-28', 'Bike For Africa', 'Brussels Airline', 'Senegambia Beach', 'Kevin Constant', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Bike For Africa is organize by Brussels Airline.', 1, '2016-02-03 10:08:44', '2016-02-03 10:08:44');
-INSERT INTO events VALUES (377, '2016-01-28', 'School Sports Lang Tombong Tamba', 'Lang Tombong Tamba', 'Schools', 'Lang Tombong Tamba', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'In support of sports', 5, '2016-02-03 09:57:18', '2016-02-03 10:01:16');
-INSERT INTO events VALUES (379, '2016-01-29', 'Cancer walk 2016', 'First Lady Madam Zeinab Jammeh ', 'New National Assembly Building Banjul', 'Office of the First Lady', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'First Lady Madam Zeinab Jammeh is organizing a Cancer walk 2016 to raise awareness on cancer to general public.Its worth supporting.', 5, '2016-02-03 10:14:05', '2016-02-03 10:14:05');
-INSERT INTO events VALUES (380, '2016-01-27', 'Valentine Couples Connect Afrinity Production', 'Afrinity Production', 'Joint Offiers Mess', 'Adams Afrinity Production', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Afrinity Production are organizing a Valentine day celebration.Its worth supporting.', 1, '2016-02-04 15:03:01', '2016-02-04 15:03:01');
-INSERT INTO events VALUES (381, '2016-02-04', 'Jah Law Promotions Turbulence Concert', 'ah Law Promotions', 'Independence Stadium Bakau', 'Tina Jones CEO MBE Consulting Inc.', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Tina Jones CEO MBE Consulting Inc with a  organizing Black consciouseness tour with Turbulence jamican artist.Its worth supporting.', 1, '2016-02-04 15:59:26', '2016-02-04 16:02:31');
-INSERT INTO events VALUES (382, '2016-02-08', 'Gamo Kerr Cherno Baba Village', 'Kerr Cherno Baba Village', 'Kerr Cherno Baba Village', 'Oustass Imam  Abdoulie Drammeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This annual Gamoo is organize by the Kalifa Alhagie Bun Omar Jallow and the entire Tarihatul Tijaniya family it is an event that gather the Muslim ummar', 1, '2016-02-08 15:36:50', '2016-02-08 15:36:50');
-INSERT INTO events VALUES (383, '2016-02-09', 'OPES (GPA)Gala Dinner With Pap Diouf ', 'Gambia Ports Authority', 'Kairaba Beach Hotel', 'Ousman M.Jorbateh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gambia Ports Authority will be organizing music show with famous senegalese star Pap Diouf , Gala Dinner&Dance.Pap Diouf has a lots of fans in Gambia,its worth supporting.', 1, '2016-02-11 10:41:10', '2016-02-11 11:07:13');
-INSERT INTO events VALUES (384, '2016-02-17', 'Gamo Dairatul Fith-Yanou Sidihin ', 'Dairatul Fith-Yanou Sidihin ', 'Sinchu Alhagie', 'Kebba J.Marong Account', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This annual Gamoo is organize by Dairatul Fith-Yanou Sidihin the  entire Tarihatul Tijaniya family it is an event that gather the Muslim ummah.Its Worth supporting.', 5, '2016-02-17 15:39:50', '2016-02-17 15:39:50');
-INSERT INTO events VALUES (385, '2016-02-03', 'Vypa Skinny Boyfly)3rd Year Anniversary', 'Amadou Squad Vypa Fans ', 'Alliance Francaise', 'Amadou Secka-VYPA', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Amadou Secka A.K.A Vypa Skinny Boyfly)will be organizing 3rd Anniversary with fans.We have been in parthnership before its worth supporting.', 1, '2016-02-17 15:53:09', '2016-02-17 15:53:09');
-INSERT INTO events VALUES (386, '2016-02-11', 'Tunko Sanneh fund raising show with Jaliba Kuyateh', 'Tunko Sanneh', 'Semega Janneh Hall', 'Tunko Sanneh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Tunko Sanneh works for afri-radio and he is a very popular mandinka Dj Jamano Kachaa, Very Popular among the Manding community. its a show worth supporting.', 1, '2016-02-19 13:26:30', '2016-03-12 16:09:32');
-INSERT INTO events VALUES (387, '2016-02-25', 'National Prayer Day', 'Gambia Christian Council', 'Independence Stadium Bakau', 'John Charles Njie', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Gambian Christian Council, will be organising a national day of Prayer at the independence stadium. I believe its a good event to sponsor because it covers the entire christian community.', 1, '2016-02-29 14:14:17', '2016-02-29 14:14:17');
-INSERT INTO events VALUES (388, '2016-02-16', 'Farafenni Fiesta', 'Foresight Promotion', 'Farafenni Mini Stadium', 'Edi Jamanka', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This event is an annual event, this is the second year running. The first edition was a success.', 1, '2016-02-29 15:00:10', '2016-02-29 15:00:10');
-INSERT INTO events VALUES (389, '2016-02-25', 'Launching of Sae2yi', 'New Era', 'Alliance Francaise', 'Marcel Ceesay (Mass 187)', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'New era is a very popular group among the youth of the country. The launching of sae2yi is expected to bring together music loving youths to the event. I believe its worth supporting.', 1, '2016-02-29 16:51:24', '2016-02-29 18:59:24');
-INSERT INTO events VALUES (390, '2016-02-05', 'Tata Dingding Jobarteh Fund Raising Show', 'Voice of Gambian Talents', 'Sukuta Cinema Hall', 'Kumba Jallow', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Tatadingding is a household name when it comes to afro-manding songs in the Gambia. He has a strong following among the mandinka tribe. I believe its a show worth supporting', 1, '2016-02-29 17:54:08', '2016-02-29 19:00:22');
-INSERT INTO events VALUES (391, '2016-03-07', 'Annual Gamo&Siyareh of Nema Nasir 2016', 'Nema Nasir Islamic Development Association', 'Nema Nasir Near Mosque', 'Mr Mbye Drammeh President', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Annual Gamo and Siyareh 2016,of Nema Nasir is an Islamic event,it has biggest turnout in The Gambia about 15,000 fifteen thousand people come to attend the gamo,from countires like,Senegal,Mauritania,Ghana,Niger,Sirealeone and Nigeria.We have been in partnership before,for the past 3 three years.The fear is there are other network that want to partner with them and take the attention of the gamo.Its worth supporting.', 5, '2016-03-09 09:37:20', '2016-04-08 08:26:31');
-INSERT INTO events VALUES (392, '2016-03-10', 'World Consumer Rights Day 2016', 'GCCPC', 'Pipeline', 'Amadou Ceesay', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell', 'The Gambia Competition and Consumer Protection Commission are celebrating world consumer rights day.  They are focusing on the abuse of Antibiotics.  I believe its worth supporting', 1, '2016-03-14 13:16:33', '2016-03-14 13:16:33');
-INSERT INTO events VALUES (393, '2016-02-02', 'National Divine Mercy Celebrations', 'Catholic Diocese of Banjul ', 'Holy Family Church (Fajara)', 'Fr. John Mendy', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>', 'The Catholic Diocese of Banjul are celebrating the national divine mercy day.  This is an annual event and a day of prayer that has always been successful. I believe its worth supporting.', 1, '2016-03-14 13:36:31', '2016-03-14 13:36:31');
-INSERT INTO events VALUES (394, '2016-02-10', 'Banjul Paddle', 'BCC', 'Banjul', 'Lamin', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Easter Monday is usually celebrated big in Banjul. The turn out is usually great. I believe its worth supporting.', 1, '2016-03-14 13:54:24', '2016-03-14 13:54:24');
-INSERT INTO events VALUES (395, '2016-02-26', 'Dramatiized Passion ', 'Diocese of Banjul', 'St. Therese''s Lower Basic School', 'Fr. Peter Lopez', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is an annual event organised by the catholic community in the Gambia. The Turn out is usually great and well attended.', 1, '2016-03-14 14:04:58', '2016-03-14 14:04:58');
-INSERT INTO events VALUES (396, '2016-03-08', 'Old Jeswang Primary School Fund Raising', 'Wax Media', 'Old Jeswang Primary School', 'Pa Abdou Waggeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This is a great initiative put up by wax media to support Old Jeswang Lower Basic School. I believe its a worthy cause and its worth supporting.', 1, '2016-03-14 14:43:40', '2016-03-14 14:43:40');
-INSERT INTO events VALUES (397, '2016-02-11', 'Fund raising Show Jokere Endam ', 'Jokere Endam Fula Development Association', 'Galloya Village', 'Lamin Jallow PRO', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Jokere Endam Fula Development Association is a big fula association with three 3 villages,makumba ya,Galloya and Kunkujang Gattaya.Its worth supporting.', 1, '2016-03-15 10:35:27', '2016-03-15 10:37:46');
-INSERT INTO events VALUES (398, '2016-03-15', 'BIG Street Battle', 'Krystal Klear Entertainment', 'Banjul', 'Lati Forster', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Krystal Klear are organising a street to street dancing competition.  this event is bound to bring together from all over urban Gambia. The event is expected to be successful, I believe its worth supporting.', 1, '2016-03-16 17:48:52', '2016-03-16 17:48:52');
-INSERT INTO events VALUES (399, '2016-03-15', 'Easter Special', 'DJ Ken', 'Joint Officer''s Mess', 'DJ Ken', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'DJ Ken is a very popular Afro-Beats DJ on Afri-Radio.... He is organising an Easter show. I believe its worth supporting.', 1, '2016-03-21 13:33:37', '2016-03-21 13:33:37');
-INSERT INTO events VALUES (400, '2016-03-21', 'Roots Home Coming Festival', 'Ministry of Tourism', 'Nationwide ', 'Hon. Benjamin A. Roberts', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have always partnered with the organisers of The Roots International Festival.  This is a national festival and it gets a lot of coverage. I believe its worth supporting.', 1, '2016-03-21 14:34:31', '2016-03-21 14:34:31');
-INSERT INTO events VALUES (401, '2016-03-01', 'Stratford College Student Week', 'Stratford College of Management', 'Ndow''s Hall Kanifing Estate', 'Hagie Drammeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'The Straford College will be having a week long student week ending with a graduation ceremony on Saturday. I believe its worth supporting.', 1, '2016-03-23 15:45:44', '2016-03-23 15:45:44');
-INSERT INTO events VALUES (402, '2016-03-01', 'Man of the year concert', 'Jizzle & Artenola', 'Alliance Francaise', 'Jizzle', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Jizzle and Artenola are are two young talented artists.  They have a large following and are well loved by both young and old. I believe its worth supporting', 1, '2016-04-01 16:10:45', '2016-04-01 16:10:45');
-INSERT INTO events VALUES (403, '2016-04-01', 'Humanity Starz Album Launching', 'Humanity Starz', 'Kairaba Beach Hotel', 'Mbye Bittaye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Humanity Starz are one of the best bands in The Gambia. Africell have sponsored the recording of their album "After Taste".  They are about to launch the album and requested help.  I believe its worth supporting', 1, '2016-04-01 16:16:54', '2016-04-01 16:16:54');
-INSERT INTO events VALUES (404, '2016-03-23', 'Apachaki Free Show', 'Nyancho Kunda', 'Bakau', 'Amie Manneh Nyang', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Nyancho is one of the best Afro-Manding artists in The Gambia.  He is a very good entertainer and is well loved. I believe its worth supporting.', 1, '2016-04-01 16:22:57', '2016-04-01 16:22:57');
-INSERT INTO events VALUES (405, '2016-03-15', 'Wah Sa Halat Music Awards', 'World Vibe Entertainment', 'Djembe Hotel', 'Ya Sally Njie Colley', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Wah Sah Halat is one of the most successful Radio Shows in The Gambia.  Its a show that covers Gambian Music and entertainment.  They are coming up with a music Awards and I believe its worth supporting', 1, '2016-04-04 15:05:47', '2016-04-04 15:05:47');
-INSERT INTO events VALUES (406, '2016-03-15', 'Run For Malaria', 'YATES', 'SK Hospital', 'Papa Njie', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This run is organised by YATES and it''s for the fight against Malaria. I believe its for a worthy cause and its worth supporting', 1, '2016-04-04 15:26:30', '2016-04-04 15:26:30');
-INSERT INTO events VALUES (407, '2016-03-31', 'Mysterious Wedding Planner Movie Launch', 'Princess Promotion', 'Pencha mi Hall', 'Princess Shyngle', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Princess Shyngle is a famous Gambia Actress.  She is making waves Nigeria and Ghana. She is premiering her movie in The Gambia and I believe its going to be a success based on the followership on social media. I believe its worth supporting.', 1, '2016-04-12 11:33:33', '2016-04-12 11:33:33');
-INSERT INTO events VALUES (408, '2016-04-01', 'FAMOUS Concert', 'Keneke''s Promotion', 'Galaxy Entertainment Park', 'Keneke Komba', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Keneke from over the years has been the biggest promoter of Sierra Leonean Music in The Gambia.  He has promoted a lot of artists from sierra leone and brought them to The Gambia. In celebration of their independence, they are bringing in an artist from Sierra Leone to celebrate. I believe its worth supporting.', 1, '2016-04-12 11:50:01', '2016-04-12 11:50:01');
-INSERT INTO events VALUES (438, '2016-05-02', 'Magal Basse Korba Kunda', 'Serigne Ebrima Nyingne Nurulai', 'Basse', 'Modou Kara Gaye Afri radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Serigne Ebrima Nyingne Nurulai will be organizing an annual magal in Basse korba kunda with mourids community in Basse.Its worth supporting.', 5, '2016-05-13 12:39:17', '2016-05-13 12:39:17');
-INSERT INTO events VALUES (409, '2016-04-08', 'SANRA Fund Raising Gala & Dance', 'SANDRA', 'Paradise Suites Hotel', 'Bai Bittaye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have partnered with Staff Association of The National Roads Authority before and it has been a fruitful relationship.  They are putting together a fundraising show and have written to Africell for sponsorship. I believe their show is worth supporting.', 1, '2016-04-12 12:07:03', '2016-04-25 11:59:24');
-INSERT INTO events VALUES (410, '2016-03-29', 'A2''s Concert', 'A2 the Fulani King', 'Lamin Willys', 'Gibriel Janko', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'A2 is a very popular Dancellhall Artist and he is both loved by young and old. He sings in Fula and English. He was recently on Afri-radio during the easter promotion and had a lot of good reviews', 1, '2016-04-12 12:16:47', '2016-04-12 12:16:47');
-INSERT INTO events VALUES (411, '2016-03-21', 'Gamo Touba Njassan', 'Touba Njassan', 'Cassamance', 'Mammy Njie', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Mammy Njie works at afri-radio and every year they organise a Gamo in celebration of the birth of the prophet Muhammad SWT.', 1, '2016-04-12 12:20:17', '2016-04-12 12:20:17');
-INSERT INTO events VALUES (412, '2016-03-19', 'Hip Hop The Monthly Concert', 'Smart Move Entertainment', 'West Field', 'Sanna Kanteh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This group Have been doing this show for a while now and they always use africell billboards as a back drop. they have written to us for assistance and I believe its worth supporting.', 1, '2016-04-12 13:32:43', '2016-04-12 13:32:43');
-INSERT INTO events VALUES (413, '2016-04-18', 'National Children''s Day of Broadcasting', 'GRTS', 'GRTS', 'Fatou Sanneh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'This day was celebrated internationally in the past.  GRTS has decided to continue the celebrations nationally. On this day Children take over the airwaves. I believe its worth supporting.', 1, '2016-04-27 11:44:13', '2016-04-27 11:44:13');
-INSERT INTO events VALUES (414, '2016-04-12', 'East to West Coast Marathon Run', 'Peace Corps', 'Nationwide ', 'Paige', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'We have partnered with the peace corps on a lot of their community base events.  I believe this nationwide marathon in support of Youth empowerment and education is worth supporting', 1, '2016-04-29 10:16:16', '2016-04-29 10:16:16');
-INSERT INTO events VALUES (415, '2016-04-20', 'Jamba Sangsang Fan Base Launching', 'Baddibunka', 'Alliance Francaise', 'Annette A Camara', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Baddibunka is a household name in The Gambia Music Scene.  He is one of the best Afro-Manding Artist in the country.  He is launching his fan base and I believe its worth supporting.', 1, '2016-05-03 10:24:35', '2016-05-03 10:24:35');
-INSERT INTO events VALUES (416, '2016-04-27', 'May Day Sports 2016', 'National Sports Council', 'Independence Stadium Bakau', 'Musa Sise', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'May Day Sports is organized every year by National Sports Council.Different companies participate on this event.Turnout is good its worth supporting.', 1, '2016-05-04 10:34:23', '2016-05-04 10:34:23');
-INSERT INTO events VALUES (417, '2016-04-25', 'Yaws Creations African Print Party', 'Yaws Creations', 'The Palace Night Club Senegambia', 'Awa Conateh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Yaws Creations will be organizing African Print Party for the upcoming roots homecoming festival.We have been in partnership before.Its worth supporting.', 1, '2016-05-04 10:53:10', '2016-05-04 10:53:10');
-INSERT INTO events VALUES (418, '2016-04-21', 'Nasiru Promotions Wrestling Competition', 'Nasiru Promotions ', 'Sk West Mini Stadium', 'Ebrima Drammeh', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Nasiru Promotions will be organizing a Wrestling Competition with Gambian wrestlers,famous Amma Baldeh from senegal will attend the event as invited guest.We have been in partnership before.Its worth supporting.', 5, '2016-05-04 12:48:48', '2016-05-18 15:39:44');
-INSERT INTO events VALUES (419, '2016-04-21', 'MS-PROMOTION GSN-Music Awards 2016', 'MS-PROMOTION', 'Alliance Francaise', 'Muhammed Saho-Afri Radio Staff', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Muhammed Saho-Afri Radio Staff and CEO MS-PROMOTION will be organizing an Musical award show with sarahule artists in Gambia.We have been in partnership before.Its Worth supporting.', 1, '2016-05-04 12:56:36', '2016-05-04 12:56:36');
-INSERT INTO events VALUES (420, '2016-03-16', '7th FIILAVERSARY 2016', 'Black Lynx Management', 'Willy''s &Brikama Mini Stadium', 'Abdou K Waagan Faye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Fiila Tv Show has been a successful event for past years.We have been in partnership before.I believe it is worth supporting', 1, '2016-05-05 09:35:49', '2016-05-05 09:35:49');
-INSERT INTO events VALUES (422, '2016-04-26', 'Gunjur Cultural Festival 2016', 'Gunjur Community', 'Gunjur Village ', 'Buba Bojang', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials''<br/> Africell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gunjur Cultural Festival is an annual event and attracts lot of peoples in Gunjur and surrounding villages.Its is cultural,traditional,festival.Its worth supporting', 1, '2016-05-05 10:14:03', '2016-05-05 10:14:03');
-INSERT INTO events VALUES (423, '2016-04-18', 'Gunjur Cultural Festival 2016', 'Gunjur Community', 'Gunjur Village ', 'Buba Bojang Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gunjur Cultural Festival is an annual event and attracts lot peoples in Gunjur and surrounding villages.Its is cultural,traditional,festival.Its worth supporti', 1, '2016-05-05 10:18:09', '2016-05-18 10:04:58');
-INSERT INTO events VALUES (424, '2016-04-25', 'Anglican Diocese Of The Gambia Mothers Union', 'Anglican Diocese-Mothers Union', 'Ndows Hall Kanifing Estate', 'mrs mary o''riley', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Anglican Diocese Of The Gambia Mothers Union will be organizing a  gala dinner&dance to raise funds for mother''s union pre-school.Its worth supporting.', 1, '2016-05-06 09:41:27', '2016-05-06 09:41:27');
-INSERT INTO events VALUES (437, '2016-04-30', 'Brixton Carnival 2016', 'Mustic Promotion', 'Brikama Jokor', 'Sulayman Badjie', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Mustic Promotion will be organizing Brixton Carnival 2016.This is the 2nd Edition held in Brikama and is a highly populated town.They approached us last year,but we could not sponsor due to lot of engagement.I think it worth supporting.', 1, '2016-05-13 09:58:51', '2016-05-13 09:58:51');
-INSERT INTO events VALUES (426, '2016-05-03', 'Kerr Gi Family CLASSIC GESTU DAEMBA', 'Ker gi Family Artist', 'Alliance Francaise', 'Manager-Kerr Gi Family', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'These young family group formed by young talented Gambian musicians.We have been in parthnership before, its worth supporting.', 1, '2016-05-06 10:07:35', '2016-05-09 16:49:41');
-INSERT INTO events VALUES (427, '2016-04-18', 'Alkaline Concert In Gambia 2016', 'DJ FAAL', 'Independence Stadium Bakau', 'Gibril Faal', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gibril Faal is a well kwown DJ in the music industry in The Gambia and beyound.We have been in parthnership before, its worth supporting.', 1, '2016-05-06 10:51:54', '2016-05-06 11:34:26');
-INSERT INTO events VALUES (428, '2016-04-11', 'Bob Marley Reggae Roots Festival', 'Rave About Africa ', 'Sand Beach Holiday Resort Kotu', 'Velma Wright Moven', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Rave About Africa will be organizing a Bob Marley Reggae Roots Festival at Sand Beach Holiday Resort Kotu.', 1, '2016-05-06 11:59:00', '2016-05-06 11:59:00');
-INSERT INTO events VALUES (435, '2016-05-09', 'Brain Krackers 3RD Year Anniversary', 'Brain Krackers&Joluv Arts', 'Jakarlo Center Stage', 'Bai Babou', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Bai Babou AKA Brain Kracker is one of the most popular Young artist in The Gambia. He has a lot of following and is well loved. I believe it will be a successful event', 1, '2016-05-10 12:18:26', '2016-05-10 12:18:26');
-INSERT INTO events VALUES (430, '2016-05-03', 'St Peter''s Graduation Ceremony ', 'St Peter''s School', 'St Peter''s School Ground', 'Vice Principal-Mr Francis M.Gomez', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'St Peter''s School will be organizing a Graduation,speech and prize giving Ceremony.We have been in partnership before during school sim promotion.Its worth supporting', 1, '2016-05-10 11:38:52', '2016-05-10 11:38:52');
-INSERT INTO events VALUES (431, '2016-05-03', 'Tobacco Road Carnival ', 'Tobacco Road Youth&Community', 'Banjul ', 'Alhagie Sillah', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Tobacco Road Youth and community will be organizing a road Carnival in Banjul capital city,highly populated area.I think its worth supporting.', 1, '2016-05-10 11:45:22', '2016-05-10 11:45:22');
-INSERT INTO events VALUES (432, '2016-04-25', 'Mustik Concert 2016', 'Mustik Artist', 'Pipeline', 'Mustapha Loum', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Mustik Artist will be organizing a concert at pipeline.We have been in partnership before.I think its worth supporting.', 1, '2016-05-10 11:53:19', '2016-05-10 11:53:19');
-INSERT INTO events VALUES (442, '2016-05-26', 'MRCG Annual AGM', 'Medical Research Council (MRC)', 'MRC Complex Fajara', 'Abdoulie Cham-Chairperson ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Medical Research Council The Gambia (MRCG)will be organizing 10th edition annual general meeting(AGM).Its worth supporting.', 5, '2016-05-26 10:48:34', '2016-05-26 10:48:34');
-INSERT INTO events VALUES (434, '2016-05-06', 'FAWEGAM Gala Dinner', 'FAWEGAM', 'Djembe Beach Resort ', 'Mrs Yadicon Njie Eribo', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'FAWEGAM WEEK will be organizing a gala dinner to empower women and girls education in The Gambia.We have been in partnership before.Its Worth supporting.', 5, '2016-05-10 12:08:59', '2016-05-10 12:21:34');
-INSERT INTO events VALUES (436, '2016-04-26', 'Daddy Bostin Concert', 'Daddy Boston Entertainment', 'Latrikunda German Garage', 'Sulayman Jammeh A.K.A.Daddy Boston', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Daddy Boston is a Gambian artist well known in music industry.We have been in partnership before.Its Worth Supporting.', 1, '2016-05-10 12:25:49', '2016-05-10 12:25:49');
-INSERT INTO events VALUES (439, '2016-05-02', 'Magal Ahlul Hitma Darrai ', 'Magal Ahlul Hitma Darrai Serigne Omar', 'Ebo town', 'Modou Kara Gaye Afri radio', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ahlul Hitma Darrai Serigne Omar will be organizing an annual Magal wtih mourids community in Ebotown.Its worth supporting.', 5, '2016-05-13 12:43:28', '2016-05-13 12:43:28');
+INSERT INTO events VALUES (21, '2014-03-10', 'Easter Fiesta', 'Dream Team Entertainment', 'Joint Officers Mess', 'DJ Nurudeen', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'DJ Nurudeen is a famous Sierra Leonean DJ in The Gambia. He works at Afri-Radio, Him and his team are organising an Easter Fiesta on the day after Easter. I believe it is important to support the Sierra Leonean Community in the Gambia.', 5, '2014-04-01 16:52:13', '2014-04-01 16:52:13');
+INSERT INTO events VALUES (54, '2014-04-30', 'GRTS Fund Raising Gala Dinner', 'GRTS', 'Pencha Mi Hall ', 'Momodou Njie', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'GRTS is the only Television station based in the Gambia and its the national broadcaster, they are bringing in Titi, a renowned Senegalese musician. I believe its an event worth supporting.', 1, '2014-05-07 12:47:24', '2014-05-07 12:47:24');
+INSERT INTO events VALUES (53, '2014-04-29', 'Single Window Business Registery', 'WAX MEDIA', 'MDI Road', 'Ebou Waggeh CEO Wax media', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials''
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have been in patrnership before,and they are well recognise good company in media.They can be supported.', 5, '2014-05-06 11:41:56', '2014-05-07 11:48:29');
+INSERT INTO events VALUES (55, '2014-05-01', 'Jah Vinci', 'DJ Bobo Fayah & Fire House Crew', 'Independence Stadium', 'DJ Bobo Fayah', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'DJ Fire Man, Artical Slice and DJ Bobo Fayah are house-whole names in Gambia when it comes to reggea music and dancehall. they have organised a lot of successful shows in the Gambia. Jah Vinci is a very popular Jamaican artist and he has a huge fan base in The Gambia. I believe its a show worth Supporting.', 1, '2014-05-07 15:01:59', '2014-05-07 15:01:59');
+INSERT INTO events VALUES (24, '2014-02-21', 'Poetic X - Mix tape Album Launch', 'Poetic X', 'Alliance Francaise', 'Sanna Kanteh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have always supported Poetic X, they are one of Gambia''s best hip hop group. they will be launching their album on the 26th of April. the program is expected to be well attended.', 1, '2014-04-04 12:16:14', '2014-04-04 12:16:14');
+INSERT INTO events VALUES (25, '2014-03-25', 'Code White', 'Big Boyz Ent', 'Jokor Brikama & Sinatras Bakau', 'Singateh & G Faal', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Singateh and G Faal have always worked with Africell and they have been really been successful at what they do. they have two shows coming up in brikama and bakau and they are worth supporting.', 1, '2014-04-04 15:02:15', '2014-04-04 15:02:15');
+INSERT INTO events VALUES (26, '2014-03-06', 'Kapsin Wrestling Competition', 'Kapsin Promotions', 'Serrekunda west Mini Stadium', 'Muhammed Kabirr Mboob', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Muhammed Kabirr has been organising wrestling competitions for a long time now. his events have always been successful. I think its an event worth supporting.', 5, '2014-04-07 13:56:56', '2014-04-07 13:56:56');
+INSERT INTO events VALUES (27, '2014-04-01', 'Simplest Easter Tour', 'DJ Simplest', 'Balalarr, Albreda, Kunkujang & Tanji', 'Mighty Simplest', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting.', 1, '2014-04-07 14:34:45', '2014-04-07 14:34:45');
+INSERT INTO events VALUES (38, '2014-03-23', 'Wilson Wrestling Competition', 'Wilson Promotion', 'Brikama Mini Stadium', 'Wuyeh Ceesay', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a big event at a highly populated region,Brikama Mini Stadium.We can support it, although this is the first partnership.', 5, '2014-04-08 13:51:06', '2014-05-28 17:17:24');
+INSERT INTO events VALUES (40, '2014-04-07', 'Golden Jubilee 50th Anniversary Oussou Njie-SENOR', 'Super Eagles Band', 'Nationwide Banjul-Basse', 'Ismaila Oussou Njie-SENOR', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Super eagles are a well known Band both national and international. They are worth supporting and they have very big fan base in the gambia. Oussou Njie-Senor is a legend in the music industry.', 1, '2014-04-09 15:27:29', '2014-04-09 15:33:01');
+INSERT INTO events VALUES (41, '2014-04-03', '5th Anniversary Fiila Tv Show  ', 'Black Lynx', 'Jakarlo&Brikama Mini Stadium', 'Abdou KW Faye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Fiila Tv Show has been a successful event for past years.We have been in partnership before.I believe it is worth supporting.', 1, '2014-04-09 15:41:57', '2014-04-09 15:55:36');
+INSERT INTO events VALUES (42, '2014-04-01', 'International Roots Festival', 'Ministry of Tourism', 'Kanilai, Independence Stadium, etc', 'Hon. Fatou Mass Jobe', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is the eleventh edition of the international roots festival. the roots festival brings together africans in the diaspora who share the same common objective, origin and heritage. the festival always have a lot of media coverage and I believe its worth supporting', 1, '2014-04-14 12:50:40', '2014-04-14 12:50:40');
+INSERT INTO events VALUES (99, '2014-09-08', 'International Tourism Investment Forum 2014', 'Ministry of Tourism', 'Kairaba Beach Hotel', 'Ministry of Tourism', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell', 'This is expected to be a very successful forum.  partnering with the ministry of Tourism has always been successful.', 5, '2014-09-08 18:30:05', '2014-09-08 18:30:05');
+INSERT INTO events VALUES (43, '2014-04-07', 'Centenary Celebration', 'Cathderal of Banjul', 'Banjul', 'James FP Gomez', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Roman Catholic Mission (RCM)has contributed a lot in the edecation,service and health services sector in the Gambia,and are well known by community.They really need support.', 5, '2014-04-15 18:33:22', '2014-04-15 18:33:22');
+INSERT INTO events VALUES (75, '2014-05-26', 'Islamic Programme', 'Wa Keur Bethio Thioune-Touba Gambie', 'Seeda Club Opposite Africell', 'Jawring Ebrima Ndong', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This an Islamic program,organized by Sering salieu Mbacke Touba Gambie.It is a religious event and worth supporting.', 5, '2014-05-30 13:33:48', '2014-05-30 13:33:48');
+INSERT INTO events VALUES (62, '2014-05-08', 'World Blood Donor Day 2014', 'Ministry of Health and Social Welfare', 'Basse (Upper River Region)', 'Mariama Jammeh(Program Manager)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is an event celebrated world wide,to donate blood,and is been organized by Ministry of health.Its worth supporting.', 5, '2014-05-09 11:47:17', '2014-06-02 15:38:04');
+INSERT INTO events VALUES (46, '2014-03-27', 'Sarata Movie Premier & Screening', 'Manding Morry Entertainment (MANFOPA)', 'Pencha Mi Hall ,Paradise Suites Hotel', 'Ibrahim Ceesay Executive Director(MANFOPA)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a well known organization in the areas of music,movie production and participation in the performing arts.This will be the first partnership I belive they can be supported.', 4, '2014-04-16 14:16:50', '2014-04-17 12:02:26');
+INSERT INTO events VALUES (47, '2014-04-09', 'FAWEGAM Annual Gala Dinner&Dance', 'FAWEGAM', 'Paradise Suites Hotel', 'FAWEGAM', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have been in patrnership before,and they are well recognise good institutions, well know in spporting girls and young women in the education sector.They can be supported.', 1, '2014-04-17 16:08:12', '2014-04-17 16:08:12');
+INSERT INTO events VALUES (76, '2014-05-26', 'Rhythmic Vibrations', 'Blaque Magique Poets', 'Kairaba Beach Hotel', 'Ronald Senghore', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Africell has always partnered with the Blaque Magique Poets on their events. Their events have always been successful. I believe its an event worth Supporting.', 1, '2014-06-03 13:35:24', '2014-06-03 13:35:24');
+INSERT INTO events VALUES (49, '2014-04-15', 'Silky Criss', 'Silky Criss Managemnet', 'Willies at Lamin ', 'Mam Malen Njie(Manager)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Silky Criss is a well known and popular artist in The Gambia,and has a big fans base in the music industry. He can be supported and we have been in partnership before.', 1, '2014-04-22 14:16:06', '2014-05-06 16:00:52');
+INSERT INTO events VALUES (50, '2014-04-02', 'Jekke Promotion 1st Anniversary', 'DJ Oulaye Jaw,DJ Prince,Abou Bah,DJ Zecka &Amadou Sall', 'Alliance Francaise', 'DJ Prince (The President)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a cultural event to be showcase by different DJ''s that are well known in the music industry,especially on radio stations in Gambia.We can support them.', 1, '2014-04-22 14:31:48', '2014-04-22 14:31:48');
+INSERT INTO events VALUES (51, '2014-04-22', 'GCCI Award Dinner', 'GCCI', 'Kairaba Beach Hotel', 'GCCI', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+5 Minute video of Africell to be aired during the event
+High Table seat for one of Africell''s representative
+Venue to be branded by africell
+Full page advert to be given to Africell
+VIP tickets to be provided for Africell Staff', 'The GCCI Award night is a night dedicated to awarding and rewarding deserving companies.  The Award is usually attended by the President and top Government officials.', 5, '2014-04-25 15:53:57', '2014-04-30 13:13:30');
+INSERT INTO events VALUES (61, '2014-05-08', 'Modou Kara Gaye', 'Modou Kara Gaye Artist', 'Pencha mi Hall ', 'Modou Kara Gaye Artist', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Modou Kara Gaye Artist works for afri-radio and he is a very popular in ''''mbalax'''' music industry, its a show worth supporting.', 1, '2014-05-09 11:26:44', '2014-05-27 12:17:00');
+INSERT INTO events VALUES (60, '2014-03-27', 'Join Hands Together Mix tape Launching SANTA AK NGUM', 'Join Hands Together', 'Alliance Francaise', 'Join Hands Together', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Join Hands Together are upcoming artists in the Gambia.They are ready to launch thier mix tape at the alliance francaise. This show is expected to be very successful. I believe it is worth supporting', 1, '2014-05-08 17:05:31', '2014-05-08 17:52:56');
+INSERT INTO events VALUES (64, '2014-05-05', 'St.Lazarus Musical Concert', 'St.Lazarus Of Bethany Choral Group', 'Jama Hall Kairaba Beach Hotel', 'Neneh Gomez Jones(Vice President)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a youth workforce,including students.They want to organize this event to raise funds to buy materials/Instruments for their church.Its worth supporting.', 1, '2014-05-15 12:29:13', '2014-05-15 12:32:46');
+INSERT INTO events VALUES (67, '2014-04-21', 'Annual Miss,Master and Miming Competition', 'The Gambia Red Cross Society', 'Alliance Francasie', 'Modou Touray(Branch Officer KM)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The red cross society is well known in the gambia in the area of first aid and disaster management.This is the first time we partnering with them on this kind of event.', 2, '2014-05-15 13:22:06', '2014-05-15 13:22:06');
+INSERT INTO events VALUES (66, '2014-05-08', 'President''s 49th Birthday Anniversary', 'Kanifing Municipal Council (KMC)', 'West Mini Stadium', 'Lord Mayor Yankuba Colley-Kmc/Aprc National Mobilizer', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The President''s 49th Birthday is celebrated on May 25th every year.Its worth supporting.', 5, '2014-05-15 12:44:29', '2014-05-15 12:44:29');
+INSERT INTO events VALUES (69, '2014-05-12', 'Jarama Production President 49th Birthday Anniversary ', 'JARAMA PRODUCTION', 'Senegambia Beach Hotel', 'Ramatoulai Jallow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The President''s 49th Birthday is celebrated on May 25th every year.Its worth supporting.', 5, '2014-05-16 12:00:06', '2014-05-16 12:00:06');
+INSERT INTO events VALUES (88, '2014-08-04', 'Peace Corps-2014 Malaria Prevention Campaign', 'Peace Corps The Gambia', 'Bansang Youth Center-CRR', 'Daniella Choi/Jarri Jallow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Peace Corps The Gambia are well known in the gambia and this event will help communities in CRR and surrounding villages in upcountry to know how to prevent malaria and importance of using bed nets.Malaria is the most debilitating diseases affecting Gambians.', 5, '2014-08-05 17:29:59', '2014-08-05 17:29:59');
+INSERT INTO events VALUES (71, '2014-04-20', 'St Charles Lwanga Forthcoming Concert', 'Saint Charles Lwanga Senior Chior Fajikunda  Parish', 'Kairaba Beach Hotel', 'Jean Paul Ndure/ChiorMaster/President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Saint Charles Lwanga Senior Chior Fajikunda Parish are well known in the Gambia,especially in  chrtistinity religion.We have been in patrnership before,It''s worth supporting.', 5, '2014-05-27 13:45:37', '2014-05-27 13:45:37');
+INSERT INTO events VALUES (72, '2014-05-12', 'Launching of Beyond Events&Marketing ', 'Beyond Events&Marketing ', 'Relax Sahel', 'Jainaba Jallow MD', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Launching of Beyond Events&Marketing is a good iniatives and will benefit those service providers in the areas of sales and marketing,corporate,Etc.This is the first partnership.We can support this event.', 1, '2014-05-27 13:55:50', '2014-05-27 13:55:50');
+INSERT INTO events VALUES (73, '2014-05-14', 'Youth for Promise Glory Baptist TheCultural Show', 'Youth for Promise Glory Baptist ', 'Glory Baptist International School(Opposite GRTS,MDI Road)', 'Alice Senghore/Secretary', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Youth for Promise Glory Baptist event will showcase different talents in the area of arts and culture.This will be the first partnership.Its worth supporting.', 1, '2014-05-27 14:07:09', '2014-05-27 14:07:09');
+INSERT INTO events VALUES (74, '2014-05-12', 'Pape Diouf Fans CLub-Face Of Brikama', 'Pape Diouf Fans Club', 'Jokor Brikama', 'Mbasey Manneh/Secretary', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a beauty pagent,Face of Brikama organized by Papa Diouf fans club in Brikama,They have very big fan base.We have been in patrnership before.They worth supporting.', 2, '2014-05-28 12:26:42', '2014-05-28 12:33:21');
+INSERT INTO events VALUES (77, '2014-06-11', 'T-smallz Suso Major Event Celebrations', 'T-smallz Suso', 'Lamin Village', 'Ebrima Suso(T-smalls Suso)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2014-06-12 14:15:47', '2014-06-12 14:20:47');
+INSERT INTO events VALUES (78, '2014-06-04', 'NDEA World Drug Day', 'National Drug Enforcement Agency(NDEA)', 'West Coast Region', 'Demba Ceesay', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is an event commorated by National Drug Enforcement Agency NDEA in gambia.It is an International Day against Drug Abuse and illicit Drug trafficking,commonly known as WORLD DRUGS DAY.Its worth supporting.', 5, '2014-06-18 16:25:07', '2014-06-18 16:25:07');
+INSERT INTO events VALUES (79, '2014-06-10', 'Absolute Entertainment P''tit Bal and P''tit Galle 2014', 'Absolute Entertainment', 'Duplex', 'Ms Haddy Faye(CEO)Absolute Entertainment', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is an event that was held last year 2013 in senegal,and auditioning of Gambian contestants took place in the Gambia.Africell sponsored the auditioned and voting system for Awa Gambie last year contestant P''tit Galle 2013.Its worth supporting.', 1, '2014-06-19 16:07:14', '2014-06-19 16:17:13');
+INSERT INTO events VALUES (84, '2014-07-09', 'Daddy Boston-LAUNCHING OF 001 TV SHOW', 'Daddy Boston &Group', 'Joint Officers Mess-Kotu', 'Daddy Boston-Artist', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Daddy Boston is a Gambian artist well known in music industry.We have been in partnership before.Its Worth Supporting.', 1, '2014-07-21 15:28:27', '2014-07-21 15:36:59');
+INSERT INTO events VALUES (113, '2014-09-05', 'Og Log Music Concert', 'Manna Oz aka Og Log', 'Alliance Francaise', 'Secretary General, Manna Oz Fans Club', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'These young family group formed by young talented Gambian musicians.We have been in parthnership before, its worth supporting', 1, '2014-10-21 12:14:05', '2014-10-21 12:14:05');
+INSERT INTO events VALUES (114, '2014-10-14', '2nd Annual Cypher Street Rap Battle Competition ', 'Killa ACE Str8 from Jupiter Entertainment', 'Westfield Monument.', 'Killa ACE Afri radio ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Killa Ace is one of Gambia''s best Hip Hop artist
+He successfully launched his in 2013 and he have successfully organized Rap Battle last year sponsored by Africell.This year 2014 2nd Annual Cypher Street Rap Battle Competition its an event worth supporting.', 1, '2014-10-22 13:07:13', '2014-10-22 13:07:13');
+INSERT INTO events VALUES (83, '2014-07-12', 'Dr. Olugander-Welcome Back Home Show 2014', 'Ganders Production', 'Serekunda East Mini-Stadium', 'D.r Olugander & Ganders Production Management', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dr Olugander is a well known Reggae artist in the Gambia and beyond.We have been in partnership before.Its worth supporting.', 1, '2014-07-15 16:47:22', '2014-07-21 16:02:07');
+INSERT INTO events VALUES (85, '2014-07-21', 'Simplest Koriteh Tour', 'Yagana world sound', 'Soma&Bansang', 'Mighty simplest', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting', 1, '2014-07-23 11:35:39', '2014-07-23 11:35:39');
+INSERT INTO events VALUES (86, '2014-05-26', '1st Edition CCLK INTERNATIONAL CONFERENCE&CULRURAL ', 'CCLK COMMUNITY', 'Joint Officers Mess', 'Rev.Fr.Ndecky-Parist Priest&Peter Sait Mendy-Community Coordinator', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Christian community of latrikunda(CCLK)is a community based organization operating at latrikunda.They embarked on assisting poor students in funding their education,community works irrespective of ethnic or religion.They worth supporting.', 1, '2014-07-31 16:30:37', '2014-08-13 14:00:16');
+INSERT INTO events VALUES (87, '2014-07-31', 'Accord Prayer-Mega Musical Concert', 'Accord Prayer Tower Ministry', 'Ebujan Theatre', 'Joseph Laryea', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Accord Prayer Tower Ministry are encouraging youths in development and they seeking for support to make their mega concert a success.This is the first partnership.Its worth supporting.', 1, '2014-07-31 16:43:03', '2014-07-31 16:45:38');
+INSERT INTO events VALUES (89, '2014-08-05', 'Ajax Nawettan Season 2014', 'Ajax Football Club', 'Banjul', 'Momodou John-President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ajax football club is well known football team in Banjul.They were crown champions for FA Cup last year 2013.We have been in partnership before last year 2013 Nawettan Season.', 5, '2014-08-06 14:52:31', '2014-08-06 14:59:55');
+INSERT INTO events VALUES (90, '2014-07-25', 'Junction Bi-Show', 'Junction Bi Street', 'Junction B22 Garden', 'Ebrima Jahumpha', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Junction Bi,lemon tree entertainment want to organise a music show,and seeking assistance from Africell to make this event a success.This will be the first partnership.Its worth supporting.', 1, '2014-08-08 11:59:54', '2014-08-08 11:59:54');
+INSERT INTO events VALUES (91, '2014-08-04', 'MISS AIUWA 2014 BEAUTY PAGEANT 1st Edition', 'American International University Students Union', 'Paradise Suites Hotel', 'AIUWA Students Union', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a non-political and non religious organization aim at bringing all the students of the American International University Students Union under one umbrella.This will be 1st Edition beauty pageant 2014.This will be the first partnership.Its worth supporting.', 2, '2014-08-11 18:13:09', '2014-10-20 12:37:21');
+INSERT INTO events VALUES (92, '2014-08-08', 'GFF FA CUP FINAL FOOTBALL MATCH 2014', 'GFF', 'Independence Stadium Bakau', 'Bakary B.Baldeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Gambia Football federation FA Cup football final is held every year.Africell have been in supports of sports,and supporting this final football match will be a worthy cause.We have been in parthnership before.', 5, '2014-08-12 13:31:18', '2014-08-12 13:50:32');
+INSERT INTO events VALUES (93, '2014-08-03', 'Women''s Health Conference 2014', 'Mamasa Camara-Women health', 'Paradise Suites Hotel', 'Mamasa Camara-', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a women''s health conference with the intent to bridge diasporain gambains in collaboration with government with ministry of health.Its worth supporting.This will be the partnershinp.', 5, '2014-08-12 17:24:56', '2014-08-12 17:24:56');
+INSERT INTO events VALUES (98, '2014-08-22', 'Ebola Campaign', 'Ministry of Health & Social Welfare', 'Nation wide Campaign', 'Modou Njai', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Venues to be branded by africell', 'This is a national campaign in the fight against ebola. Ebola is a deadly virus that kills and spreads fast.  I believe its a cause worth supporting. #EbolafreeGambia', 5, '2014-09-01 11:49:43', '2014-09-01 11:49:43');
+INSERT INTO events VALUES (97, '2014-08-18', 'Brikama Super Cup Final Football Match 2014', 'Brikama Youths&Sports Committee', 'Brikama Mini Stadium ', 'Alahgie S. Darboe', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is an FA Cup football final to be held in Brikama.Africell have been in supports of sports,and supporting this final football match will be a worthy cause.This will be the first parthnership.', 5, '2014-08-19 16:36:12', '2014-08-19 16:39:00');
+INSERT INTO events VALUES (96, '2014-08-13', 'Expo Egy international Exibition', 'Expo Egy-Mohamed El-Mohamedy', 'Paradise Suites Hotel', 'Mohamed El-Mohamedy-General Manager', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This event will be an international exibition to encourage trade relations between arab and african countries.This will be the first partnership.Its a worthy cause.', 5, '2014-08-13 14:14:37', '2014-08-19 12:56:23');
+INSERT INTO events VALUES (100, '2014-09-04', 'Ker Gi Family Mix tape launching', 'Ker gi Family', 'alliance francaise', 'Manager-Ker gi Family', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'These young family group formed by young talented Gambian musicians.We have been in parthnership before, its worth supporting.', 1, '2014-09-23 17:47:41', '2014-09-24 14:40:04');
+INSERT INTO events VALUES (101, '2014-09-22', 'ST VS G Faal', 'ST and G Faal Gambian Artist', 'Willy''s Night Club', 'Manager Sticky Bee Promotions', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'These are young talented Gambian musicians.We have been in parthnership before, its worth supporting.', 1, '2014-09-23 18:07:55', '2014-09-23 18:07:55');
+INSERT INTO events VALUES (104, '2014-09-17', 'Magnificent Joe Music Show after Tobaski', 'Magnificent Joe-Holy Family Band', 'Joint Offiers Mess', 'Magnificent Joe', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'He is a Gambian artist well known in music industry.Its worth supporting and this will be the first partnership.', 1, '2014-09-24 14:45:22', '2014-09-24 14:45:22');
+INSERT INTO events VALUES (103, '2014-09-04', 'Nigerian 54th Independence Day Celebration', 'Nigerians In The Gambia', 'Joint Offiers Mess', 'Kingsley Eze', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Nigerian communities are well known in The Gambia,and its their 54th independence day celebration,Its worth supporting.', 1, '2014-09-24 14:33:11', '2014-09-24 14:35:50');
+INSERT INTO events VALUES (105, '2014-09-10', 'Silky Crissâ€™s Tobaski Tour', 'Silky Crissâ€™s& VolKanu Movement and Black Lynx ', 'Up Country', 'Realm Silky ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'These are Gambian artists well known in the music industry.We have been in parthnership before.Its worth supporting.', 1, '2014-09-30 17:26:33', '2014-09-30 17:32:10');
+INSERT INTO events VALUES (106, '2014-09-29', 'Mighty Simplest Tobaski Show', 'Yagana Movement', 'Tanji- Pirang', 'Mighty Simplest', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supportin', 1, '2014-09-30 18:18:21', '2014-10-07 12:19:11');
+INSERT INTO events VALUES (107, '2014-10-07', 'St. Kizito''s Parish Choral & Cultural Evening', 'St. Kizito''s Catholic Church', 'Pencha Mi Hall ', 'Peter Gomez', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is event that was sponsored before and it was very successful. the parish of st. kizito has a lot of parishioners and they always turn out in their numbers to support the church.  I believe it is an event worth supporting.', 1, '2014-10-13 12:49:18', '2014-10-13 12:49:18');
+INSERT INTO events VALUES (108, '2014-10-05', 'Dro Kylah-Music Concert', 'Dro Kylah Group', 'alliance francaise', 'Mr Girbril Baldeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a well known group in muscic industry in The Gambia.We have been in parthnership before,and we used their song ''''RABA RABA on Africell Fun ring.They worth supporting.', 1, '2014-10-15 16:57:41', '2014-10-15 16:57:41');
+INSERT INTO events VALUES (109, '2014-09-21', 'M.S promotion-Sora Man Sissoho Mali Bamako', 'm.s promotion', 'alliance francaise', 'Muhammed Saho-Afri Radio Staff', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Muhammed Saho works for afri-radio and he is a very popular in ''''sarahule'''' music industry, its a show worth supporting.', 1, '2014-10-15 17:04:26', '2014-10-15 17:06:25');
+INSERT INTO events VALUES (110, '2014-10-01', 'Miss Nawettaan Bakau 2014', 'STANFEST PROMOTION', 'Friendship Hostel', 'CEO Laming Marong', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This will be the first time we will be working with STANFEST promotions. They approached us last year for the first edition of this event due to time we couldn''t sponsor. I think its a program worth sponsoring in Bakau.', 2, '2014-10-15 17:11:29', '2014-10-15 17:11:29');
+INSERT INTO events VALUES (145, '2014-11-18', 'Dj Blazerâ€™s birthday bash Party warm up 2014', 'VERSATILE ENTERTAINMENT DJ BLAZER ', 'Duplex', 'DJ BLAZER of Afri Radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Blazer works for afri-radio and he is a very popular Dj.its a show worth supporting', 1, '2014-11-20 16:30:09', '2014-11-20 16:30:09');
+INSERT INTO events VALUES (111, '2014-10-16', 'Peace Corps-2014 HIV/AIDS Bike Trek Up Country', 'Peace Corps The Gambia', 'West Coast Region(WCR)', 'Christine Muraguri PCV Health-Bantunding', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Peace Corps The Gambia HIV/AIDS Bike Trek event have been a success in previous years.This year''s event will help students and schools in WCR,on skills and knowldege that they need in order for them to protect themselves and their love ones from HIV/AIDS. We have been in parthnership before it''s worth supporting.', 5, '2014-10-17 13:08:02', '2014-10-17 13:13:32');
+INSERT INTO events VALUES (112, '2014-10-10', 'Miss Nawettaan Serekunda 2014', 'Emids Promotions', 'alliance francaise', 'Lamin Emid Nyang', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have been in parthnership before with Emid''s promotions and sponsored his previous show which was successful.I think its a program worth sponsoring.', 2, '2014-10-17 14:32:04', '2014-10-17 14:32:04');
+INSERT INTO events VALUES (115, '2014-10-21', 'UN Day', 'UNDP', 'Afri Radio', 'Lamin Camara', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The UN day is celebrated world wide, UNDP have chosen to partner with africell to celebrate this day by having a quiz on afri-radio. I believe it''s worth supporting', 1, '2014-10-22 15:56:52', '2014-10-22 15:56:52');
+INSERT INTO events VALUES (116, '2014-10-17', 'Fashion Weekend Gambia', 'Lena Grey Johnson', 'Kairaba Beach Hotel', 'Lena Grey Johnson', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This will be the third time we will be partnering with the fashion weekend Gambia team.  it has always been a successful event and I believe its worth Supporting', 1, '2014-10-27 11:02:26', '2014-10-27 11:02:26');
+INSERT INTO events VALUES (117, '2014-10-17', '2nd Annual Cypher Street Rap Battle', 'Jupiter Entertainment', 'West Field', 'Killa Ace', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The first edition of this show was sponsored by Africell. it is a free show held in the streets and it always attracts a lot of people, I think its a show worth supporting.', 1, '2014-10-28 12:46:12', '2014-10-28 12:46:12');
+INSERT INTO events VALUES (118, '2014-10-28', 'Fiila Crew-2nd Edition Miss Fans Club Beauty Pageant 2014', 'Fiila Crew Brikama', 'Brikama Jokor Graden Club', 'Big Sam-Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have been in parthnership before with Fiila Crew Brikama and sponsored previous show fiila show which was successful.I think its a program worth sponsoring.', 2, '2014-10-29 12:53:12', '2014-10-29 12:55:31');
+INSERT INTO events VALUES (119, '2014-10-28', 'Brikama Keep Fit Gym-Weight Lifting Competition', 'Keep Fit Gym Center', 'Brikama Jokor Graden Club', 'Big Sam-Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a big event,wight lifting at a highly populated region,Brikama.We can support it, although this is the first partnership.', 5, '2014-10-29 13:01:59', '2014-10-29 13:01:59');
+INSERT INTO events VALUES (120, '2014-10-30', 'T-Smallz Welcome Back Party', 'T small suso-Katatoo', 'Club 22', 'T small suso', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2014-10-30 16:17:59', '2014-10-30 16:17:59');
+INSERT INTO events VALUES (123, '2014-06-02', 'ARTENOLAâ€™S ALBUM LAUNCHING', 'Suwaibou Bondi-Artist', 'Alliance Francaise', 'Bakary Jatta&Suwaibou Bondi Artenola', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Suwaibou Bondi Artenola is one of Gambia''s best Hip Hop artist in The Gambia.He successfully gained popularity on song â€˜â€™ Mbe nyo Konoâ€™â€™.This will be first parthnership.Its an event worth supporting.', 1, '2014-10-31 13:24:06', '2014-10-31 13:24:06');
+INSERT INTO events VALUES (144, '2014-11-06', 'Emerson''s Concert', 'Keneke''s Promotion', 'Jaama Hall', 'Keneke', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Emerson is an international artist from Sierra Leone. He has been to the Gambia on a number of occasions and Africell has always sponsored his shows. he has a large following in The Gambia and I believe its a show worth supporting', 1, '2014-11-19 13:19:49', '2014-11-19 13:19:49');
+INSERT INTO events VALUES (124, '2014-11-04', 'PUBUKA Fund Raising Program', 'PUKUKA BUGANATAK IN THE GAMBIA', 'Brikama Jokor Graden Club', 'Mr Sang Mendy-President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a fund raising concert for PUKUKA BUGANATAK IN THE GAMBIA.Its worth supporting.', 1, '2014-11-04 13:20:27', '2014-11-04 13:20:27');
+INSERT INTO events VALUES (125, '2014-11-05', '2nd Annual Cypher Street Rap Battle Competition', 'Killa ACE Str8 from Jupiter Entertainment', 'Westfield Monument.', 'Killa ACE Afri radio ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Killa Ace is one of Gambia''s best Hip Hop artist He successfully launched his in 2013 and he have successfully organized Rap Battle last year sponsored by Africell.This year 2014 2nd Annual Cypher Street Rap Battle Competition its an event worth supporting.', 1, '2014-11-05 13:34:11', '2014-11-05 13:34:11');
+INSERT INTO events VALUES (146, '2014-10-29', '7th Annual Open Mic Festival-The Gambia', 'Black Lynx Entertainment', 'Independence Stadium Bakau', 'Abdou Karim Waagan Fye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have partnered with Black Lynx on numberous occasions and they have successful event.Its Worth supporting.', 1, '2014-11-21 11:09:53', '2014-11-21 11:09:53');
+INSERT INTO events VALUES (148, '2014-12-01', 'Ebujan Theatre 3rd Anniversary Celebration 2014', 'Ebujan Performing Arts Association ', 'Ebujan Theatre Opposite GFF House-Kanifing', 'Janet Badjan -Young', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ebujan Theatre 3rd Anniverssary is a fundraising gala dinner,mainly to help peoples especially with performing arts skills.Its worth supporing.', 5, '2014-12-02 11:42:27', '2014-12-02 16:39:46');
+INSERT INTO events VALUES (149, '2014-11-27', 'Gamo Medina Baye Nyass', 'United Association Of Muhammed Nasir Ebrahim Nyass', 'Medina Baye Nyass-Kaolack Senegal', 'Al Hassan Cham -President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gamo Medina Baye Nyass is an annual Islamic event to celebrate the birthday of the prophet Muhammed(S.A.W)worldwide,particularly in Medina Baye Nyass-Kaolack Senegal.Its worth supporting.', 5, '2014-12-02 12:04:29', '2014-12-02 12:04:29');
+INSERT INTO events VALUES (150, '2014-11-20', 'Santa Maria Vous Christmas Eve Grand Dance', 'Santa Maria Vous ', 'Reform Club', 'Andre Manga', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Santa Maria Vous Christmas Eve Grand Dance has been a successful evnt.We have been in partnership before,Its worth supporting.', 1, '2014-12-02 12:42:02', '2014-12-02 12:42:02');
+INSERT INTO events VALUES (151, '2014-11-27', 'The Gambia Catholic Annual Pilgrimage Kunkujang Mariama 2014', 'The Gambia Catholic Shrine Committee', 'Kunkujang Mariama', 'Pierre L.M Sarr Chairman Gambia Catholic Shirne Committee', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is christian/Catholic religious Annual Pilgrimage to be held in Kunkujang Mariama.Its worth supporting.', 5, '2014-12-02 12:52:52', '2014-12-02 12:54:34');
+INSERT INTO events VALUES (152, '2014-11-28', 'Music Show With Born Africans Artist', 'Yagana Movement', 'Willy''s Night Club', 'Mighty Simplest', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supportin', 1, '2014-12-02 13:18:16', '2014-12-02 13:18:16');
+INSERT INTO events VALUES (169, '2014-12-16', 'Ebilleh Hunting Society 4th Year Anniverssary', 'Ebilleh Hunting Society', 'Old Jeshwang', 'Chidi Atuegwu', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ebilleh Hunting Society is a group of youngsters that celebrate christmas every year.Its worth supporting.', 5, '2014-12-16 09:49:34', '2014-12-16 09:49:34');
+INSERT INTO events VALUES (164, '2014-12-02', 'Dj Blazerâ€™s birthday bash Party 2014', 'VERSATILE ENTERTAINMENT DJ BLAZER ', 'Crystal Club', 'DJ BLAZER of Afri Radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Blazer works for afri-radio and he is a very popular Dj.its a show worth supporting', 1, '2014-12-02 16:54:28', '2014-12-02 16:54:28');
+INSERT INTO events VALUES (165, '2014-11-05', 'M&B Promotions-Wrestling', 'M&B Wrestling Promotions', 'Independence Stadium Bakau', 'Mr Matarr Sosseh Promoter', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a big time wrestling promoter in Greater Banul. This will be the first time we will be working with him. I believe its an event worth sponsoring.', 5, '2014-12-04 10:53:44', '2014-12-08 10:09:00');
+INSERT INTO events VALUES (166, '2014-11-28', 'Michelle Jarra Post-Book Launch Party ', 'Michelle Jarra', 'Relax Sahel, Kololi', 'Michelle Jarra Secretary Organizing Committee', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a week-long celebration of the life and times of a renowned Gambian politician, priest, educationist, sportsman, father and grand-father, the Very Reverend J. C. Faye, who passed on almost three decades ago.Its Worth Supporting.', 5, '2014-12-04 11:11:37', '2014-12-04 11:13:58');
+INSERT INTO events VALUES (167, '2014-10-06', 'EFSTH-Pape Dioup Gala&Dance', 'EFSTH Management&Staff-Government', 'Paradise Suites Hotel', 'Mr Momodou Lamin Jammeh Public Relations Officer', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'THE (EFSTH)Edward Francis Small Teaching Hospital grand fundraising gala and dance aim is to support the activities of hospital in improving patient care and hospital management.Its worth supporting.', 1, '2014-12-09 15:04:46', '2015-01-05 16:00:01');
+INSERT INTO events VALUES (168, '2014-12-03', 'Manding Morry Album Launching''''DOKUWOLOM''''', 'Manding Empire&Joluv Arts Entertainment ', 'Jama Hall Kairaba Beach Hotel', 'Soulayman Sowe-Joluv Arts', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Manding Morry,as an artist has big fan base, he is a good musician from Bakau. The event is expected to be successful.Its worth supporting.', 1, '2014-12-10 16:36:35', '2014-12-10 16:36:35');
+INSERT INTO events VALUES (159, '2014-11-26', 'Sen P''tit Galle', 'Absolute Entertainment', 'Independence Stadium ', 'Haddy Faye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is the second edition of Sen Petit Galle in the Gambia, the first was very successful and the turn out was splendid. This event will be covered by international media. I believe its a show worth supporting.', 1, '2014-12-02 13:23:01', '2014-12-02 13:23:01');
+INSERT INTO events VALUES (160, '2014-11-20', 'Wally Balago Seck', 'Mame-Diarra Production', 'Pencha mi Hall & Brikama Box Bar', 'Pa Sallah Bah', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is the Second edition of this show, Wally Seck was in Gambia last year and all his concerts were packed. Africell was a proud sponsor last year and I believe we should support this year again.', 1, '2014-12-02 14:49:32', '2014-12-02 14:49:32');
+INSERT INTO events VALUES (161, '2014-11-26', 'Blaque Magique', 'Smart Sync', 'Kairaba Beach Hotel', 'Ronald Senghore', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is the 4th Edition of Blaque Maqique, Its an event that always have/had a sold out crowd. We have supported this event over the years and I believe its worth supporting once more', 1, '2014-12-02 15:28:47', '2014-12-02 15:28:47');
+INSERT INTO events VALUES (171, '2014-12-08', 'Brikama Area Council-Tax Sensitization Song', 'Brikama Area Council ', 'Brikama Box Bar Mini Stadium ', 'Mr Yusupha FM Manneh(Chief Executive Officer)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is an official launching of new song by Jaliba Kyateh&Kumareh Band,organize by Brikama Area Council to sensitize general public on timely and regular payment of tax.Its an event worth supporting.', 1, '2014-12-16 16:55:38', '2014-12-16 16:55:38');
+INSERT INTO events VALUES (172, '2014-12-11', 'Ghetto Production (GP)Carnival-Dj Busy Yanx', 'Ghetto Production (GP)', 'Mosque Road And Perseverance St  Junction Banjul ', 'Dj Busy Yanx', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Its christmas december carnival period and Dj Busy Yanx Has a big fan base the Gambia.Its worth supporting.', 1, '2014-12-19 12:07:43', '2014-12-19 12:07:43');
+INSERT INTO events VALUES (173, '2014-12-16', 'Dj Kanu-Xmas Bruck Out Party', 'Dj Kanu Volkanu Movement', 'Club 22-Senegambia', 'Lamin DJ Kanu Camara-Afri Radio 107.6', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Kanu works for afri-radio and he is a very popular Dj.its a show worth supporting.', 1, '2014-12-22 11:55:33', '2014-12-22 11:55:33');
+INSERT INTO events VALUES (174, '2014-12-04', 'Nasir Promotions Wrestling Competition', 'Nasir Promotions ', 'Serekunda West Mini Stadium', 'Momodou Jah-Vice President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Nasir Promotion has been organising wrestling competitions for a long time now. His events have always been successful. I think its an event worth supporting.', 5, '2015-01-05 12:06:11', '2015-01-05 12:10:11');
+INSERT INTO events VALUES (293, '2015-09-07', 'International Week Of The Deaf 2015', 'Gambia Association Of The Deaf and Hard Of Hearing', 'School For The Deaf Hall Kanifing', 'Dodou Loum Executive Director GADHOH', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gambia Association Of The Deaf and Hard Of Hearing will be organizing an Ineternational Week Of The Deaf 2015.The 3 days event celerations is held annually by Deaf communities to advocate effectively for human rights of the deaf people.Its worth supporting.', 5, '2015-09-17 16:30:12', '2015-09-29 12:56:50');
+INSERT INTO events VALUES (176, '2014-12-22', 'Carnival Road Festival-Daddy Bostin', 'Daddy Bostin', 'Pipeline-Elton Junction', 'M.Touray', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Daddy Bostin is a Gambian Artist well known in music industry.We have been in partnership before on Africell promotions GRTS Tv.Its worth Supporting.', 1, '2015-01-08 10:41:56', '2015-01-08 10:41:56');
+INSERT INTO events VALUES (371, '2016-01-20', 'Fatou Movie Premier', 'Hopeful Youths Advocacy Foundation', 'Ebujan Theatre Opposite GFF House-Kanifing', 'Manager-Hopeful Youths Advocacy Foundation', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Hopeful Youths Advocacy Foundation will be oraganizing a movie premier''''Fatou''''.This will be our first partnership.I think its worth supporting.', 1, '2016-01-27 12:56:47', '2016-01-27 12:56:47');
+INSERT INTO events VALUES (332, '2015-11-02', 'Fashion Weekend Gambia 2015', 'Lena Grey-Johnson', 'Ocean Bay Hotel', 'Lena Grey-Johnson', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This will be the fourth time we will be partnering with the fashion weekend Gambia team.  it has always been a successful event and I believe its worth Supporting', 1, '2015-11-24 11:50:56', '2015-11-24 11:50:56');
+INSERT INTO events VALUES (298, '2015-10-06', 'Kerr Gi Family Debut EP Launching', 'Kerr Gi Family Group', 'Alliance Francaise', 'Manager-Ker gi Family', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'These are young family group formed by young talented Gambian musicians.They recorded and published many promotional track singles namely â€˜â€™Bai-malamine Daraâ€™â€™, â€˜Music ,teranga ,and many more which gives them popularity and recognition. We have been in parthnership before, its worth supporting.', 1, '2015-10-06 15:52:53', '2015-10-06 15:52:53');
+INSERT INTO events VALUES (290, '2015-08-15', 'Royal Messenjah''''SARGAL YAYE TOUR''''2015', 'Royal Messenjah Sargal Yaye Foundation', 'Up Country', 'Royal Messenjah Artist', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Royal Messenger Sargal Yaye Foundation is a well known Gambian artist,he wants to embark on a tour to up country to promote his album ''''Mama.Its worth supporting.', 1, '2015-09-10 15:19:24', '2015-09-10 15:19:24');
+INSERT INTO events VALUES (179, '2014-09-04', 'GTB-Food&Beverage Festival 2015', 'Gambia Tourist Board(GTB)', 'Green Mamba Gardens/Jakarlo Bar &Restaurant', 'Benjamin A.Roberts-Director General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gambia Tourist Board(GTB) food&Beverage Festival is a very big event and have been successful past years.We have been in partneship before.It worth supporting.', 1, '2015-01-13 13:31:50', '2015-01-13 13:34:45');
+INSERT INTO events VALUES (180, '2015-01-03', 'T-Smallz Al Bullo Tour Show-Busumballa', 'T small suso-Katatoo Entertainment', 'Busumballa', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-01-13 13:45:31', '2015-01-22 10:05:28');
+INSERT INTO events VALUES (185, '2015-01-12', 'Manding Empire 2nd Year Anniversary 2015', 'Manding Empire&Joluv Arts Entertainment ', 'Alliance Francaise', 'Muhammed L.Baldeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Manding Morry,as an artist has big fan base, he is a good musician from Bakau. The event is expected to be successful.Its worth supporting', 1, '2015-01-14 14:32:25', '2015-01-14 14:32:25');
+INSERT INTO events VALUES (184, '2015-01-03', 'T-Smallz Al Bullo Tour Show', 'T small suso-Katatoo Entertainment', 'Willy''s Night Club', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known Gambain artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-01-14 12:36:22', '2015-01-23 11:50:36');
+INSERT INTO events VALUES (281, '2015-08-10', 'Interior Female Football Team ', 'Interior Female Football', 'Banjul ', 'B.Ceesay(ASP)Officer Commanding(Sports)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Interior Female Football Team are organizing a camping with female team of Bissau before international game.Its worth supporting.', 5, '2015-08-21 13:19:56', '2015-08-21 13:19:56');
+INSERT INTO events VALUES (186, '2015-01-06', 'Final&Semi Finals The Annual Cypher Street Rap Battle 2015', 'Killa ACE Str8 from Jupiter Entertainment', 'Independence Stadium Hand Ball Cort Bakau', 'Killa ACE Afri radio ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The first edition of this show was sponsored by Africell.Now is the Semi&Finals Edition,it is a free show held in the streets and it always attracts a lot of people, I think its a show worth supporting.', 1, '2015-01-26 15:28:30', '2015-01-26 15:28:30');
+INSERT INTO events VALUES (187, '2015-01-26', 'Blaque Magique''s Special Independence''Word Of Mouth''', 'Blaque Magique', 'University Of The Gambia(MDI)', 'Louise Amina Drammeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Blaque Maqique is an event that always have/had a sold out crowd. We have supported this event over the years and I believe its worth supporting once more.', 5, '2015-01-26 16:46:54', '2015-01-26 16:46:54');
+INSERT INTO events VALUES (188, '2015-01-26', 'T-Smallz Album Launch ft I-Octane', 'T -Smallaz Ebrima Suso-Katatoo Entertainment', 'Independence Stadium Bakau', 'T -Smallaz Ebrima Suso', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known Gambain artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-01-27 13:34:35', '2015-01-27 15:47:56');
+INSERT INTO events VALUES (189, '2015-01-26', 'Joluv Arts Anniversary&50th Independence Celebration', 'Joluv Arts Entertainment', 'Pencha Mi Hall-Paradise Suites Hotel', 'Soulayman Sowe-Joluv Arts', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Joluv Arts Entertainment is a music production,promotion and a well known label in the Gambia.We have been in partnership before.Its Worth supporting.', 1, '2015-01-27 13:45:52', '2015-01-27 13:45:52');
+INSERT INTO events VALUES (305, '2015-10-12', '8th Annual Open Mic Festival-The Gambia', 'Black Lynx Entertainment', 'Independence Stadium Bakau', 'Abdou Karim Fye(Waagan)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have partnered with Black Lynx on numberous occasions and they have successful event.Its Worth supporting.', 1, '2015-10-15 12:56:09', '2015-10-15 12:56:09');
+INSERT INTO events VALUES (253, '2015-04-20', 'Civil Aviation Authority Fund raising Gala', 'Civil Aviation Authority', 'Relax Sahel, Kololi', 'Ebrima Bojang Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Civil Aviation Authority staff association(CAASA)are organizing fund raising gala dinner with the theme''''Our Food,Our Health''''.Funds raise will be donated to Bansang Hospital.Its worth supporting.', 1, '2015-05-11 10:08:24', '2015-05-11 10:08:24');
+INSERT INTO events VALUES (192, '2015-01-21', 'Coconut residence Valentine Love Nest', 'Coconut residence Hotel', 'Coconut residence-Senegambia', 'Brenda Ubani-Uzoechi-Director of Operations', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Coconut residence hotel is wel known hotel in the Gambia.This event is organized on valentive day.Its worth supporting.', 5, '2015-02-03 16:33:06', '2015-02-03 16:33:06');
+INSERT INTO events VALUES (193, '2015-02-02', 'Wizkid Live Concert', 'Absolute Entertainment', 'Independence Stadium Bakau', 'Haddy Faye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This will be the first time Wizkid will be performing in the Gambia, He is one best artist from Nigeria and is known world wide. Wizkid has a lot of following in the Gambia and I believe its an event worth supporting', 1, '2015-02-03 17:36:27', '2015-02-03 17:36:27');
+INSERT INTO events VALUES (195, '2015-01-24', 'The Block -Annual Independence Music Festival The Gambia', 'The Block Entertainment', 'Serekunda West Mini Stadium', 'The Block Entertainment Music Group', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Block Entertainment Music Group are well known in music industry in The Gambia.They are organizing this event to celebrate Gambia''s 50th Independence Anniversary.Its worth supporting.', 1, '2015-02-04 10:57:18', '2015-02-04 15:42:23');
+INSERT INTO events VALUES (196, '2015-01-03', 'T-Smallz Al Bullo Tour Show-Brufut', 'T small suso-Katatoo Entertainment', 'Brufut', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ebrima Suso(T-smalls Suso)is a well known Gambain artist in the Gambia especially in the music industry,He have organized very successful events before in the Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-02-04 11:32:35', '2015-02-04 11:33:44');
+INSERT INTO events VALUES (197, '2015-01-29', 'TBS&Wally Seck Fans Club Fund Raising Show', 'Thione Ballago Seck&Wally Seck Fans Club', 'Alliance Francaise', 'Oumie Mbye-President Fans Club', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This organization have been supporting youths and development and its has been in existing for (7)seven years and they have oragnized successful show before.Its worth supporting.', 1, '2015-02-09 17:07:45', '2015-02-09 17:14:05');
+INSERT INTO events VALUES (286, '2015-08-24', 'Simplest Yagana Movement Tour', 'Yagana Movement', 'Pirang,Farafenni', 'Dj Simplest Afri Radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting', 1, '2015-09-09 16:16:20', '2015-09-09 16:16:20');
+INSERT INTO events VALUES (199, '2015-02-05', 'Yusupha Ngum-Joloffman Album LAUNCHING GOLDEN JUBILEE ', 'Yusupha Ngum-Joloffman ', 'Galaxy Entertainment', 'Yusupha Ngum-Joloffman ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Yusupha Ngum a.k.a Joloffman, son of Senegambiaâ€™s most renounced musical icon Bala Musa Affia Ngum â€œthe only renounce Senegambia musical icon.We have not been in partnership before,Its worth supporting.', 1, '2015-02-10 16:35:43', '2015-02-10 16:35:43');
+INSERT INTO events VALUES (200, '2015-02-10', 'Masta Lion Promotion Concert(Peetah&Gramps Morgan)', 'Masta Lion Promotion ', 'Brikama Mini Stadium &Sk West Mini Stadium', 'Lamin Touray CEO Masta Lion Promotion ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Masta Lion Promotion is a charity organization in Gambia and finland.They are partnering with The morgan gheritage family to make this event a success in independence celebration.Its worth supporting.', 1, '2015-02-10 17:06:06', '2015-02-10 17:06:06');
+INSERT INTO events VALUES (285, '2015-08-06', 'Gambia Methodist Academy 20 Years Anniversary', 'Gambia Methodist Academy School', 'Campus Bakau', 'Hannah Harding-Principal', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gambia Methodist Academy will be celebrating their 20 Years of excellent quality education in The Gambia,at both the Upper Basic and Senior Secondary School levels.I think its worth supporting.', 5, '2015-09-01 11:30:05', '2015-09-29 08:14:50');
+INSERT INTO events VALUES (203, '2015-02-10', 'Flames Squad 1 Years Anniversary', 'Flames Squad-Artist', 'Atlanctic Hotel Banjul', 'Haji Tunkara-Manager', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Flames Squad Artist are well known and popular artist in The Gambia.Especially in Mbalax music industry.We have been in partnership before with one of artist name,Dave Ndow during Sing With Africell promotion.Its worth supporting.', 1, '2015-02-16 12:33:30', '2015-03-03 11:24:49');
+INSERT INTO events VALUES (209, '2014-12-29', 'Join Hands Together celebrating 10 year anniversary ', 'Join Hands Together ', 'Serekunda West Mini Stadium', 'Assan Faal Manager', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Join Hands Together are upcoming artists in the Gambia.They already launched thier mix tape at the alliance francaise last year may 2014 sponsored by africell. Thier show was successful. I believe it is worth supporting.', 1, '2015-03-03 13:24:29', '2015-03-03 13:24:29');
+INSERT INTO events VALUES (215, '2015-03-11', 'Silky Criss Live Show', 'Silky Criss Management', 'Alliance Francaise&Willy Night Club', 'Mam Malen Njie Manager', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Silky Criss is a well known and popular artist in The Gambia,and has a big fans base in the music industry. He can be supported and we have been in partnership before.', 1, '2015-03-12 10:54:55', '2015-03-12 10:54:55');
+INSERT INTO events VALUES (204, '2015-02-20', 'Association of the Gambia Albinos (AGA)Gala Dinner', 'Association of the Gambia Albinos (AGA)', 'Parasie Suites Hotel', 'Abdou Karim-President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Association of the Gambia Albinos (AGA) aimed at raising funds to empower persons with Albinism and disability through advocacy and providing them with skills training to meet the employment criteria. This will be the first partnership.Its worth supporting.', 1, '2015-03-02 12:21:11', '2015-03-02 12:21:11');
+INSERT INTO events VALUES (205, '2015-02-14', 'Mystic MC 20 Years Anniversary', 'Mustapha Coker-Mystic Mc ''BLACK NATURE', 'Galaxy Entertainment Park-Senegambia', 'Mustapha Coker-Mystic Mc ''BLACK NATURE', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Mystic MC is a Gambian Danish living in Denmark from the musical group '''' BLACK NATURE '''' The first Rap musical group in The Gambia to release an album in 1996. International reggae and dancehall artist playing shows in countries like: UK,USA,Jamaica,Belgium and many more.Its worth supporting.', 1, '2015-03-02 16:06:20', '2015-03-02 16:06:20');
+INSERT INTO events VALUES (288, '2015-08-26', 'Dj Indiana Production Concert', 'Indiana Production', 'Jakarlo Center Stage', 'Abdou Joof Coordinator', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Indiana Production is well known in promoting Indian Music and Gambian music also.He will be organizing a big concert with Gambian Artists.Its worth supporting.', 1, '2015-09-10 14:57:34', '2015-09-10 14:57:34');
+INSERT INTO events VALUES (207, '2015-01-22', 'Hero Stars Movie Premier', 'Hero Stars Movie Production', 'Badala Park Hotel', 'Adam Singhateh Secretary&Mustapha S.Kamara CEO', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a well known organization in the areas of music,movie production and participation in the performing arts.They have relaesed to movie within a year''''DEVIL ON THRONE&ADAMU THE VIRUS IN THE VILLAGE.The new movie to be premier is name as Broken Trust.This will be the first partnership I belive they can be supported.', 4, '2015-03-02 16:45:42', '2015-03-02 16:45:42');
+INSERT INTO events VALUES (208, '2015-02-20', 'Zaidi English Movie Premier', 'Zaidi Entertainment Production', 'B.O.Samega Janneh Hall', 'Cherno Bubacarr Zaidi Jallow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a well known organization in the areas movie production and participation in the performing arts.The new English movie to be premier is name LOVE CONFUSION.This will be the first partnership I belive they can be supported.', 4, '2015-03-03 11:18:56', '2015-03-03 11:18:56');
+INSERT INTO events VALUES (210, '2015-03-04', 'Keneke Promotion-Starboyz Album Launching', 'Keneke Promotion&Chief Hamid Entertainment', 'Alliance Francaise', 'Keneke Promotion', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Starboyz are Sierra Leonian artists based in The Gambia.They have a large fans base and followers in The Gambia, and I believe its a show worth supporting thier fist album launching.', 1, '2015-03-04 12:34:14', '2015-03-04 12:34:14');
+INSERT INTO events VALUES (211, '2015-02-25', 'Squad Vypa 2nd Year Anniversary', 'Squad Vypa', 'Alliance Francaise', 'Amadou Secka-VYPA', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Amadou Secka A.K.A VYPA is one the Most Popular artists in the Gambia. He is a resident of Bakau. He is organising his annual 2nd Year Anniversary show at the Alliance Francaise.This show is expected to be very successful. I believe it is worth supporting.', 1, '2015-03-04 12:44:06', '2015-03-04 12:44:06');
+INSERT INTO events VALUES (212, '2015-01-07', 'Mam Amata Foundation Easter Monday Picnic', 'Mam Amata Foundation', 'Banjul at former radio Syd', 'Joe Senghore Executive Director', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The purpose of this event is to celebrate the resurrection of Jesus Christ and to promote health,joyous season,happy environment and unity among Gambians.We have been in partnership last year 2014.Its worth supporting.', 5, '2015-03-10 15:38:20', '2015-03-10 15:38:20');
+INSERT INTO events VALUES (226, '2015-03-23', 'GFF Gambia VS Mauritania Friendly International Football Game', 'GFF', 'Independence Stadium Bakau', 'Abdou Salam Jammeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Africell is always in Support of Sports GFF are organizing an international football match Gambia VS Mauritania Friendly Game.Its worth supporting.', 5, '2015-03-25 10:13:52', '2015-03-25 10:13:52');
+INSERT INTO events VALUES (227, '2015-03-10', 'Don Dancing Competition', 'Don Entertainment&Jokor Monument', 'Jokor monument westfield', 'Don Manager', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Don Entertainment&Jokor Monument are organizing final dancing competition.Its worth supporting.', 1, '2015-03-25 10:32:28', '2015-03-25 11:24:05');
+INSERT INTO events VALUES (214, '2015-03-09', 'CMS 11th edition of kite flying', 'Cathedral Men''s Solidarity CMS', 'Banjul at former radio Syd', 'Rev.Father Antione Sambou Spiritual Director', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The 11th edition of kite flying is an annual event in The Gambia.It is a tradition and aims to promote kite flying,bringing christians,youths,and elders as one family.We have been in partnership before.Its worth supporting.', 1, '2015-03-12 10:48:32', '2015-03-12 10:48:32');
+INSERT INTO events VALUES (216, '2015-03-09', 'Biddy''s Promotion Awards Night', 'Biddy''s Promotion', 'Paradise Suites Hotel-Pencha mi Hall', 'Ida Bidwell Coordinator', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Biddy''s Promotion will be organising an GAM awards night to show case the talent of Gambian artists in different categories.Its worth supporting.', 1, '2015-03-12 13:08:09', '2015-03-12 13:08:09');
+INSERT INTO events VALUES (228, '2015-03-23', 'Galaxy Entertainment Park Easter Family Outing Kids Party', 'Galaxy Entertainment', 'Galaxy Entertainment Park-Senegambia', 'Farmang Max Mane', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Galaxy Entertainment Park Easter Family Outing Kids Party to celebrate easter.Its worth supporting.', 1, '2015-03-27 14:58:56', '2015-03-27 14:58:56');
+INSERT INTO events VALUES (218, '2015-02-02', 'The Scorz Hip Hop Festival 2015', 'The Scorz Hip Hop Artist', 'Alliance Francaise', 'Sheikh Tijan Jallow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Sheikh Tijan Jallow AKA Tuju Brain of peppa house are pioneers of Hip Hop in The Gambia.We have been in partnership before.Its worth supporting.', 1, '2015-03-12 13:26:13', '2015-03-12 13:26:13');
+INSERT INTO events VALUES (219, '2015-03-08', 'SJAG 6th National Sports Awards 2015', 'Sports Journalist Association Of The Gambia', 'Ocean Bay 5 Star Hotel Cape Point', 'Musa Sise-Chairman Award Committee', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'SJAG 6th National Sports Awards 2015 is held every year geared towards honoring individuals,althletes,sports personalities for their achievements and contribution towards Gambian sports.We have been in partnership.Its worth supporting.', 5, '2015-03-16 11:57:24', '2015-03-16 11:57:24');
+INSERT INTO events VALUES (220, '2015-02-11', 'Queen Of Companies 2015', 'Glamorous Models Africa modelling agency ', 'Paradise Suites Hotel', 'GMA Administration-Williams Brown', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Queen Of Companies(QOC) is held every year,The beauty pageant competition includes different companies in The Gambia / Africa to help expose their business life, it intends to attract stunning young scholar ladies between the ages of 18 - 24 with normal average glance. It is the 5th of Edition and we have been in partnership before.Its worth Supporting.', 2, '2015-03-16 13:31:55', '2015-03-16 13:31:55');
+INSERT INTO events VALUES (221, '2015-03-05', 'BENJAHMINâ€™S ALBUM LAUNCHING', 'Mandingmorry Foundation for Performing Arts (MANFOPA)', 'Brikama Mini Stadium ', 'Ibrahim Ceesay Executive Director Mandingmorry Entertainment', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'BENJAHMIN who is one of the finest Gambian Reggae Artists in The Gambia.He is dedicated,committed and he have several followers and fans,son of Brikama and a pioneer of the Front line Crew.Its worth supporting.', 1, '2015-03-17 12:20:01', '2015-03-17 12:20:01');
+INSERT INTO events VALUES (222, '2015-03-14', 'EASTER SUNDAY GOSPEL MUSIC FIESTA', 'Mercy and Grace Gospel Music The Gambia', 'Paradise Suits Hotel ', 'B-Master staff of Afri radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Mercy and Grace Gospel Music Show on Afri-radio 107.6fm have a big fan base and lot of listners hosted by B-Master staff of Afri radio.Its worth supporting.', 1, '2015-03-19 11:18:51', '2015-03-19 11:18:51');
+INSERT INTO events VALUES (223, '2015-02-10', 'Sunu Musico''s 5th year Anniversary', 'T -Smallaz Ebrima Suso-Katatoo Entertainment', 'Serekunda West Mini Stadium', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is Sunu Musico''s 5th year Anniversary. It has always been successful and Africell has always supported T-Smallz. This is an event worth Supporting.', 1, '2015-03-19 12:13:37', '2015-03-19 12:13:37');
+INSERT INTO events VALUES (224, '2015-02-12', 'Daddy Bostin Mix Tape Launching ''''Ruff Days', 'Daddy Boston Under The Management of Minka Entertainment', 'Alliance Francaise', 'Sulayman Jammeh A.K.A.Daddy Boston', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Daddy Boston is a Gambian artist well known in music industry.We have been in partnership before.Its Worth Supporting.', 1, '2015-03-23 16:35:21', '2015-03-23 16:35:21');
+INSERT INTO events VALUES (225, '2015-03-18', 'Akuntu Jalex 2 Singles Launching', 'Akuntu Acoustic Band', 'Sinatara''s Hall Bakau', 'Jalex AKUNTU', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Jalex AKUNTU is a Gambian artist well known in music industry.We have been in partnership before.Its Worth Supporting.', 1, '2015-03-24 11:39:59', '2015-03-24 11:39:59');
+INSERT INTO events VALUES (229, '2015-03-17', 'Annual Gamo&Siyareh of Nema Nasir', 'Nema Nasir Islamic Development Association', 'Nema Nasir Near Mosque', 'Mbye Drammeh President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Annual Gamo and Siyareh of Nema Nasir is an Islamic event,it has biggest turnout in The Gambia.Its worth supporting.', 5, '2015-04-08 10:31:09', '2015-04-08 10:31:09');
+INSERT INTO events VALUES (230, '2015-03-30', 'Egliterain Alliance Francaise', 'Alliance Francasie', 'Alliance Francaise', 'Salim Soumare', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Egalitarian is a Gambian he is well known in the music industry,both national and international.He is Launching his album.Its worth supporting.', 1, '2015-04-08 10:41:18', '2015-04-13 16:09:39');
+INSERT INTO events VALUES (231, '2015-02-25', '2015 National Divine Mercy Celebrations', 'Diocesan Committee Of The Divine Mercy', 'Catheral Church Banjul', 'Rev.Fr,John Mendy', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is event that was sponsored before and it was very successful.The National Divine Mercy Celebrations has a lot of parishioners and they always turn out in their numbers to support the church. I believe it is an event worth supporting.', 5, '2015-04-08 11:14:46', '2015-04-08 11:14:46');
+INSERT INTO events VALUES (232, '2015-03-20', 'Keneke Promotion Celebrating Sierra leone Independence Day', 'Keneke Promotion&Chief Hamid Entertainment', 'Jama Hall', 'Keneke Promotion', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Keneke Promotion celebrating Sierra leone Independence Day in The Gambia with international artist,comedian SARA D GREAT'''' from Sierraleone.He is well know in The Gambia, and I believe its a show worth supporting.', 1, '2015-04-08 13:13:03', '2015-04-08 13:13:03');
+INSERT INTO events VALUES (233, '2015-03-30', 'Aliance Francaise Dream Bolly Wood Show', 'Alliance Francasie', 'Alliance Francaise', 'Salim Soumare pro-Graphis Designer', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Egalitarian is a Gambian he is well known in the music industry,both national and international.He is Launching his album.Its worth supporting', 1, '2015-04-08 17:45:06', '2015-04-08 17:47:26');
+INSERT INTO events VALUES (234, '2015-03-27', 'Lend A Hand Society 20 years Anniversary', 'Lend A Hand Society', 'Opposite Zenith Preparatory School', 'Naffie Sissoho The National Coordinator', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Lend A Hand Society has raised awareness for young people and helping them realise their potentials,attitude building and cultural appreciation. The society has lot of members.Its worth supporting.', 5, '2015-04-09 12:50:30', '2015-04-09 12:53:12');
+INSERT INTO events VALUES (236, '2015-04-02', 'May Day Sports 2015', 'National Sports Council', 'Maccarthy Square Banjul', 'Ebrima Secka-For Executive Director', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partne
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is an annual event,organized by national sports council under the ministry of youths and sports.We have been in parnership before.Its worth supporting.', 1, '2015-04-17 13:06:11', '2015-04-21 11:08:02');
+INSERT INTO events VALUES (250, '2015-05-07', 'Brain Krackers 2nd year Anniversary', 'Bai Babou', 'Jakarlo', 'Bai Babou', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Bai Babou AKA Brain Kracker is one of the most popular Young artist in The Gambia. He has a lot of following and is well loved. I believe it will be a successful event.', 1, '2015-05-07 15:48:29', '2015-05-07 15:51:27');
+INSERT INTO events VALUES (238, '2015-04-01', 'DJ PACO Music show farafenni', 'DJ PACO', 'Farafenni', 'DJ PACO', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'DJ paco is well know as dico joker at unique fm.He will be oraganizing a big music wiht Dj''s in The Gambia in farafenni.Its worth supporting.', 1, '2015-04-21 11:22:15', '2015-04-21 11:22:15');
+INSERT INTO events VALUES (241, '2015-02-16', 'Gunjur Cultural Festival', 'Gunjur Village&Committee', 'Gunjur(8th&9th May)', 'Buba Bojang(Mbaye)Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gunjur Cultural Festival is an annual event and attracts lot peoples in Gunjur and surrounding villages.Its is cultural,traditional,festival.Its worth supporting.', 1, '2015-04-21 11:39:39', '2015-04-21 11:44:42');
+INSERT INTO events VALUES (242, '2015-04-20', 'Lama Production', 'Lama Production', 'Jokor monument westfield', 'Modou Faal A.K.A Lama ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Modou Faal A.K.A lama is well known as DJ and comdeian in the Gambia.We have been in partnership before during Africell''s major promotions.Its worth supporting.', 1, '2015-04-27 11:44:35', '2015-05-11 09:41:39');
+INSERT INTO events VALUES (251, '2015-04-15', 'Fiila 6th Year Anniversary', 'Black Lynx', 'SK East mini stadium & Brikama Box bar', 'Black lynx', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Black lynx are the force behind Gambian music.  Fiila is the most popular show on GRTS promoting Gambian music. this is their 6th anniversary and we''ve always supported them. I believe its going to be a successful show', 1, '2015-05-08 14:52:47', '2015-05-08 14:52:47');
+INSERT INTO events VALUES (284, '2015-08-20', 'IYF World Camp Gambia 2015', 'International Youth Fellowship(IYF)', 'Gambia Tourism &Hospitality Institute(G.T.H.I)', 'Wook Jim(IYF)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'International Youth Fellowship(IYF) is a global youth organization they are currrently giving free language classes in french and korean as well as bible studies in Gambia.The world camp will be the first of it kind in the Gambia.Its worth supporting.', 1, '2015-08-31 15:24:42', '2015-08-31 15:24:42');
+INSERT INTO events VALUES (245, '2015-04-15', 'Flames Squad Video Launching', 'Flames Squad-Artist&Joluv Arts', 'Atlanctic Hotel Banjul', 'Soulayman Sowe-Joluv Arts', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Flames Squad Artist are well known and popular artist in The Gambia.Especially in Mbalax music industry.We have been in partnership before with one of artist name,Dave Ndow during Sing With Africell promotion.Its worth supporting.', 1, '2015-04-28 16:18:32', '2015-04-28 16:18:32');
+INSERT INTO events VALUES (282, '2015-08-10', 'International Football Gambia VS Cameroon', 'GFF', 'Independence Stadium Bakau', 'GFF', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'International Football game between Gambia VS Cameroon,qualifiers i think will have a big turn out.Its worth supporting.', 5, '2015-08-24 15:33:16', '2015-09-02 15:57:19');
+INSERT INTO events VALUES (283, '2015-08-11', 'The Humanity Starz 11th Years Anniversary', 'The Humanity Starz Group', 'Jaama Hall-Kairaba Beach Hotel', 'Mbye Bittaye-Manager The Humanity Starz', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Humanity Starz will be organizing their 11th Years Anniversary in music industry on Tobaski Day.They are the youngest live Band Group in The Gambia,making a big name in the music industry.We have been in partnership before.Its worth supporting.', 1, '2015-08-24 16:14:42', '2015-08-24 16:14:42');
+INSERT INTO events VALUES (247, '2015-05-04', 'Rhythmic Vibrations', 'Blaque Magique', 'Kairaba Beach Hotel', 'Ronald Senghore', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Africell has always partnered with the Blaque Magique Poets on their events. Their events have always been successful. I believe its an event worth Supporting.', 1, '2015-05-05 12:09:19', '2015-05-05 12:09:19');
+INSERT INTO events VALUES (249, '2015-05-21', 'Winners Gospel Concert', 'Winners Chapel', 'WInners Chapel', 'Elijah Tawiah-Brown', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Winners Chapel is one of the biggest churches in the Gambia. The concert they are staging will include gosple singers from other churches. The event is expected to be successful', 1, '2015-05-06 16:35:27', '2015-05-14 09:11:02');
+INSERT INTO events VALUES (252, '2015-04-29', 'Pain Perception MixTape Launching', 'Izzy T', 'Alliance Francaise', 'Izzy T', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Izzy T is a well known musician residing in Ebo-Town. He is one of the best Hip hop artist in the Gambia. He is well loved by his peers and I believe he is worth supporting.', 1, '2015-05-08 15:13:30', '2015-05-08 15:13:30');
+INSERT INTO events VALUES (254, '2015-04-27', 'Diha''s Awards Celebration With Fans', 'Diha and Fans', 'Alliance Francaise', 'Diha Artist', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Diha''s is Celebrating Awards With Fans, as best female artist in the Gambia.She is well know in the music indusrty''''mandinka''''songs.Its worth supporting.', 1, '2015-05-11 11:44:54', '2015-05-11 11:44:54');
+INSERT INTO events VALUES (306, '2015-10-15', 'Silky Crissâ€™s Debut Album Launching', 'Silky Criss Management', 'Jaama Hall(Kairaba Beach Hotel)', 'Mam Malen Njie-Manager Silky Criss ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Silky Criss is a well known and popular artist in The Gambia,and has a big fans base in the music industry. He can be supported and we have been in partnership before.', 1, '2015-10-15 13:08:06', '2015-11-19 11:47:53');
+INSERT INTO events VALUES (256, '2015-03-24', 'World Blood Donor Day 2015', 'Ministry Of Health&Social Welfare', 'Brikama Governor Residence', 'Dr Makie Taal Permanent Secretary', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is an event celebrated world wide,to donate blood,and is been organized by Ministry of health.Its worth supporting.', 5, '2015-05-18 11:25:23', '2015-10-22 13:13:41');
+INSERT INTO events VALUES (257, '2015-04-30', 'Wrestling Revival Gourp ', 'Wrestling Revival Gourp ', 'Farafenni', 'Wrestling Revival Gourp ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Wrestling Revival Gourp are organizing this event to bring unity between radio presenters& journalist in the Gambia,Its worth supporting.', 5, '2015-05-18 14:39:00', '2015-05-18 14:39:00');
+INSERT INTO events VALUES (258, '2015-05-04', 'Afrinity Production London Manga Movie Premier', 'Afrinity Production', 'Paradise Suites Hotel', 'Wlfred Adams Afrinity Production', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Afrinity Production are organizing a movie premier title ''''London Manga Movie''''.Together lets say no to back way.Its worth supporting.', 4, '2015-05-19 12:39:23', '2015-05-19 12:39:23');
+INSERT INTO events VALUES (259, '2015-04-27', 'Ms Promotions Soninkara Music Award Night 2015', 'Ms Promotions in collaboration with B-Master Production', 'Alliance Francaise', 'Muhammed Saho-Afri Radio Staff', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Muhammed Saho works for afri-radio and he is a very popular in ''''sarahule'''' music industry.The Soninkara Music Award Night 2015 is one the biggest event organized by sarahule community. It''s a show worth supporting.', 1, '2015-05-19 12:52:19', '2015-05-28 16:42:57');
+INSERT INTO events VALUES (260, '2015-05-05', 'Catholic Diocesan Youth Night Glory', 'Catholic Diocesan Youth ', 'Reform Club MDI Road', 'Rev.Fr John Mendy(Youth Chaplain)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Catholic Diocesan Youth group.This is a youth workforce,including old peoples.The event is  geared to showcase youths in singing,dancing,(Choreography)and skill work.Its worth supporting', 5, '2015-05-20 14:33:30', '2015-05-20 14:33:30');
+INSERT INTO events VALUES (261, '2015-05-20', '5th Annual Murid Gamo''''Chanta''''Serigne Saliou Mbacke', 'Murid''s Gambia Serigne Saliou Mbacke', 'Opposite Garage At Africell', 'Ebrima Ndong Jawrin', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The 5th Annual Murid Gamo''''Chanta''''Serigne Saliou Mbacke is an Islamic event.organized by Murids living in the Gambia.Its is big event held annually.Its worth supporting.', 5, '2015-05-20 16:29:42', '2015-05-20 16:29:42');
+INSERT INTO events VALUES (262, '2015-05-14', 'FAWEGAM Week', 'Fawegam', 'FAWEGAM', 'Mrs. Yadicon Njie Eribo', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Africell has always supported the empowerment of women and girls. FAWEGAM and africell have partnered on a number of occasions and they have been successful. Based on a fruitful history, I believe its an event worth supporting', 1, '2015-05-20 17:24:41', '2015-05-20 17:24:41');
+INSERT INTO events VALUES (263, '2015-04-30', 'Hand of Fate DVD Launching &Screening of Sarata Movie', 'Mandingmorry Foundation for Performing Arts (MANFOPA)', 'Pencha Mi Hall', 'Ibrahim Ceesay Executive Director Mandingmorry Entertainment', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a well known organization in the areas of music,movie production and participation in the performing arts.Hand of Fate DVD Launching &Screening of Sarata Movie.We have been in partnership before. I belive they can be supported.', 4, '2015-05-21 11:59:01', '2015-06-01 10:42:06');
+INSERT INTO events VALUES (264, '2015-05-21', 'Free Eye Treatment Africa Muslim Agency', 'Africa Muslim Agency Gambia', 'Farafenni', 'Ouazzani Abdellah-Country Director', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Africa Muslim Agency will be oraganizing a Free Eye Treatment in farafenni to help peoples with eye problems in Farafenni and surrounding villages.Its worth supporting.', 5, '2015-05-27 10:26:10', '2015-05-27 10:26:10');
+INSERT INTO events VALUES (265, '2015-05-28', 'The Gambia Red Cross 12th Annual Miss,Master 2015', 'The Gambia Red Cross Society', 'Alliance Francaise', 'Momodou Fofana-Branch Officer KMC', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Gambia Red Cross society 12th Annual Miss,Master Miming competition 2015 is a big event organized by red cross links and societies.Its can be supported.', 2, '2015-05-28 16:22:27', '2015-05-28 16:25:36');
+INSERT INTO events VALUES (266, '2015-06-29', 'GFF Football Match 2nd Leg CHAN 2015-Gambia VS Senegal ', 'GFF', 'Independence Stadium Bakau', 'Abdou Salam Jammeh ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Gambia Football federation are organizing an international football match 2nd leg CHAN 2015,Gambia VS Senegal at Independence Stadium Bakau.Africell have been in supports of sports.We have been in parthnership before.Its worth supporting.', 5, '2015-07-01 13:20:40', '2015-07-01 13:34:34');
+INSERT INTO events VALUES (268, '2015-06-29', 'GFE In Collaboration with LXG Sierra leone', 'Good Friends Entertainment The Gambia', 'Paradise Suites Hotel', 'Simeon Adu-Kay', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Good Friends Entertainment(GFE)will be organizing music show with hottest group LXG crew of sierraleone live in the gambia in collaboration with Sierraleone high commission.Its worth supporting.', 1, '2015-07-01 14:50:48', '2015-07-01 14:50:48');
+INSERT INTO events VALUES (269, '2015-06-03', 'CCLK Fund raising &Cultural Night', 'Christina Community of Latrikunda', 'Father farell Hall,Kanifing', 'James Macauley General Secretary', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Christian community of latrikunda(CCLK)is a community based organization operating at latrikunda.They embarked on assisting poor students in funding their education,community works irrespective of ethnic or religion.They worth supporting.', 5, '2015-07-07 14:01:31', '2015-07-07 14:01:31');
+INSERT INTO events VALUES (270, '2015-07-20', 'Muslim Senior Secondary Inetr Schools Quiz&Debate Competition', 'Muslim Senior Secondary Computer Club', 'Muslim School Hall', 'Lala Sambou-Secretary Computer Club MSSS', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Muslim Senior Secondary Inetr Schools Quiz&Debate Competition involving IT clubs from six Senior Secondary Schools.The quiz competitions will create awareness in the Information Technology for students in Gambia.Its worth supporting.', 5, '2015-07-20 14:38:29', '2015-07-20 14:38:29');
+INSERT INTO events VALUES (287, '2015-09-01', 'Simplest Yagana Movement Tobaski Tour', 'Yagana Movement', 'Sibanor,Pirang and Faraba', 'Dj Simplest Staff Of Afri Radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. Its a show worth supporting', 1, '2015-09-09 16:20:29', '2015-09-09 16:20:29');
+INSERT INTO events VALUES (280, '2015-07-20', 'Awake Youth Fellowship Fund Raising Show', 'Awake Youth Fellowship Committee', 'Ndows Hall Kanifing Estate', 'Bintou Dibbasey', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Awake Youth Fellowship Committee are young christians and non christians in the Gambia to motivates youths as members of''''Ark of Change''''.Its worth supporting.', 1, '2015-08-19 16:09:36', '2015-08-19 16:09:36');
+INSERT INTO events VALUES (321, '2015-10-22', 'Sophia''s Mixtape Launching', 'Movement Sophia', 'Alliance Francaise', 'Mustapha Jallow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Sophia is one of Gambia''s most popular female dancehall artist.She will be Launching her Mixtape.Its worth supporting.', 1, '2015-11-06 11:49:17', '2015-11-06 11:49:17');
+INSERT INTO events VALUES (272, '2015-06-29', 'NA TANGA MUSIC ARMY(NTMA)', 'NA TANGA MUSIC ARMY(NTMA)', 'Churchillstown', 'Pope Manager', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'NA TANGA MUSIC ARMY(NTMA)will be organizing a free music show to help up coming artists in Gambia.We have not been in partnership before.Its worth supporting.', 1, '2015-07-20 16:34:02', '2015-07-20 16:34:02');
+INSERT INTO events VALUES (273, '2015-07-28', 'World Hepatitis Day ', 'World Health Organization', 'MRC', 'Modou Njie', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'World Hepatitis Day is commemorated every year,in order to raise awareness about hepatitis and its dangers,one of the world''s killer diseases.Its worth supporting.', 5, '2015-07-29 10:38:15', '2015-07-29 10:38:15');
+INSERT INTO events VALUES (274, '2015-08-23', 'Brikama Sports Committee Super Cup Final', 'Brikama Sports Committee ', 'Brikama Mini Stadium ', 'Karamo Jarju Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Brikama Sports Committee are organizing a Super Cup Final,which  is held every year at Brikama Mini Stadium.We have been in partnership before.Its worth supporting.', 5, '2015-08-03 12:16:45', '2015-08-03 12:16:45');
+INSERT INTO events VALUES (278, '2015-08-10', 'The On Gambia Fashion Movement', 'Tara Designs', 'Kairaba Beach Hotel', 'Fatou Drammeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The On Gambia Fashion Movement show is organized by Fatou Camara of Tara Designs,we have been in partnership before.Its worth supporting.', 2, '2015-08-19 15:51:39', '2015-10-26 13:47:24');
+INSERT INTO events VALUES (276, '2015-08-02', 'Catholic Community Banjul ''Sang Marie'' 2015', 'Catholic Community Banjul ', 'Banjul ', 'Mrs Mary Roberts Parish Council Chairperson', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Catholic Community Banjul will be celebrating annual feast commonly known as ''Sang Marie'' this year 2015.We have been in partnership before.Its worth Supporting.', 5, '2015-08-04 14:38:13', '2015-08-04 14:38:13');
+INSERT INTO events VALUES (277, '2015-08-01', 'Sang Marie 2015 Fajut Mbour', 'Club 7 Palmarin', 'Fajut Mbour Senegal', 'Ronald Senghore', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner', 'Club 7 Palmarin is a group of young christian youths that join other youths from Senegal for the Celebration of the Assumption of Mary, a feast Celebrated worldwide. This event is always well attended. I believe its worth supporting', 1, '2015-08-10 17:42:28', '2015-08-18 16:21:09');
+INSERT INTO events VALUES (307, '2015-10-19', 'Mighty Simplest Tour 2015', 'Yagana Movement', 'Sibanor,Bwiam and Faraba', 'Mighty Simplest Afri radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting', 1, '2015-10-20 10:19:30', '2015-10-20 10:21:28');
+INSERT INTO events VALUES (295, '2015-09-29', 'Miss Nawettaan Bakau 2015', 'STANFEST PROMOTION', 'Friendship Hostel Bakau', 'Stanfest Promotion CEO Laming Marong', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is 3rd Edition Of Miss Nawettan Bakau, and we have been in partnership before with STANFEST Promotions.The turn out is always good.I think its a program worth sponsoring in Bakau.', 1, '2015-09-29 16:29:22', '2015-10-13 13:00:30');
+INSERT INTO events VALUES (296, '2015-09-14', 'Launching Of Ms Promotions Soninkara Namansanou', 'M.s Promotions in collaboration with(G.S.N)Gambia Soninkara Namansanou', 'Alliance Francaise', 'Muhammed Saho-Afri Radio Staff', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'M.S Promotion have been in partnership with Africell before.They have organized very success event before''''Soninkara Music Awards'' for all the sarahule musicians in The Gambia. This event is expected to be successful.Its worth supporting', 1, '2015-09-29 16:42:14', '2015-09-29 16:42:14');
+INSERT INTO events VALUES (297, '2015-09-08', 'MR&MISS AIUWA 2015 BEAUTY PAGEANT 2nd Edition', 'American International University Students Union', 'Kairaba Beach Hotel', 'Promise Okereke AIUWASU President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a non-political and non religious organization aim at bringing all the students of the American International University Students Union under one umbrella.This will be 2nd Edition beauty pageant 2015.This will be the second partnership.Its worth supporting.', 2, '2015-09-29 16:55:54', '2015-10-20 10:20:31');
+INSERT INTO events VALUES (308, '2015-10-05', 'Brikama Knockout Final Football Match ', 'Brikama Youths&Sports Committee', 'Brikama Mini Stadium ', 'Karamo Jarju Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Brikama Sports Committee are organizing a Nawettaan Final,which is held every year at Brikama Mini Stadium.We have been in partnership before.Its worth supporting', 5, '2015-10-22 10:31:28', '2015-10-22 10:32:35');
+INSERT INTO events VALUES (309, '2015-10-21', 'Top Link Launching Of the Book ''Who is Who In The Gambia', 'Top Link ', 'Joint Offiers Mess', 'Richardson O''Brian -Coker', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Top Link will be Launching Book ''Who is Who In The Gambia.Its worth supporting.', 5, '2015-10-23 11:59:54', '2015-10-23 11:59:54');
+INSERT INTO events VALUES (310, '2015-10-09', 'Farafenni Artist Association Musical Jamboree', 'Farafenni Artist Association', 'Farafenni', 'Pa Boy Sanneh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Farafenni Artist Association will be organizing a Musical Jamboree to encourage upcoing artist in their ragion.Its worth supporting.', 1, '2015-10-23 12:04:35', '2015-10-23 12:04:35');
+INSERT INTO events VALUES (311, '2015-10-20', 'Fiila Crew 3rd Edition Miss Beauty Pageant 2015', 'Fiila Crew Brikama', 'Brikama Jokor Graden Club', 'Big Sam-Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have been in parthnership before with Fiila Crew Brikama and sponsored previous show fiila which was successful.I think its a program worth sponsoring', 2, '2015-10-27 10:34:00', '2015-10-27 10:34:00');
+INSERT INTO events VALUES (328, '2015-11-05', 'Sparkln Black Launching Song Of The Year', 'Trustars Production', 'Paradise Suites Hotel', 'Manager Trustars Production', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Trustars Production &Sparkln Black artist are well konwn in the Gambian music industry.They want to launch hit song of the year.Its worth supporting.', 1, '2015-11-18 16:29:38', '2015-11-18 16:29:38');
+INSERT INTO events VALUES (329, '2015-09-11', 'Launching Of Street Hustlers to Nobles', 'Street Hustlers/Nobles Group', 'Sk East Mini Stadium', 'Manager-Street Hustlers-Nobles', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Street Hustlers/Nobles will be launching their new name to bring together young people of the society under one umbrella.Funds generated will be for the development of their community.Its Worth supporting.', 1, '2015-11-18 16:37:56', '2015-11-18 16:39:32');
+INSERT INTO events VALUES (313, '2015-10-27', 'St. Kizito''s Annual Concert', 'St. Kizito''s Parish', 'Pencha mi Hall', 'Peter Gomez', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+5 Minute video of Africell to be aired during the event
+High Table seat for one of Africell''s representative
+Venue to be branded by africell
+Full page advert to be given to Africell
+VIP tickets to be provided for Africell Staff', 'This is an event that was sponsored before and it was very successful. the parish of st. kizito has a lot of parishioners and they always turn out in their numbers to support the church.  I believe it is an event worth supporting.', 1, '2015-11-02 13:14:45', '2015-11-02 13:14:45');
+INSERT INTO events VALUES (367, '2016-01-13', 'ST Duniya Beh Kibaro Show', 'ST Brikama Boyo', 'Jakarlo Center Stage', 'Dembo Jorbateh Manager/Promoter ST', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'ST is a very big name in Brikama and Kombo areas.He previous show were all successful.We have been in partnership before. I believe its worth supporting', 1, '2016-01-26 13:06:54', '2016-01-26 13:06:54');
+INSERT INTO events VALUES (315, '2015-10-30', 'Launching of Song - The Gambia ', 'Sona Jobarteh', 'Pencha mi Hall', 'Saihou Kanuteh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Sona is a very talented female kora player. she is well known it europe and has been on a lot of tours.  She recently released a new song titled "The Gambia". She is launching this song.', 1, '2015-11-03 15:52:14', '2015-11-03 15:52:14');
+INSERT INTO events VALUES (316, '2015-10-27', 'Bena Kotu Carnival 1st Edition', 'Kotu Youth Development Association', 'Kotu', 'Cherno Badjie Secretary General(KYDA)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Kotu Youth Development Association will be organizing carnival,funds generated will be given back to communities.Its worth supporting.', 1, '2015-11-04 10:41:10', '2015-11-04 10:41:10');
+INSERT INTO events VALUES (317, '2015-10-21', 'YETES-World Diabetes Day 2015', 'Youth Employment Through Education&Sport(YETES)', 'Independence Stadium Bakau', 'Mohamodou Musa Njie Executive Director YESTES', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Youth Employment Through Education&Sport(YETES)will be organizing a campaign to sensitize community on Diabetes and to commorate World Diabetes Day.Its worth supporting.', 1, '2015-11-04 11:53:09', '2015-11-04 11:53:09');
+INSERT INTO events VALUES (318, '2015-11-10', 'Simplest Yagana Show', 'Yagana Movement', 'Busumballa', 'Dj Simplest Staff Of Afri Radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. its a show worth supporting', 1, '2015-11-04 12:23:20', '2015-11-04 12:23:20');
+INSERT INTO events VALUES (319, '2015-11-01', 'Ngongon Youth Association Fundraising Show', 'Ngongon Youth Association', 'Ngongon Village', 'Mr Ndong Sulayman', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ngongon Youth Association will be oragnizing a Fundraising Show for their quarter final football match.Its worth supporting.', 1, '2015-11-04 12:48:36', '2015-11-04 12:48:36');
+INSERT INTO events VALUES (320, '2015-10-30', 'Elite Movement Rydim Launching', 'Elite Movement Music Group', 'Atlanctic Hotel Banjul', 'Elite Movement-Manager', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Elite Movement Music Group will be launching Rydim show to supporty the Gambian Artists in Banjul and surrounding.Its worth supporting.', 1, '2015-11-04 13:09:06', '2015-11-04 13:09:06');
+INSERT INTO events VALUES (372, '2016-01-14', 'KARTONG FESTIVAL 2016', 'KARTONG', 'KARTONG', ' Lamin M. Manneh  (Modou)  (Admin Secretary)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The 11th Edition of Kartong International Festival will be held in the West coast Region.This is an annual event which attracts lot people.This is will our first partnership.I think itts worth supporting.', 1, '2016-01-27 13:39:43', '2016-01-27 13:39:43');
+INSERT INTO events VALUES (323, '2015-11-03', 'Red Cross Annual Youth Gathering', 'Red Cross Banjul Branch', 'Gambia High School Hall', 'Omar Ndow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Red cross Volunteers have been known for their humanitarian services in the world. this is an event that brings youth from all over the country together. I believe its worth supporting', 1, '2015-11-07 14:46:28', '2015-11-07 17:32:03');
+INSERT INTO events VALUES (324, '2015-11-04', 'Klint The Drunk in The Gambia', 'All Stars Production', 'Paradise Suites Hotel', 'Elizabeth Sambou Efenaro', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Klint the drunk is a very talented and well known Nigerian Comedian and Actor. He will be performing in the Gambia and I believe its an event worth supporting', 1, '2015-11-07 15:05:42', '2015-11-07 15:05:42');
+INSERT INTO events VALUES (325, '2015-11-03', 'Farato Peace Festival', 'Karmic Angels', 'Farato Football Field', 'Bakary Touray', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Karmic Angels is an international Charity in the UK and The Gambia. The proposed concert organised by Karmic Angels in Farato is meant to raise funds to support community projects.', 1, '2015-11-07 16:37:19', '2015-11-07 16:37:19');
+INSERT INTO events VALUES (326, '2015-11-11', 'Brikama Nawettan League Final', 'Brikama Youths&Sports Committee', 'Brikama Mini Stadium ', 'Karamo Jarju Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Brikama Sports Committee are organizing a Nawettan League Final,which is held every year at Brikama Mini Stadium.We have been in partnership before.Its worth supporting.', 1, '2015-11-16 11:10:36', '2015-11-17 11:47:26');
+INSERT INTO events VALUES (327, '2015-11-12', 'Gamo Medina Baye Nyass-Senegal', 'United Association Of Muhammed Nasir Ebrahim Nyass', 'Medina Baye Nyass-Kaolack Senegal', 'Ousainou&Assan Nasir Ibrahim Nyass', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gamo Medina Baye Nyass is an annual Islamic event to celebrate the birthday of the prophet Muhammed(S.A.W)worldwide,particularly in Medina Baye Nyass-Kaolack Senegal.Its worth supporting.', 5, '2015-11-16 11:35:36', '2015-11-16 11:35:36');
+INSERT INTO events VALUES (330, '2015-11-11', 'Catholic Church Feast', 'Catholic Community Banjul ', 'Banjul ', 'Bruno Toupan', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Catholic Community of Banjul Catholic Church want to organized a Feast and harvest Festival.Its worth supporting.', 5, '2015-11-19 08:46:46', '2015-11-19 08:46:46');
+INSERT INTO events VALUES (333, '2015-11-11', 'Magal Touba', 'Federation of Diara Murite in The Gambia', 'Touba Senegal', 'Modou Kara Gaye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials', 'This is the second time we''ll be supporting this trip to senegal, its the largest gathering of muslims in Gambia and Senegal. I believe its worth supporting', 1, '2015-11-26 15:02:52', '2015-11-26 15:02:52');
+INSERT INTO events VALUES (334, '2015-11-11', 'Burr Westling Competition', 'Burr Wrestling Promotion', 'Wellingara Football Field', 'Omar Burr Touray', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a grand wrestling Competition comprising of 48 wrestlers from across the country. its worth supporting.', 1, '2015-11-26 15:36:02', '2015-11-26 15:36:02');
+INSERT INTO events VALUES (369, '2016-01-18', 'Manding Empire 3rd Year Anniversary 2016', 'Manding Morry&Fans', 'Alliance Francaise', 'Manding Morry', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Manding Morry,as an artist has big fan base, he is a good musician from Bakau. The event is expected to be successful.Its worth supporting', 1, '2016-01-26 13:28:18', '2016-01-26 13:28:18');
+INSERT INTO events VALUES (370, '2016-01-13', '3rd Edition Miss Fulbeh 2016', 'Teddoungal Promotion', 'Alliance Francaise', 'Abdoulie Korka Jallow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This will be the first time we will be working with Teddoungal Promotion. They approached us last year for the second edition of this event due to time we couldn''t sponsor. I think its a program worth sponsoring.', 2, '2016-01-26 13:41:05', '2016-01-26 13:41:05');
+INSERT INTO events VALUES (337, '2015-12-01', 'Santa Maria Christmas Dance', 'Santa Maria', 'Reform Club', 'Andre Manga', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is the second edition that will be sponsored by Africell. the previous edition was successful and I believe this year''s is worth supporting', 1, '2015-12-03 13:01:46', '2015-12-03 13:01:46');
+INSERT INTO events VALUES (338, '2015-12-01', 'Bro K''s Album Launching', 'Bro K', 'Brikama Jokor & Alliance Francaise', 'Sulayman Singhateh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Bro K is one of the best Afro Manding artist in the Gambia. He has released a lot of songs that are really popular and liked. He is releasing his album and I believe its worth supporting.', 1, '2015-12-03 13:10:24', '2015-12-03 13:10:24');
+INSERT INTO events VALUES (368, '2016-01-18', 'Sunu Musico 6th Year Anniversary 2016', 'T small suso-Katatoo Entertainment', 'Jakarlo Center Stage', 'Ebrima Suso Aka Trobul Smallz-Presenter&Producer', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is Sunu Musico''s 6th year Anniversary. It has always been successful and Africell has always supported T-Smallz. This is an event worth Supporting.', 1, '2016-01-26 13:13:39', '2016-01-26 13:16:14');
+INSERT INTO events VALUES (340, '2015-12-01', 'University of The Gambia Student Week', 'University of The Gambia', 'Farafenni Campus', 'Fatou Njie', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The UTG has always been a partner with Africell, we always support their programs.This year they will be having their student week in Farafenni, they have written for support and I believe they should be supported', 1, '2015-12-03 14:12:35', '2015-12-03 14:12:35');
+INSERT INTO events VALUES (341, '2015-12-01', 'Blaque Magique 5.0', 'Blaque Magique', 'Kairaba Beach Hotel', 'Ronald Senghore', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This partnership has been successful over the past years. Africell has always supported Blaque Magique during their events and they have all been successful. this are having their annual dinner show dis year and I believe it is worth supporting', 1, '2015-12-03 14:18:18', '2015-12-03 14:18:18');
+INSERT INTO events VALUES (342, '2015-12-03', 'Nda-Mariam Jagne Charity Football Game', 'Nda-Mariam Jagne Family Foundation', 'SK East mini stadium ', 'Ndey Mariam Jagne', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Pa Modou Jagne is a Gambian professional footballer playing in Switzerland. His charity organisation was established by him and his wife with the aim of improving maternal health services for women in The Gambia. He has a charity match involving Gambian professionals and I believe it is worth supporting.', 1, '2015-12-03 15:34:13', '2015-12-03 15:34:13');
+INSERT INTO events VALUES (343, '2015-12-03', 'Don Entertainment Dancing Competition', 'Don Entertainment', 'Jokor Westfield', 'Kingsley Eze', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Don Entertainment organizes a dancing competition every year and the turnout is usually great. a lot of people follow it and I believe its worth supporting.', 1, '2015-12-03 15:47:03', '2015-12-03 15:47:03');
+INSERT INTO events VALUES (344, '2015-12-09', 'Launching of Sukuta Nema Nyodema Kafo', 'Sukuta Nema Kafo', 'Sukuta Birmida Bilingual School', 'Saffiatou Darboe', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This Sukuta Kafoo that consists of women from Sukuta and they are setting a credit union for all the women in sukuta and neighbouring villages. They have applied for our CUG and its been processed. I believe its worth supporting', 1, '2015-12-14 13:57:23', '2015-12-14 13:57:23');
+INSERT INTO events VALUES (345, '2015-12-09', 'ST Brikama Boyo New Years Show', 'ST', 'Brikama Jokor ', 'Dembo Jobarteh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'ST is a very big name in Brikama and he is hosting his Show on New Years eve and its expected to be packed because its the biggest show in brikama on that day. I believe its worth supporting', 1, '2015-12-14 15:43:50', '2015-12-14 15:43:50');
+INSERT INTO events VALUES (346, '2015-10-19', 'Epm Kids Christmas Party', 'Events Planning&Management(EPM)', 'Relax Sahel, Kololi', 'Sira Baldeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'EPM)Events Planning&Management want to organize kids christmas party.The aim is to bring kids together under one umbrella on christmas feast.Its worth supporting.', 1, '2015-12-21 14:14:28', '2015-12-21 14:14:28');
+INSERT INTO events VALUES (347, '2015-12-10', 'Simplest Yagana Movement Christmas Tour', 'Yagana Movement', 'Pirang,Sifoe,Gunjur,Faraba', 'DJ Simplest Of Afri radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Simplest works for afri-radio and he is a very popular Raggea Dj, Very Popular among the reggea loving community. Its a show worth supporting', 1, '2015-12-21 15:46:15', '2015-12-21 15:46:15');
+INSERT INTO events VALUES (348, '2015-12-06', 'Davido Live In The Gambia', 'Absolute Entertainment', 'Independence Stadium Bakau', 'Ms Haddy Faye CEO Absolute Entertainment', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This will be the first time Davido will be performing in the Gambia, He is one best artist from Nigeria and is known world wide.Davido has a lot of following in the Gambia and I believe its an event worth supporting', 1, '2015-12-29 10:20:48', '2015-12-29 10:20:48');
+INSERT INTO events VALUES (349, '2015-12-07', 'TITI Gala Dinner&Dance', 'Champion Sounds', 'Paradise Suites Hotel', 'Dj Lamin Cham-Champion Sounds', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Lamin Cham of Champion Sounds will be organizing music show with famous senegalese star TITI, Gala Dinner&Dance.Titi has lots of fans in Gambia,its worth supporting.', 1, '2015-12-29 10:32:42', '2015-12-29 10:32:42');
+INSERT INTO events VALUES (350, '2015-12-17', 'St Anthony''s Choir Concert 2016', 'St Anthony''s Parish Kololi', 'Kairaba Beach Hotel', 'Mr Charles Gome/Mr Thibaut Sambou', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a youth workforce,young choir,parish.They want to organize this event to raise funds to buy materials/Instruments for their church.Its worth supporting.', 5, '2016-01-04 12:21:01', '2016-01-04 12:21:01');
+INSERT INTO events VALUES (351, '2015-12-04', '3rd Edition Reggae Kunda Music Festival', 'Mandingmorry Foundation for Performing Arts (MANFOPA)', 'Sk West Mini Stadium', 'Ibrahim Ceesay Executive Director Mandingmorry Foundation For Performing Arts', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Mandingmorry Foundation for Performing Arts (MANFOPA) will be oragnizing their 3rd Edition Reggae Kunda Music Festival.We have been in partnership with Ibrahim Ceesay Executive Director MANFOPA.Its worth supporting.', 1, '2016-01-04 13:18:34', '2016-01-04 13:18:34');
+INSERT INTO events VALUES (352, '2015-12-23', 'Gamo Serekunda', 'Santa Yalla Mosque Committee', 'Opposite Plaza Cinema Serekunda', 'Alhagie Malick Gaye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gamo is an annual Islamic event to celebrate the birthday of the prophet Muhammed(S.A.W)worldwide.Its worth supporting.', 5, '2016-01-05 12:06:05', '2016-01-05 12:06:05');
+INSERT INTO events VALUES (353, '2015-12-23', 'Pap Joof Fans&Humanity Starz', 'Pap Joof Fans Club', 'Brikama Jokor', 'Mbassey Manneh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a beauty pagent,Face of Brikama organized by Papa Diouf fans club in Brikama,They have very big fan base.We have been in patrnership before.They worth supporting.', 1, '2016-01-05 15:35:38', '2016-02-02 10:13:26');
+INSERT INTO events VALUES (354, '2015-10-15', 'Mc Mbye Album Launching''''Gambia Sikanam''''', 'Mc Mbye Artist', 'Alliance Francaise', 'Mc Mbye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Mc Mbye is launching is Brand New Album Launching name''''Vision Gambia Sikanam''.He has a big fans base in music industry and he is well known Gambian ''''Mbalax''''artist.Its Worth supporting.', 1, '2016-01-07 11:00:11', '2016-01-07 11:00:11');
+INSERT INTO events VALUES (355, '2015-11-26', 'MLC 10 Years Anniversary In Music', 'Mlc Emeloo&Fans', 'Bakau School Ground', 'Modou Lamin Ceesay', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'MLC as an artist has always worked with Africell, he is a hard musician from Bakau and he will be celebrating his 10 years in Music. He went with Africell up country during the Xtreme tour 2011. The event is expected to be successful.', 1, '2016-01-12 11:13:19', '2016-01-12 11:13:19');
+INSERT INTO events VALUES (356, '2015-12-23', 'Brixton Open Mic Jam-Fiila Crew Brikama', 'Fiila Crew Brikama', 'Brikama Mini Stadium ', 'Big Sam-Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have been in parthnership before with Fiila Crew Brikama and sponsored previous show fiila show which was successful.This is the 1st Edition Brixton Open Mic Jam I think its a program worth sponsoring.', 1, '2016-01-14 11:04:10', '2016-01-15 10:28:25');
+INSERT INTO events VALUES (357, '2015-11-23', 'Kanifing East Youths Blood Donation&Carnival', 'Kanifing East Youths&Sports Development Committee', 'KMC HALL', 'Mutarr Trinn Customer Care', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Kanifing East Youths&Sports Development Committee will be organizing a free Blood Donor day,and carnival support with estate communites.I think its worth supporting.', 1, '2016-01-14 11:11:15', '2016-01-27 17:34:31');
+INSERT INTO events VALUES (358, '2016-01-13', 'Tam 50 Album Launching', 'Ndonngol Entertainment Music Label as the General Manager', 'Jakarlo Center Stage', 'Ousainou Mboob.', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Tamsir Samba alias Tam 50 Silky is a well known and popular artist in The Gambia,and has a big fans base in the music industry. He can be supported for his Debut Album launching.', 1, '2016-01-15 08:25:25', '2016-01-15 08:25:25');
+INSERT INTO events VALUES (359, '2016-01-11', 'Dj Njags Junior Valentines EVE special musical jamboree', 'Njaggs junior in collaboration with solid vibes sound ', 'Fass Njagga Choi Hall', 'Njagga Sowe Staff Afri Media', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Dj Njaggs junior works for afri-radio and he is a very popular Djlove by community. its a show worth supporting.', 1, '2016-01-18 11:53:14', '2016-01-28 11:05:00');
+INSERT INTO events VALUES (361, '2016-01-15', 'Annual Conference Nema Nasir', 'United Association Of Sheikh Muhammed Nasir Ibrahim Nyass Association', 'Nema Nasir Near Mosque', 'Sheika Hassan&Ousainou Jobe Nyass', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'United Association Of Sheikh Muhammed Nasir Ibrahim Nyass Association will be organizing their 1st Annual Conference to be held at Nema Nasir.Its worth supporting.', 1, '2016-01-18 15:53:53', '2016-01-18 15:53:53');
+INSERT INTO events VALUES (362, '2016-01-19', 'Black Lynxs Monthly Open Mic Tabokoto', 'Black Lynx Entertainment', 'Opposite Elton', 'Waagan Fye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have partnered with Black Lynx on numberous occasions and they have successful event.Its Worth supporting.', 1, '2016-01-19 10:47:39', '2016-01-28 13:17:59');
+INSERT INTO events VALUES (363, '2015-12-31', 'Ablo Promotion Launching&Women Kafo', 'Ablo Promotion ', 'Kandiba School Ground', 'Alhagie Abdoulie Bojang', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Alhagie Abdoulie Bojang commonly know as will be Launching Ablo Promotion with New Jeshwang Women Kafo at jeshwang.I think it worth supporting.', 1, '2016-01-19 16:41:35', '2016-01-20 12:17:16');
+INSERT INTO events VALUES (364, '2016-01-13', 'Parish Diocese Commercial Dance', 'St Therese', 'Fr Farell Memorial Hall', 'Mrs Therese Nancy Carrous-President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'St Therese''s Parish Diocese Of Banjul are well known in the Gambia,especially in chrtistinity religion.This is the fisrt patrnership.It''s worth supporting.', 1, '2016-01-20 09:15:55', '2016-02-05 11:42:50');
+INSERT INTO events VALUES (365, '2016-01-07', 'E-Nyassi Free Show', 'E-Nyassi Artist&Fans', 'Palma Rima Beach', 'Abubacarr Tarawally-Manager', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'E-Nyassi is a well known and popular artist R N B NDAGA in The Gambia,and has a big fans base in the music industry. He can be supported and this is our first partnership.', 1, '2016-01-20 10:32:32', '2016-01-20 13:25:14');
+INSERT INTO events VALUES (366, '2016-01-13', 'Sanyang Festival 2016', 'Sanyang&Community', 'Sanyang', 'Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Sanyang&Community will be organizing Festival is a very big event and have been successful past years.This will be the first partneship.It worth supporting.', 1, '2016-01-21 15:33:48', '2016-01-21 15:33:48');
+INSERT INTO events VALUES (373, '2016-01-11', '4th Edition Food&Beverage Festival 2016', 'Gambia Tourist Board(GTB)', 'Green Mamba Gardens/Jakarlo Bar &Restaurant', 'Adama Njie/Director', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gambia Tourist Board(GTB) food&Beverage Festival is a very big event and have been successful past years.We have been in partneship before.It worth supporting.', 1, '2016-01-28 13:30:05', '2016-01-28 13:30:05');
+INSERT INTO events VALUES (374, '2016-01-21', 'YOMEF Valentines Day Celebration', 'Youth Moral Education Foundation International(YOMEF) ', 'Schools-GB&Upcountry', 'Augustine Onyinye Ugbana', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Youth Moral Education Foundation International(YOMEF) will be celebrating valentive day to true love and to correct its negative social misconception mostly propagated by media.Its worth supporting.', 1, '2016-01-28 15:29:53', '2016-02-01 12:08:54');
+INSERT INTO events VALUES (375, '2016-01-13', 'Royal Messenjah Debut Album 2016', 'Royal Messenjah Sargal Yaye Foundation', 'Alliance Francaise', 'Royal Messenjah Artist', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Royal Messenger Sargal Yaye Foundation is a well known Gambian artist,he wants to launch his Debut album.Its worth supporting.', 1, '2016-02-01 16:52:26', '2016-02-01 16:52:26');
+INSERT INTO events VALUES (378, '2016-01-28', 'Bike For Africa', 'Brussels Airline', 'Senegambia Beach', 'Kevin Constant', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Bike For Africa is organize by Brussels Airline.', 1, '2016-02-03 10:08:44', '2016-02-03 10:08:44');
+INSERT INTO events VALUES (377, '2016-01-28', 'School Sports Lang Tombong Tamba', 'Lang Tombong Tamba', 'Schools', 'Lang Tombong Tamba', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'In support of sports', 5, '2016-02-03 09:57:18', '2016-02-03 10:01:16');
+INSERT INTO events VALUES (379, '2016-01-29', 'Cancer walk 2016', 'First Lady Madam Zeinab Jammeh ', 'New National Assembly Building Banjul', 'Office of the First Lady', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'First Lady Madam Zeinab Jammeh is organizing a Cancer walk 2016 to raise awareness on cancer to general public.Its worth supporting.', 5, '2016-02-03 10:14:05', '2016-02-03 10:14:05');
+INSERT INTO events VALUES (380, '2016-01-27', 'Valentine Couples Connect Afrinity Production', 'Afrinity Production', 'Joint Offiers Mess', 'Adams Afrinity Production', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Afrinity Production are organizing a Valentine day celebration.Its worth supporting.', 1, '2016-02-04 15:03:01', '2016-02-04 15:03:01');
+INSERT INTO events VALUES (381, '2016-02-04', 'Jah Law Promotions Turbulence Concert', 'ah Law Promotions', 'Independence Stadium Bakau', 'Tina Jones CEO MBE Consulting Inc.', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Tina Jones CEO MBE Consulting Inc with a  organizing Black consciouseness tour with Turbulence jamican artist.Its worth supporting.', 1, '2016-02-04 15:59:26', '2016-02-04 16:02:31');
+INSERT INTO events VALUES (382, '2016-02-08', 'Gamo Kerr Cherno Baba Village', 'Kerr Cherno Baba Village', 'Kerr Cherno Baba Village', 'Oustass Imam  Abdoulie Drammeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This annual Gamoo is organize by the Kalifa Alhagie Bun Omar Jallow and the entire Tarihatul Tijaniya family it is an event that gather the Muslim ummar', 1, '2016-02-08 15:36:50', '2016-02-08 15:36:50');
+INSERT INTO events VALUES (383, '2016-02-09', 'OPES (GPA)Gala Dinner With Pap Diouf ', 'Gambia Ports Authority', 'Kairaba Beach Hotel', 'Ousman M.Jorbateh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gambia Ports Authority will be organizing music show with famous senegalese star Pap Diouf , Gala Dinner&Dance.Pap Diouf has a lots of fans in Gambia,its worth supporting.', 1, '2016-02-11 10:41:10', '2016-02-11 11:07:13');
+INSERT INTO events VALUES (384, '2016-02-17', 'Gamo Dairatul Fith-Yanou Sidihin ', 'Dairatul Fith-Yanou Sidihin ', 'Sinchu Alhagie', 'Kebba J.Marong Account', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This annual Gamoo is organize by Dairatul Fith-Yanou Sidihin the  entire Tarihatul Tijaniya family it is an event that gather the Muslim ummah.Its Worth supporting.', 5, '2016-02-17 15:39:50', '2016-02-17 15:39:50');
+INSERT INTO events VALUES (385, '2016-02-03', 'Vypa Skinny Boyfly)3rd Year Anniversary', 'Amadou Squad Vypa Fans ', 'Alliance Francaise', 'Amadou Secka-VYPA', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Amadou Secka A.K.A Vypa Skinny Boyfly)will be organizing 3rd Anniversary with fans.We have been in parthnership before its worth supporting.', 1, '2016-02-17 15:53:09', '2016-02-17 15:53:09');
+INSERT INTO events VALUES (386, '2016-02-11', 'Tunko Sanneh fund raising show with Jaliba Kuyateh', 'Tunko Sanneh', 'Semega Janneh Hall', 'Tunko Sanneh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Tunko Sanneh works for afri-radio and he is a very popular mandinka Dj Jamano Kachaa, Very Popular among the Manding community. its a show worth supporting.', 1, '2016-02-19 13:26:30', '2016-03-12 16:09:32');
+INSERT INTO events VALUES (387, '2016-02-25', 'National Prayer Day', 'Gambia Christian Council', 'Independence Stadium Bakau', 'John Charles Njie', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Gambian Christian Council, will be organising a national day of Prayer at the independence stadium. I believe its a good event to sponsor because it covers the entire christian community.', 1, '2016-02-29 14:14:17', '2016-02-29 14:14:17');
+INSERT INTO events VALUES (388, '2016-02-16', 'Farafenni Fiesta', 'Foresight Promotion', 'Farafenni Mini Stadium', 'Edi Jamanka', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This event is an annual event, this is the second year running. The first edition was a success.', 1, '2016-02-29 15:00:10', '2016-02-29 15:00:10');
+INSERT INTO events VALUES (389, '2016-02-25', 'Launching of Sae2yi', 'New Era', 'Alliance Francaise', 'Marcel Ceesay (Mass 187)', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'New era is a very popular group among the youth of the country. The launching of sae2yi is expected to bring together music loving youths to the event. I believe its worth supporting.', 1, '2016-02-29 16:51:24', '2016-02-29 18:59:24');
+INSERT INTO events VALUES (390, '2016-02-05', 'Tata Dingding Jobarteh Fund Raising Show', 'Voice of Gambian Talents', 'Sukuta Cinema Hall', 'Kumba Jallow', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Tatadingding is a household name when it comes to afro-manding songs in the Gambia. He has a strong following among the mandinka tribe. I believe its a show worth supporting', 1, '2016-02-29 17:54:08', '2016-02-29 19:00:22');
+INSERT INTO events VALUES (391, '2016-03-07', 'Annual Gamo&Siyareh of Nema Nasir 2016', 'Nema Nasir Islamic Development Association', 'Nema Nasir Near Mosque', 'Mr Mbye Drammeh President', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Annual Gamo and Siyareh 2016,of Nema Nasir is an Islamic event,it has biggest turnout in The Gambia about 15,000 fifteen thousand people come to attend the gamo,from countires like,Senegal,Mauritania,Ghana,Niger,Sirealeone and Nigeria.We have been in partnership before,for the past 3 three years.The fear is there are other network that want to partner with them and take the attention of the gamo.Its worth supporting.', 5, '2016-03-09 09:37:20', '2016-04-08 08:26:31');
+INSERT INTO events VALUES (392, '2016-03-10', 'World Consumer Rights Day 2016', 'GCCPC', 'Pipeline', 'Amadou Ceesay', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell', 'The Gambia Competition and Consumer Protection Commission are celebrating world consumer rights day.  They are focusing on the abuse of Antibiotics.  I believe its worth supporting', 1, '2016-03-14 13:16:33', '2016-03-14 13:16:33');
+INSERT INTO events VALUES (393, '2016-02-02', 'National Divine Mercy Celebrations', 'Catholic Diocese of Banjul ', 'Holy Family Church (Fajara)', 'Fr. John Mendy', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell', 'The Catholic Diocese of Banjul are celebrating the national divine mercy day.  This is an annual event and a day of prayer that has always been successful. I believe its worth supporting.', 1, '2016-03-14 13:36:31', '2016-03-14 13:36:31');
+INSERT INTO events VALUES (394, '2016-02-10', 'Banjul Paddle', 'BCC', 'Banjul', 'Lamin', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Easter Monday is usually celebrated big in Banjul. The turn out is usually great. I believe its worth supporting.', 1, '2016-03-14 13:54:24', '2016-03-14 13:54:24');
+INSERT INTO events VALUES (395, '2016-02-26', 'Dramatiized Passion ', 'Diocese of Banjul', 'St. Therese''s Lower Basic School', 'Fr. Peter Lopez', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is an annual event organised by the catholic community in the Gambia. The Turn out is usually great and well attended.', 1, '2016-03-14 14:04:58', '2016-03-14 14:04:58');
+INSERT INTO events VALUES (396, '2016-03-08', 'Old Jeswang Primary School Fund Raising', 'Wax Media', 'Old Jeswang Primary School', 'Pa Abdou Waggeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This is a great initiative put up by wax media to support Old Jeswang Lower Basic School. I believe its a worthy cause and its worth supporting.', 1, '2016-03-14 14:43:40', '2016-03-14 14:43:40');
+INSERT INTO events VALUES (397, '2016-02-11', 'Fund raising Show Jokere Endam ', 'Jokere Endam Fula Development Association', 'Galloya Village', 'Lamin Jallow PRO', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Jokere Endam Fula Development Association is a big fula association with three 3 villages,makumba ya,Galloya and Kunkujang Gattaya.Its worth supporting.', 1, '2016-03-15 10:35:27', '2016-03-15 10:37:46');
+INSERT INTO events VALUES (398, '2016-03-15', 'BIG Street Battle', 'Krystal Klear Entertainment', 'Banjul', 'Lati Forster', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Krystal Klear are organising a street to street dancing competition.  this event is bound to bring together from all over urban Gambia. The event is expected to be successful, I believe its worth supporting.', 1, '2016-03-16 17:48:52', '2016-03-16 17:48:52');
+INSERT INTO events VALUES (399, '2016-03-15', 'Easter Special', 'DJ Ken', 'Joint Officer''s Mess', 'DJ Ken', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'DJ Ken is a very popular Afro-Beats DJ on Afri-Radio.... He is organising an Easter show. I believe its worth supporting.', 1, '2016-03-21 13:33:37', '2016-03-21 13:33:37');
+INSERT INTO events VALUES (400, '2016-03-21', 'Roots Home Coming Festival', 'Ministry of Tourism', 'Nationwide ', 'Hon. Benjamin A. Roberts', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have always partnered with the organisers of The Roots International Festival.  This is a national festival and it gets a lot of coverage. I believe its worth supporting.', 1, '2016-03-21 14:34:31', '2016-03-21 14:34:31');
+INSERT INTO events VALUES (401, '2016-03-01', 'Stratford College Student Week', 'Stratford College of Management', 'Ndow''s Hall Kanifing Estate', 'Hagie Drammeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'The Straford College will be having a week long student week ending with a graduation ceremony on Saturday. I believe its worth supporting.', 1, '2016-03-23 15:45:44', '2016-03-23 15:45:44');
+INSERT INTO events VALUES (402, '2016-03-01', 'Man of the year concert', 'Jizzle & Artenola', 'Alliance Francaise', 'Jizzle', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Jizzle and Artenola are are two young talented artists.  They have a large following and are well loved by both young and old. I believe its worth supporting', 1, '2016-04-01 16:10:45', '2016-04-01 16:10:45');
+INSERT INTO events VALUES (403, '2016-04-01', 'Humanity Starz Album Launching', 'Humanity Starz', 'Kairaba Beach Hotel', 'Mbye Bittaye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Humanity Starz are one of the best bands in The Gambia. Africell have sponsored the recording of their album "After Taste".  They are about to launch the album and requested help.  I believe its worth supporting', 1, '2016-04-01 16:16:54', '2016-04-01 16:16:54');
+INSERT INTO events VALUES (404, '2016-03-23', 'Apachaki Free Show', 'Nyancho Kunda', 'Bakau', 'Amie Manneh Nyang', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Nyancho is one of the best Afro-Manding artists in The Gambia.  He is a very good entertainer and is well loved. I believe its worth supporting.', 1, '2016-04-01 16:22:57', '2016-04-01 16:22:57');
+INSERT INTO events VALUES (405, '2016-03-15', 'Wah Sa Halat Music Awards', 'World Vibe Entertainment', 'Djembe Hotel', 'Ya Sally Njie Colley', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Wah Sah Halat is one of the most successful Radio Shows in The Gambia.  Its a show that covers Gambian Music and entertainment.  They are coming up with a music Awards and I believe its worth supporting', 1, '2016-04-04 15:05:47', '2016-04-04 15:05:47');
+INSERT INTO events VALUES (406, '2016-03-15', 'Run For Malaria', 'YATES', 'SK Hospital', 'Papa Njie', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This run is organised by YATES and it''s for the fight against Malaria. I believe its for a worthy cause and its worth supporting', 1, '2016-04-04 15:26:30', '2016-04-04 15:26:30');
+INSERT INTO events VALUES (407, '2016-03-31', 'Mysterious Wedding Planner Movie Launch', 'Princess Promotion', 'Pencha mi Hall', 'Princess Shyngle', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Princess Shyngle is a famous Gambia Actress.  She is making waves Nigeria and Ghana. She is premiering her movie in The Gambia and I believe its going to be a success based on the followership on social media. I believe its worth supporting.', 1, '2016-04-12 11:33:33', '2016-04-12 11:33:33');
+INSERT INTO events VALUES (408, '2016-04-01', 'FAMOUS Concert', 'Keneke''s Promotion', 'Galaxy Entertainment Park', 'Keneke Komba', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Keneke from over the years has been the biggest promoter of Sierra Leonean Music in The Gambia.  He has promoted a lot of artists from sierra leone and brought them to The Gambia. In celebration of their independence, they are bringing in an artist from Sierra Leone to celebrate. I believe its worth supporting.', 1, '2016-04-12 11:50:01', '2016-04-12 11:50:01');
+INSERT INTO events VALUES (438, '2016-05-02', 'Magal Basse Korba Kunda', 'Serigne Ebrima Nyingne Nurulai', 'Basse', 'Modou Kara Gaye Afri radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Serigne Ebrima Nyingne Nurulai will be organizing an annual magal in Basse korba kunda with mourids community in Basse.Its worth supporting.', 5, '2016-05-13 12:39:17', '2016-05-13 12:39:17');
+INSERT INTO events VALUES (409, '2016-04-08', 'SANRA Fund Raising Gala & Dance', 'SANDRA', 'Paradise Suites Hotel', 'Bai Bittaye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have partnered with Staff Association of The National Roads Authority before and it has been a fruitful relationship.  They are putting together a fundraising show and have written to Africell for sponsorship. I believe their show is worth supporting.', 1, '2016-04-12 12:07:03', '2016-04-25 11:59:24');
+INSERT INTO events VALUES (410, '2016-03-29', 'A2''s Concert', 'A2 the Fulani King', 'Lamin Willys', 'Gibriel Janko', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'A2 is a very popular Dancellhall Artist and he is both loved by young and old. He sings in Fula and English. He was recently on Afri-radio during the easter promotion and had a lot of good reviews', 1, '2016-04-12 12:16:47', '2016-04-12 12:16:47');
+INSERT INTO events VALUES (411, '2016-03-21', 'Gamo Touba Njassan', 'Touba Njassan', 'Cassamance', 'Mammy Njie', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Mammy Njie works at afri-radio and every year they organise a Gamo in celebration of the birth of the prophet Muhammad SWT.', 1, '2016-04-12 12:20:17', '2016-04-12 12:20:17');
+INSERT INTO events VALUES (412, '2016-03-19', 'Hip Hop The Monthly Concert', 'Smart Move Entertainment', 'West Field', 'Sanna Kanteh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This group Have been doing this show for a while now and they always use africell billboards as a back drop. they have written to us for assistance and I believe its worth supporting.', 1, '2016-04-12 13:32:43', '2016-04-12 13:32:43');
+INSERT INTO events VALUES (413, '2016-04-18', 'National Children''s Day of Broadcasting', 'GRTS', 'GRTS', 'Fatou Sanneh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'This day was celebrated internationally in the past.  GRTS has decided to continue the celebrations nationally. On this day Children take over the airwaves. I believe its worth supporting.', 1, '2016-04-27 11:44:13', '2016-04-27 11:44:13');
+INSERT INTO events VALUES (414, '2016-04-12', 'East to West Coast Marathon Run', 'Peace Corps', 'Nationwide ', 'Paige', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'We have partnered with the peace corps on a lot of their community base events.  I believe this nationwide marathon in support of Youth empowerment and education is worth supporting', 1, '2016-04-29 10:16:16', '2016-04-29 10:16:16');
+INSERT INTO events VALUES (415, '2016-04-20', 'Jamba Sangsang Fan Base Launching', 'Baddibunka', 'Alliance Francaise', 'Annette A Camara', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Baddibunka is a household name in The Gambia Music Scene.  He is one of the best Afro-Manding Artist in the country.  He is launching his fan base and I believe its worth supporting.', 1, '2016-05-03 10:24:35', '2016-05-03 10:24:35');
+INSERT INTO events VALUES (416, '2016-04-27', 'May Day Sports 2016', 'National Sports Council', 'Independence Stadium Bakau', 'Musa Sise', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'May Day Sports is organized every year by National Sports Council.Different companies participate on this event.Turnout is good its worth supporting.', 1, '2016-05-04 10:34:23', '2016-05-04 10:34:23');
+INSERT INTO events VALUES (417, '2016-04-25', 'Yaws Creations African Print Party', 'Yaws Creations', 'The Palace Night Club Senegambia', 'Awa Conateh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Yaws Creations will be organizing African Print Party for the upcoming roots homecoming festival.We have been in partnership before.Its worth supporting.', 1, '2016-05-04 10:53:10', '2016-05-04 10:53:10');
+INSERT INTO events VALUES (418, '2016-04-21', 'Nasiru Promotions Wrestling Competition', 'Nasiru Promotions ', 'Sk West Mini Stadium', 'Ebrima Drammeh', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Nasiru Promotions will be organizing a Wrestling Competition with Gambian wrestlers,famous Amma Baldeh from senegal will attend the event as invited guest.We have been in partnership before.Its worth supporting.', 5, '2016-05-04 12:48:48', '2016-05-18 15:39:44');
+INSERT INTO events VALUES (419, '2016-04-21', 'MS-PROMOTION GSN-Music Awards 2016', 'MS-PROMOTION', 'Alliance Francaise', 'Muhammed Saho-Afri Radio Staff', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Muhammed Saho-Afri Radio Staff and CEO MS-PROMOTION will be organizing an Musical award show with sarahule artists in Gambia.We have been in partnership before.Its Worth supporting.', 1, '2016-05-04 12:56:36', '2016-05-04 12:56:36');
+INSERT INTO events VALUES (420, '2016-03-16', '7th FIILAVERSARY 2016', 'Black Lynx Management', 'Willy''s &Brikama Mini Stadium', 'Abdou K Waagan Faye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Fiila Tv Show has been a successful event for past years.We have been in partnership before.I believe it is worth supporting', 1, '2016-05-05 09:35:49', '2016-05-05 09:35:49');
+INSERT INTO events VALUES (422, '2016-04-26', 'Gunjur Cultural Festival 2016', 'Gunjur Community', 'Gunjur Village ', 'Buba Bojang', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials'' Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gunjur Cultural Festival is an annual event and attracts lot of peoples in Gunjur and surrounding villages.Its is cultural,traditional,festival.Its worth supporting', 1, '2016-05-05 10:14:03', '2016-05-05 10:14:03');
+INSERT INTO events VALUES (423, '2016-04-18', 'Gunjur Cultural Festival 2016', 'Gunjur Community', 'Gunjur Village ', 'Buba Bojang Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gunjur Cultural Festival is an annual event and attracts lot peoples in Gunjur and surrounding villages.Its is cultural,traditional,festival.Its worth supporti', 1, '2016-05-05 10:18:09', '2016-05-18 10:04:58');
+INSERT INTO events VALUES (424, '2016-04-25', 'Anglican Diocese Of The Gambia Mothers Union', 'Anglican Diocese-Mothers Union', 'Ndows Hall Kanifing Estate', 'mrs mary o''riley', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Anglican Diocese Of The Gambia Mothers Union will be organizing a  gala dinner&dance to raise funds for mother''s union pre-school.Its worth supporting.', 1, '2016-05-06 09:41:27', '2016-05-06 09:41:27');
+INSERT INTO events VALUES (437, '2016-04-30', 'Brixton Carnival 2016', 'Mustic Promotion', 'Brikama Jokor', 'Sulayman Badjie', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Mustic Promotion will be organizing Brixton Carnival 2016.This is the 2nd Edition held in Brikama and is a highly populated town.They approached us last year,but we could not sponsor due to lot of engagement.I think it worth supporting.', 1, '2016-05-13 09:58:51', '2016-05-13 09:58:51');
+INSERT INTO events VALUES (426, '2016-05-03', 'Kerr Gi Family CLASSIC GESTU DAEMBA', 'Ker gi Family Artist', 'Alliance Francaise', 'Manager-Kerr Gi Family', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'These young family group formed by young talented Gambian musicians.We have been in parthnership before, its worth supporting.', 1, '2016-05-06 10:07:35', '2016-05-09 16:49:41');
+INSERT INTO events VALUES (427, '2016-04-18', 'Alkaline Concert In Gambia 2016', 'DJ FAAL', 'Independence Stadium Bakau', 'Gibril Faal', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gibril Faal is a well kwown DJ in the music industry in The Gambia and beyound.We have been in parthnership before, its worth supporting.', 1, '2016-05-06 10:51:54', '2016-05-06 11:34:26');
+INSERT INTO events VALUES (428, '2016-04-11', 'Bob Marley Reggae Roots Festival', 'Rave About Africa ', 'Sand Beach Holiday Resort Kotu', 'Velma Wright Moven', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Rave About Africa will be organizing a Bob Marley Reggae Roots Festival at Sand Beach Holiday Resort Kotu.', 1, '2016-05-06 11:59:00', '2016-05-06 11:59:00');
+INSERT INTO events VALUES (435, '2016-05-09', 'Brain Krackers 3RD Year Anniversary', 'Brain Krackers&Joluv Arts', 'Jakarlo Center Stage', 'Bai Babou', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Bai Babou AKA Brain Kracker is one of the most popular Young artist in The Gambia. He has a lot of following and is well loved. I believe it will be a successful event', 1, '2016-05-10 12:18:26', '2016-05-10 12:18:26');
+INSERT INTO events VALUES (430, '2016-05-03', 'St Peter''s Graduation Ceremony ', 'St Peter''s School', 'St Peter''s School Ground', 'Vice Principal-Mr Francis M.Gomez', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'St Peter''s School will be organizing a Graduation,speech and prize giving Ceremony.We have been in partnership before during school sim promotion.Its worth supporting', 1, '2016-05-10 11:38:52', '2016-05-10 11:38:52');
+INSERT INTO events VALUES (431, '2016-05-03', 'Tobacco Road Carnival ', 'Tobacco Road Youth&Community', 'Banjul ', 'Alhagie Sillah', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Tobacco Road Youth and community will be organizing a road Carnival in Banjul capital city,highly populated area.I think its worth supporting.', 1, '2016-05-10 11:45:22', '2016-05-10 11:45:22');
+INSERT INTO events VALUES (432, '2016-04-25', 'Mustik Concert 2016', 'Mustik Artist', 'Pipeline', 'Mustapha Loum', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Mustik Artist will be organizing a concert at pipeline.We have been in partnership before.I think its worth supporting.', 1, '2016-05-10 11:53:19', '2016-05-10 11:53:19');
+INSERT INTO events VALUES (442, '2016-05-26', 'MRCG Annual AGM', 'Medical Research Council (MRC)', 'MRC Complex Fajara', 'Abdoulie Cham-Chairperson ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Medical Research Council The Gambia (MRCG)will be organizing 10th edition annual general meeting(AGM).Its worth supporting.', 5, '2016-05-26 10:48:34', '2016-05-26 10:48:34');
+INSERT INTO events VALUES (434, '2016-05-06', 'FAWEGAM Gala Dinner', 'FAWEGAM', 'Djembe Beach Resort ', 'Mrs Yadicon Njie Eribo', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'FAWEGAM WEEK will be organizing a gala dinner to empower women and girls education in The Gambia.We have been in partnership before.Its Worth supporting.', 5, '2016-05-10 12:08:59', '2016-05-10 12:21:34');
+INSERT INTO events VALUES (436, '2016-04-26', 'Daddy Bostin Concert', 'Daddy Boston Entertainment', 'Latrikunda German Garage', 'Sulayman Jammeh A.K.A.Daddy Boston', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Daddy Boston is a Gambian artist well known in music industry.We have been in partnership before.Its Worth Supporting.', 1, '2016-05-10 12:25:49', '2016-05-10 12:25:49');
+INSERT INTO events VALUES (439, '2016-05-02', 'Magal Ahlul Hitma Darrai ', 'Magal Ahlul Hitma Darrai Serigne Omar', 'Ebo town', 'Modou Kara Gaye Afri radio', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ahlul Hitma Darrai Serigne Omar will be organizing an annual Magal wtih mourids community in Ebotown.Its worth supporting.', 5, '2016-05-13 12:43:28', '2016-05-13 12:43:28');
 INSERT INTO events VALUES (440, '2015-11-02', 'Jammeh Foundation for Peace Gala Dinner', 'JFP', 'Kairaba Beach Hotel', 'Giri Njie', 'Publicity', 'Goodwill', 1, '2016-05-18 15:59:36', '2016-05-18 15:59:36');
 INSERT INTO events VALUES (441, '2015-04-29', 'GCCI Awards', 'GCCi', 'Ocean Bay Hotel', 'Sarata', 'Publicity', 'Partners', 1, '2016-05-18 16:20:23', '2016-05-18 16:20:23');
-INSERT INTO events VALUES (443, '2016-06-01', 'GCCI Award Dinner ', 'GCCI', 'Djembe Beach Resort ', 'GCCI', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'GCCI Award Dinner', 1, '2016-05-30 10:07:26', '2016-05-30 10:09:48');
-INSERT INTO events VALUES (444, '2016-06-16', 'Gee The Come Back', 'Gee &Team Gee', 'Pencha Mi Hall', 'Gee Artist', 'Africell to be mentioned in all adverts\r\nAfricell''s logo to be placed on all printed materials\r\nAfricell to mentioned during the program by the MC\r\nAfricell to be the only GSM partner\r\nVenue to be branded by africell\r\nVIP tickets to be provided for Africell Staff', 'Gee will organizing a music show called The Come Back,after been away for few years.He have lot of fan base in Gambia and beyound.We have been in patrnership before.Is worth supporting.', 1, '2016-06-20 11:22:43', '2016-06-20 11:22:43');
-INSERT INTO events VALUES (445, '2016-06-14', 'World Drug Day 2016', 'Drug Law Enforcement Agency The Gambia', 'Sibanor foni Bintang', 'Sheriff Sanyang', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Drug Law Enforcement Agency The Gambia will be commemorating world drug day in westcoast region.Its worth supporting.', 5, '2016-06-22 13:33:55', '2016-06-22 13:33:55');
-INSERT INTO events VALUES (448, '2016-07-11', 'Launching G-Tech Mega Football Hunt 2016', 'G-Tech Football Academy', 'SK,BJL,Barra,Brikama and Bansang', 'Enakeno Arausi Managing Director', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'G-Tech Mega Football will be organizng a major football Hunt 2016,in five major districts in The Gambia,Serekunda,Banjul,Bansang,Brikama and Barra.This will be the first partnership.I think its woth supporting.', 5, '2016-07-11 12:41:55', '2016-07-11 12:41:55');
-INSERT INTO events VALUES (447, '2016-07-20', 'Kartong Slow Food Luncheon Sale', 'SANDELE FOUNDATION', 'Eco Retreat Learning center', 'Gilbert Jassey', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'SANDELE FOUNDATION will be organizing a Slow Food Luncheon Sale to encourage local chefs and women for the future.I think its worth supporting.', 1, '2016-07-05 11:37:14', '2016-07-05 11:53:20');
-INSERT INTO events VALUES (449, '2016-06-01', 'Billboards 22nd Anniversary July 22nd Clebration 2016', 'Office Of The President', 'Nationwide', 'Mrs Rohie Bittaye Darboe-Secretary General', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Africell will be fixing 22 Billboards for 22nd Anniversary July 22nd Clebration 2016.We have been in partnership before.', 1, '2016-07-18 12:37:41', '2016-07-18 12:38:51');
-INSERT INTO events VALUES (450, '2016-07-18', 'Operation Save The Children', 'Jammeh Foundation', 'Nationwide', 'Office of the First Lady', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Operation Save The Children foundation are organizing a campaign against child marriage, by Office of the First Lady.', 5, '2016-07-18 12:42:24', '2016-07-18 12:42:24');
-INSERT INTO events VALUES (451, '2016-07-12', 'Bus Branding GRTS Tour 22nd Anniversary 2016', 'GRTS TV', 'Nationwide tour', 'Alhagie Abubakar Darboe GRTS', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Bus Branding GRTS, 22nd Anniversary 2016.We have been in partnership before.', 5, '2016-07-18 12:45:43', '2016-07-19 08:59:20');
-INSERT INTO events VALUES (452, '2016-07-11', 'MDI Student'' Union Tour-Senegal ', 'MDI Student'' Union', 'Senegal ', 'Tom Bundu Seceretary General ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'MDI Student'' Union Tour will be organizing a sutdy  tour from Gambia to republic of Senegal to interact and network with peers in institutions with in sub regions.Its worth supporting.', 5, '2016-07-19 10:56:22', '2016-07-19 10:56:22');
-INSERT INTO events VALUES (453, '2016-07-19', 'Gospel Business Men Fellowship', 'Gospel Business Men', 'Pencha Mi Hall', 'Femi Olayanju', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Gospel Business Men Fellowship international will be organizing a  program with over 600 delegates from Nigeria,Ghana including Gambia.Its worth supporting.', 5, '2016-07-20 10:54:22', '2016-07-20 10:54:22');
-INSERT INTO events VALUES (454, '2016-06-27', 'Ebujan Theatre Troupe 2016', 'Artistic Director Ebujan Theatre Troupe', 'Ebujan Theatre Opposite GFF House-Kanifing', 'Christopher Tijan Smith', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Artistic Director Ebujan Theatre Troupe will be organizing a production of play with the theme''''Breaking the Culture of Silence''''.Its worth supporting.', 1, '2016-07-20 11:02:36', '2016-07-20 11:02:36');
-INSERT INTO events VALUES (455, '2016-07-14', 'GIEPA Launching Of New Country Brand For Gambia', 'GIEPA ', 'Nationwide', 'Sadibou Jammeh GIEPA ', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'GIEPA will be Launching New Country Brand For Gambia during the 22nd July Anniversary 2016.We have been in partnership before.Its Worth supporting', 5, '2016-07-20 11:22:26', '2016-07-21 15:14:40');
-INSERT INTO events VALUES (456, '2016-07-19', 'July 22nd Marathon competition ', 'Ministry of Defence', 'Banjul ', 'Yaya Drammeh -for Chief OF Defence', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Ministry of Defence will be organizing a July 22nd Marathon competition.We have been in partnership before its worth supporting.', 5, '2016-07-21 15:10:56', '2016-07-21 15:10:56');
-INSERT INTO events VALUES (457, '2016-07-20', 'CET Movie Premier&Launhing', 'Correct Entertainment Troupe CET', 'Pencha Mi Hall', 'Laten Boye', 'Africell to be mentioned in all adverts<br/>\r\nAfricell''s logo to be placed on all printed materials<br/>\r\nAfricell to mentioned during the program by the MC<br/>\r\nAfricell to be the only GSM partner<br/>\r\nVenue to be branded by africell<br/>\r\nVIP tickets to be provided for Africell Staff', 'Correct Entertainment Troupe CET will be doing a movie Movie Premier&Launhing title ''''RED CARD''''.I think its worth supporting.', 1, '2016-07-25 14:24:46', '2016-07-25 14:24:46');
+INSERT INTO events VALUES (443, '2016-06-01', 'GCCI Award Dinner ', 'GCCI', 'Djembe Beach Resort ', 'GCCI', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'GCCI Award Dinner', 1, '2016-05-30 10:07:26', '2016-05-30 10:09:48');
+INSERT INTO events VALUES (444, '2016-06-16', 'Gee The Come Back', 'Gee &Team Gee', 'Pencha Mi Hall', 'Gee Artist', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gee will organizing a music show called The Come Back,after been away for few years.He have lot of fan base in Gambia and beyound.We have been in patrnership before.Is worth supporting.', 1, '2016-06-20 11:22:43', '2016-06-20 11:22:43');
+INSERT INTO events VALUES (445, '2016-06-14', 'World Drug Day 2016', 'Drug Law Enforcement Agency The Gambia', 'Sibanor foni Bintang', 'Sheriff Sanyang', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Drug Law Enforcement Agency The Gambia will be commemorating world drug day in westcoast region.Its worth supporting.', 5, '2016-06-22 13:33:55', '2016-06-22 13:33:55');
+INSERT INTO events VALUES (448, '2016-07-11', 'Launching G-Tech Mega Football Hunt 2016', 'G-Tech Football Academy', 'SK,BJL,Barra,Brikama and Bansang', 'Enakeno Arausi Managing Director', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'G-Tech Mega Football will be organizng a major football Hunt 2016,in five major districts in The Gambia,Serekunda,Banjul,Bansang,Brikama and Barra.This will be the first partnership.I think its woth supporting.', 5, '2016-07-11 12:41:55', '2016-07-11 12:41:55');
+INSERT INTO events VALUES (447, '2016-07-20', 'Kartong Slow Food Luncheon Sale', 'SANDELE FOUNDATION', 'Eco Retreat Learning center', 'Gilbert Jassey', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'SANDELE FOUNDATION will be organizing a Slow Food Luncheon Sale to encourage local chefs and women for the future.I think its worth supporting.', 1, '2016-07-05 11:37:14', '2016-07-05 11:53:20');
+INSERT INTO events VALUES (449, '2016-06-01', 'Billboards 22nd Anniversary July 22nd Clebration 2016', 'Office Of The President', 'Nationwide', 'Mrs Rohie Bittaye Darboe-Secretary General', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Africell will be fixing 22 Billboards for 22nd Anniversary July 22nd Clebration 2016.We have been in partnership before.', 1, '2016-07-18 12:37:41', '2016-07-18 12:38:51');
+INSERT INTO events VALUES (450, '2016-07-18', 'Operation Save The Children', 'Jammeh Foundation', 'Nationwide', 'Office of the First Lady', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Operation Save The Children foundation are organizing a campaign against child marriage, by Office of the First Lady.', 5, '2016-07-18 12:42:24', '2016-07-18 12:42:24');
+INSERT INTO events VALUES (451, '2016-07-12', 'Bus Branding GRTS Tour 22nd Anniversary 2016', 'GRTS TV', 'Nationwide tour', 'Alhagie Abubakar Darboe GRTS', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Bus Branding GRTS, 22nd Anniversary 2016.We have been in partnership before.', 5, '2016-07-18 12:45:43', '2016-07-19 08:59:20');
+INSERT INTO events VALUES (452, '2016-07-11', 'MDI Student'' Union Tour-Senegal ', 'MDI Student'' Union', 'Senegal ', 'Tom Bundu Seceretary General ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'MDI Student'' Union Tour will be organizing a sutdy  tour from Gambia to republic of Senegal to interact and network with peers in institutions with in sub regions.Its worth supporting.', 5, '2016-07-19 10:56:22', '2016-07-19 10:56:22');
+INSERT INTO events VALUES (453, '2016-07-19', 'Gospel Business Men Fellowship', 'Gospel Business Men', 'Pencha Mi Hall', 'Femi Olayanju', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Gospel Business Men Fellowship international will be organizing a  program with over 600 delegates from Nigeria,Ghana including Gambia.Its worth supporting.', 5, '2016-07-20 10:54:22', '2016-07-20 10:54:22');
+INSERT INTO events VALUES (454, '2016-06-27', 'Ebujan Theatre Troupe 2016', 'Artistic Director Ebujan Theatre Troupe', 'Ebujan Theatre Opposite GFF House-Kanifing', 'Christopher Tijan Smith', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Artistic Director Ebujan Theatre Troupe will be organizing a production of play with the theme''''Breaking the Culture of Silence''''.Its worth supporting.', 1, '2016-07-20 11:02:36', '2016-07-20 11:02:36');
+INSERT INTO events VALUES (455, '2016-07-14', 'GIEPA Launching Of New Country Brand For Gambia', 'GIEPA ', 'Nationwide', 'Sadibou Jammeh GIEPA ', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'GIEPA will be Launching New Country Brand For Gambia during the 22nd July Anniversary 2016.We have been in partnership before.Its Worth supporting', 5, '2016-07-20 11:22:26', '2016-07-21 15:14:40');
+INSERT INTO events VALUES (456, '2016-07-19', 'July 22nd Marathon competition ', 'Ministry of Defence', 'Banjul ', 'Yaya Drammeh -for Chief OF Defence', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Ministry of Defence will be organizing a July 22nd Marathon competition.We have been in partnership before its worth supporting.', 5, '2016-07-21 15:10:56', '2016-07-21 15:10:56');
+INSERT INTO events VALUES (457, '2016-07-20', 'CET Movie Premier&Launhing', 'Correct Entertainment Troupe CET', 'Pencha Mi Hall', 'Laten Boye', 'Africell to be mentioned in all adverts
+Africell''s logo to be placed on all printed materials
+Africell to mentioned during the program by the MC
+Africell to be the only GSM partner
+Venue to be branded by africell
+VIP tickets to be provided for Africell Staff', 'Correct Entertainment Troupe CET will be doing a movie Movie Premier&Launhing title ''''RED CARD''''.I think its worth supporting.', 1, '2016-07-25 14:24:46', '2016-07-25 14:24:46');
 INSERT INTO events VALUES (1, '2017-03-21', 'test', 'test', 'test test', 'test', 'Africell to be mentioned in all adverts
 Africell''s logo to be placed on all printed materials
 Africell to mentioned during the program by the MC
@@ -4501,7 +6154,7 @@ SELECT pg_catalog.setval('items_id_seq', 1, false);
 -- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO schema_migrations VALUES ('1');
+-- INSERT INTO schema_migrations VALUES ('1');
 
 
 --
@@ -4529,9 +6182,9 @@ SELECT pg_catalog.setval('user_roles_id_seq', 1, false);
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO users VALUES (2, 2, 'user user', 'uuser@africell.gm', '$2a$10$M5Y1SVkzVS6vwFed0K7nBO05pbwdCJkkg8e0l6f8678vKaYos6Pzi', '3fb57c9316f5f8d0fa06a473affa5185208ec7a5', '2016-04-27 21:13:58', '2016-04-29 14:27:23');
-INSERT INTO users VALUES (3, 2, 'test test', 'test@africell.gm', '$2a$10$V7cYvj2b2tOxZn.VIqdEMu6TE4Q39fSOs0yILcMEj2Z1I8/kKWkbu', '00470f13e53677b66efc283c5c3d26180dfd92e7', '2016-04-28 01:12:41', '2016-04-28 01:50:34');
-INSERT INTO users VALUES (1, 1, 'Charles Jarju', 'cjarju@africell.gm', '$2a$10$mg82rSYvCbgqyGYcSeObSuYwrOMynQho2ggeO30wFqUh1fBLz9WgO', '0e5eab99ebbf07bd0d1298539c5adb2318a625a7', '2016-04-27 03:03:03', '2017-03-27 20:25:12.900394');
+INSERT INTO users VALUES (2, 2, 'user user', 'user@test.gm', '$2a$10$M5Y1SVkzVS6vwFed0K7nBO05pbwdCJkkg8e0l6f8678vKaYos6Pzi', '3fb57c9316f5f8d0fa06a473affa5185208ec7a5', '2016-04-27 21:13:58', '2016-04-29 14:27:23');
+INSERT INTO users VALUES (3, 2, 'test test', 'test@test.gm', '$2a$10$V7cYvj2b2tOxZn.VIqdEMu6TE4Q39fSOs0yILcMEj2Z1I8/kKWkbu', '00470f13e53677b66efc283c5c3d26180dfd92e7', '2016-04-28 01:12:41', '2016-04-28 01:50:34');
+INSERT INTO users VALUES (1, 1, 'Charles Jarju', 'cjarju@test.gm', '$2a$10$mg82rSYvCbgqyGYcSeObSuYwrOMynQho2ggeO30wFqUh1fBLz9WgO', '0e5eab99ebbf07bd0d1298539c5adb2318a625a7', '2016-04-27 03:03:03', '2017-03-27 20:25:12.900394');
 
 
 --
@@ -4543,94 +6196,45 @@ INSERT INTO users VALUES (1, 1, 'Charles Jarju', 'cjarju@africell.gm', '$2a$10$m
 SELECT pg_catalog.setval('users_id_seq', 1, false);
 
 
---
--- TOC entry 2081 (class 2606 OID 16409)
--- Name: event_dates event_dates_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
+-- Add constraints for tables that lack primary keys
+-- Refactored to use loops
 
-ALTER TABLE ONLY event_dates
-    ADD CONSTRAINT event_dates_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2084 (class 2606 OID 16418)
--- Name: event_info_types event_info_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY event_info_types
-    ADD CONSTRAINT event_info_types_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2086 (class 2606 OID 16426)
--- Name: event_item_types event_item_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY event_item_types
-    ADD CONSTRAINT event_item_types_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2088 (class 2606 OID 16438)
--- Name: event_items event_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY event_items
-    ADD CONSTRAINT event_items_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2090 (class 2606 OID 16446)
--- Name: event_types event_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY event_types
-    ADD CONSTRAINT event_types_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2092 (class 2606 OID 16457)
--- Name: events events_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY events
-    ADD CONSTRAINT events_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2094 (class 2606 OID 16466)
--- Name: item_types item_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY item_types
-    ADD CONSTRAINT item_types_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2096 (class 2606 OID 16476)
--- Name: items items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY items
-    ADD CONSTRAINT items_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2098 (class 2606 OID 16484)
--- Name: user_roles user_roles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY user_roles
-    ADD CONSTRAINT user_roles_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 2103 (class 2606 OID 16495)
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+DO $$
+DECLARE
+    t RECORD;
+BEGIN
+    FOR t IN
+        SELECT table_name, column_name
+        FROM (
+            VALUES
+                ('event_dates', 'id'),
+                ('event_info_types', 'id'),
+                ('event_item_types', 'id'),
+                ('event_items', 'id'),
+                ('event_types', 'id'),
+                ('events', 'id'),
+                ('item_types', 'id'),
+                ('items', 'id'),
+                ('user_roles', 'id'),
+                ('users', 'id')
+        ) AS tbl(table_name, column_name)
+    LOOP
+        -- Check if table already has a primary key
+        IF NOT EXISTS (
+            SELECT 1
+            FROM pg_index i
+            JOIN pg_class c ON c.oid = i.indrelid
+            WHERE c.relname = t.table_name
+              AND i.indisprimary
+        ) THEN
+            EXECUTE format(
+                'ALTER TABLE ONLY %I ADD CONSTRAINT %I_pkey PRIMARY KEY (%I)',
+                t.table_name, t.table_name, t.column_name
+            );
+        END IF;
+    END LOOP;
+END
+$$;
 
 
 --
@@ -4638,7 +6242,7 @@ ALTER TABLE ONLY users
 -- Name: index_event_dates_on_event_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_event_dates_on_event_id ON event_dates USING btree (event_id);
+CREATE INDEX IF NOT EXISTS index_event_dates_on_event_id ON event_dates USING btree (event_id);
 
 
 --
@@ -4646,7 +6250,7 @@ CREATE INDEX index_event_dates_on_event_id ON event_dates USING btree (event_id)
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_users_on_email ON users USING btree (email);
+CREATE INDEX IF NOT EXISTS index_users_on_email ON users USING btree (email);
 
 
 --
@@ -4654,7 +6258,7 @@ CREATE INDEX index_users_on_email ON users USING btree (email);
 -- Name: index_users_on_remember_token; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_users_on_remember_token ON users USING btree (remember_token);
+CREATE INDEX IF NOT EXISTS index_users_on_remember_token ON users USING btree (remember_token);
 
 
 --
@@ -4662,7 +6266,7 @@ CREATE INDEX index_users_on_remember_token ON users USING btree (remember_token)
 -- Name: index_users_on_user_role_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_users_on_user_role_id ON users USING btree (user_role_id);
+CREATE INDEX IF NOT EXISTS index_users_on_user_role_id ON users USING btree (user_role_id);
 
 
 --
@@ -4670,7 +6274,7 @@ CREATE INDEX index_users_on_user_role_id ON users USING btree (user_role_id);
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+CREATE UNIQUE INDEX IF NOT EXISTS unique_schema_migrations ON schema_migrations USING btree (version);
 
 
 -- Completed on 2017-04-10 18:13:03

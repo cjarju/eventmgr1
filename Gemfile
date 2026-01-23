@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.0'
+ruby '~> 2.4.0'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -95,6 +95,9 @@ gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem 'axlsx', '~> 2.0.1'
 # axlsx_rails '0.5.0'
 gem "axlsx_rails", '~> 0.5.0'
+
+# dotenv to manage environment variables
+gem 'dotenv-rails', '~> 2.2.1'
 
 # Previous versions of Rails required you to add a gem to your 
 # project rails_12factor to enable static asset serving and 
