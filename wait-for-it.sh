@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Use this script to test if a given TCP host/port are available
+
+# Script is used to test if a given TCP host/port are available
+# Credit: https://github.com/vishnubob/wait-for-it
 
 WAITFORIT_cmdname=${0##*/}
 
