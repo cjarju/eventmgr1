@@ -559,7 +559,7 @@ class ReportsController < ApplicationController
     # hash {"event_name" => cost, ... "event_name" => cost }
     @event_chart_data = {}
     @events.each do |event|
-      @event_chart_data[event.event_name] = event.total
+      @event_chart_data[event.event_name] = event.total.to_i
     end
 
     # cost per item_type for a given date 
@@ -570,7 +570,7 @@ class ReportsController < ApplicationController
     # hash {"item_type_name" => cost, ... "item_type_name" => cost }
     @item_types_chart_data = {}
     @item_types.each do |item_type|
-      @item_types_chart_data[item_type.item_type_name] = item_type.total
+      @item_types_chart_data[item_type.item_type_name] = item_type.total.to_i
     end
 
   end

@@ -87,13 +87,10 @@ gem 'chartkick', '~> 1.2.4'
 gem 'will_paginate', '~> 3.0.5'
 
 # use bootstrap pagination component with will_paginate gem
-# will_paginate-bootstrap '1.0.1'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
 
 # xlsx file builder
-# axlsx '2.0.1'
 gem 'axlsx', '~> 2.0.1'
-# axlsx_rails '0.5.0'
 gem "axlsx_rails", '~> 0.5.0'
 
 # dotenv to manage environment variables
