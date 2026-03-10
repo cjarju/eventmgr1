@@ -1,7 +1,44 @@
 # Event Sponsorship CMS
+**Event Sponsorship CMS** is a Ruby on Rails web application for managing events and  sponsorship.
+
+## Demo
+
+A quick look at the application in action.
+
+### Home page
+<p align="center">
+  <img src="doc/teaser/home-events-chart.png" width="640"/>
+</p>
+
+### Events page
+<p align="center">
+  <img src="doc/teaser/events.png" width="640"/>
+</p>
+
+### Reports page
+<p align="center">
+  <img src="doc/teaser/reports.png" width="640"/>
+</p>
+
+### Reference data page
+<p align="center">
+  <img src="doc/teaser/reference-data.png" width="640"/>
+</p>
+
+### Users page
+<p align="center">
+  <img src="doc/teaser/users.png" width="640"/>
+</p>
+
+### Account page
+<p align="center">
+  <img src="doc/teaser/account.png" width="640"/>
+</p>
 
 ## About Project
-**Event Sponsorship CMS** is a Ruby on Rails web application for managing events and  sponsorship. The application lets authorized users:
+This hubby project is inspired by an in-house application used at my former workplace. They sponsor events as part of their corperate social responsilibities.
+
+The application lets authorized users:
 
 - Create and edit events with categorized costs and item types
 - View month-specific dashboards with pie charts for event and item-type expenditure
@@ -11,8 +48,6 @@
 - Manage account details: profile update, password change
 
 The application is built with Ruby on Rails for robust backend functionality, includes Docker support for containerized deployment, and uses a relational database (PostgreSQL) for data persistence.
-
-This hubby project is inspired by an in-house application used at my former workplace. They sponsor events as part of their corperate social responsilibities.
 
 ## System Dependencies
 
@@ -81,10 +116,11 @@ The web service would be accessible at: `http://localhost:3000/`
    docker compose start         # start the services
    docker compose restart       # restart the services
    docker compose down          # teardown the services
+   docker compose run           # run a one-time command against a service
    ```
 
 ### Local Setup
-You should have Ruby, Rails, and PostgreSQL installed locally before you proceed with these commands. 
+You should have Ruby, Rails, and PostgreSQL installed locally before you proceed with these commands.
 
 1. Ensure PostgreSQL is running and `.env` is set for local (e.g., `DATABASE_HOST=127.0.0.1`, `DATABASE_USERNAME`/`PASSWORD` matching your local user).
 
@@ -112,24 +148,6 @@ You should have Ruby, Rails, and PostgreSQL installed locally before you proceed
    bundle exec rails server
    ```
 The web service would be accessible at: `http://localhost:3000/`
-
-## System Features Teaser
-
-<div style="margin-left: 50px">
-
-![Home](doc/teaser/home-events-chart.png)
-
-![Events](doc/teaser/events.png)
-
-![Reports](doc/teaser/reports.png)
-
-![Ref Data](doc/teaser/reference-data.png)
-
-![Users](doc/teaser/users.png)
-
-![Account](doc/teaser/account.png)
-
-</div>
 
 ## License
 The project is licensed under the MIT License. Refer to [license](LICENSE) for more information.
