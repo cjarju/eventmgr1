@@ -36,7 +36,7 @@ A quick look at the application in action.
 </p>
 
 ## About Project
-This hubby project is inspired by an in-house application used at my former workplace. They sponsor events as part of their corperate social responsilibities.
+This hobby project is inspired by an in-house application used at my former workplace. They sponsor events as part of their corperate social responsilibities.
 
 The application lets authorized users:
 
